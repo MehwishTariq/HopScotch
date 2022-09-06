@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3010673163713535074}
   - component: {fileID: 6298084947066862245}
   - component: {fileID: 7709133232108079013}
-  - component: {fileID: 2065836204316111031}
   - component: {fileID: 6767619609326391076}
   - component: {fileID: 7431914190250552921}
+  - component: {fileID: 2715261319713813406}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Untagged
@@ -82,19 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &2065836204316111031
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4119928293525222979}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6767619609326391076
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -123,3 +110,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7930ef440073714f8d95683ca563b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time: 0.5
+  increment: 5
+--- !u!65 &2715261319713813406
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4119928293525222979}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

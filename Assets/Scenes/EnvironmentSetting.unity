@@ -600,6 +600,7 @@ MonoBehaviour:
   speed: 2
   StopMovement: 0
   IsAiming: 0
+  tempNo: 0
   oneLegHop: 0
   twoLegHop: 0
   ascend: 0
@@ -2053,7 +2054,7 @@ PrefabInstance:
     - target: {fileID: 3239481311355110186, guid: 52e3f6297379ffa48954392c6d79ef4e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.89
+      value: -17.42
       objectReference: {fileID: 0}
     - target: {fileID: 3239481311355110186, guid: 52e3f6297379ffa48954392c6d79ef4e,
         type: 3}
@@ -2088,7 +2089,7 @@ PrefabInstance:
     - target: {fileID: 3239481311355110186, guid: 52e3f6297379ffa48954392c6d79ef4e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3239481311355110186, guid: 52e3f6297379ffa48954392c6d79ef4e,
         type: 3}
@@ -2253,8 +2254,8 @@ Transform:
   - {fileID: 1674693484}
   - {fileID: 442199131}
   - {fileID: 1245943306}
-  - {fileID: 161735658}
   - {fileID: 966223192}
+  - {fileID: 161735658}
   - {fileID: 1922894804}
   - {fileID: 1086525701}
   - {fileID: 1331708499}

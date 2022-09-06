@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public bool IsAiming = false;
 
     public static int NoToThrowOn;
+    [SerializeField]
+    int tempNo;
     public bool oneLegHop, twoLegHop;
     public bool ascend, descend;
     float jumpAmount = 4;
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        tempNo = NoToThrowOn;
         if (StopMovement)
         {
             return;
@@ -46,29 +49,45 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Jumpp");
             if (oneLegHop)
             {
-                anim.Play("OneLegJump");
+                anim.SetTrigger("oneLeg");
+                //anim.Play("OneLegJump");
 
-                controller.DOLocalJump(boxes[NoToThrowOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
+                if (ascend)
                 {
-                    if (NoToThrowOn - 1 == boxes.Count - 2)
+                    controller.DOLocalJump(boxes[NoToThrowOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
                     {
-                        ascend = false;
-                        descend = true;
-                    }
-                    if (NoToThrowOn - 1 == 0)
-                    {
-                        descend = false;
-                        ascend = true;
-                    }   
-
-                    if (descend && !ascend)
-                        NoToThrowOn--;
-
-                    else if(ascend && !descend)
                         NoToThrowOn++;
-                    oneLegHop = false;
-                    Debug.Log(NoToThrowOn);
-                });
+                        if (NoToThrowOn > boxes.Count)
+                        {
+                                ascend = false;
+                                descend = true;
+
+                                NoToThrowOn--;
+                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0),0.1f);
+                         }
+                        
+                        oneLegHop = false;
+                        Debug.Log(NoToThrowOn);
+                    });
+                }
+                else if (descend)
+                {
+                    controller.DOLocalJump(boxes[NoToThrowOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
+                    {
+                        NoToThrowOn--;
+                        if (NoToThrowOn < 1)
+                        {
+                            ascend = true;
+                            descend = false;
+                            controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
+                            NoToThrowOn++;
+                        }
+
+                        oneLegHop = false;
+                        Debug.Log(NoToThrowOn);
+                    });
+                }
+
             }
         }
 
@@ -81,30 +100,46 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Jumpp");
             if (twoLegHop)
             {
-                anim.Play("TwoLegJump");
 
-                controller.DOLocalJump((boxes[NoToThrowOn].position + boxes[NoToThrowOn - 1].position)/2, 0.5f, 1, 0.8f).OnComplete(() =>
+                anim.SetTrigger("twoLeg");
+                //anim.Play("TwoLegJump");
+                if (ascend)
                 {
-                    if (NoToThrowOn == boxes.Count - 1)
+                    controller.DOLocalJump((boxes[NoToThrowOn].position + boxes[NoToThrowOn - 1].position) / 2, 0.5f, 1, 0.8f).OnComplete(() =>
                     {
-                        ascend = false;
-                        descend = true;
-                    }
-                    if (NoToThrowOn - 1 == 0)
-                    {
-                        descend = false;
-                        ascend = true;
-                    }
-
-                    if (descend && !ascend)
-                        NoToThrowOn--;
-
-                    else if (ascend && !descend)
                         NoToThrowOn += 2;
+                        if (NoToThrowOn > boxes.Count)
+                        {
+                                ascend = false;
+                                descend = true;
+                                NoToThrowOn -= 3;
+                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0), 0.1f);
+                        }
+                       
+                        twoLegHop = false;
+                        Debug.Log(NoToThrowOn);
+                    });
+                }
+                else if (descend)
+                {
+                    
+                    controller.DOLocalJump((boxes[NoToThrowOn-1].position + boxes[NoToThrowOn-2].position) / 2, 0.5f, 1, 0.8f).OnComplete(() =>
+                    {
+                       
+                            NoToThrowOn -= 2;
+                            if (NoToThrowOn - 1 < 0)
+                            {
+                                ascend = true;
+                                descend = false;
+                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
+                            }
+                        
 
-                    twoLegHop = false;
-                    Debug.Log(NoToThrowOn);
-                });
+                        twoLegHop = false;
+                        Debug.Log(NoToThrowOn);
+                    });
+                }
+
             }
         }
 
