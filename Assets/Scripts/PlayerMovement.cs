@@ -12,7 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public bool IsAiming = false;
 
     public static int NoToThrowOn;
-    public bool isJumping;
+    public bool oneLegHop, twoLegHop;
+    public bool ascend, descend;
     float jumpAmount = 4;
 
     public List<Transform> boxes;
@@ -23,20 +24,11 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<Transform>();
         anim = GetComponentInChildren<Animator>();
         NoToThrowOn = 1;
+        ascend = true;
+        descend = false;
     }
 
-    IEnumerator Jump()
-    {
-        isJumping = true;
-        //controller.GetComponent<Transform>().DOLocalJump(new Vector3(transform.localPosition.x, transform.localPosition.y + 0.2f, transform.localPosition.z), 0.3f, 1, 0.2f);
-        yield return new WaitForSeconds(0.2f);
-        //controller.GetComponent<Transform>().DOLocalMove(new Vector3(transform.localPosition.x - 0.8f, transform.localPosition.y - 0.2f, transform.localPosition.z), 0.2f).OnComplete(() =>
-        //{
-        //    isJumping = false;
-        //});
-
-       
-    }
+  
     // Update is called once per frame
     void Update()
     {
@@ -45,22 +37,77 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
      
-        if (Input.GetKey(KeyCode.O))
+        if (Input.GetKey(KeyCode.O) && !oneLegHop)
         {
             IsAiming = false;
-            anim.Play("OneLegJump");
             //controller.AddForce(new Vector3(controller.position.x, Vector2.up.y * jumpAmount, 0), ForceMode.Impulse);
-            isJumping = true;
-        }
-        if (isJumping)
-        {
-            isJumping = false;
-            controller.DOLocalJump(boxes[NoToThrowOn - 1].position, 0.3f, 1, 0.6f).OnComplete(() =>
+            oneLegHop = true;
+
+            Debug.Log("Jumpp");
+            if (oneLegHop)
             {
-                NoToThrowOn++;
-                Debug.Log(NoToThrowOn);
-            });
+                anim.Play("OneLegJump");
+
+                controller.DOLocalJump(boxes[NoToThrowOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
+                {
+                    if (NoToThrowOn - 1 == boxes.Count - 2)
+                    {
+                        ascend = false;
+                        descend = true;
+                    }
+                    if (NoToThrowOn - 1 == 0)
+                    {
+                        descend = false;
+                        ascend = true;
+                    }   
+
+                    if (descend && !ascend)
+                        NoToThrowOn--;
+
+                    else if(ascend && !descend)
+                        NoToThrowOn++;
+                    oneLegHop = false;
+                    Debug.Log(NoToThrowOn);
+                });
+            }
         }
+
+        if (Input.GetKey(KeyCode.T) && !twoLegHop)
+        {
+            IsAiming = false;
+            //controller.AddForce(new Vector3(controller.position.x, Vector2.up.y * jumpAmount, 0), ForceMode.Impulse);
+            twoLegHop = true;
+
+            Debug.Log("Jumpp");
+            if (twoLegHop)
+            {
+                anim.Play("TwoLegJump");
+
+                controller.DOLocalJump((boxes[NoToThrowOn].position + boxes[NoToThrowOn - 1].position)/2, 0.5f, 1, 0.8f).OnComplete(() =>
+                {
+                    if (NoToThrowOn == boxes.Count - 1)
+                    {
+                        ascend = false;
+                        descend = true;
+                    }
+                    if (NoToThrowOn - 1 == 0)
+                    {
+                        descend = false;
+                        ascend = true;
+                    }
+
+                    if (descend && !ascend)
+                        NoToThrowOn--;
+
+                    else if (ascend && !descend)
+                        NoToThrowOn += 2;
+
+                    twoLegHop = false;
+                    Debug.Log(NoToThrowOn);
+                });
+            }
+        }
+
         else if (IsAiming)
         {
             Plane p = new Plane(Vector3.up, 0f);
