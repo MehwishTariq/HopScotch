@@ -5,12 +5,12 @@ using DG.Tweening;
 using System;
 using UnityEngine.UI;
 
-public enum BarColor { None, Red, Yellow, Green }
+public enum BarColor { None, OneLegJump, TwoLegJump, SkipJump }
 public class MovingBar : MonoBehaviour
 {
 
     [SerializeField]
-    BarColor currentBar;
+    public BarColor currentBar;
     [SerializeField]
     RectTransform myTransform;
     [SerializeField]
@@ -44,7 +44,7 @@ public class MovingBar : MonoBehaviour
     public void KillNow()
     {
         myTransform.DOKill();
-        demoText.text = "Stop position: "+ currentBar.ToString();
+       // demoText.text = "Stop position: "+ currentBar.ToString();
     }
     public void StartMoving()
     {

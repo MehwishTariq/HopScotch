@@ -18,7 +18,7 @@ public class StoneMovement : MonoBehaviour
         //    return;
         //}
 
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) && (!GetComponentInParent<PlayerMovement>().oneLegHop || !GetComponentInParent<PlayerMovement>().twoLegHop) && !PlayerMovement.isHopping)
         {
             GetComponentInParent<PlayerMovement>().IsAiming = true;
             float HorizontalRotation = Input.GetAxis("Mouse X");

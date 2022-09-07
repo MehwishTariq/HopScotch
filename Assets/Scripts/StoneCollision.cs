@@ -13,8 +13,9 @@ public class StoneCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 8 && other.bounds.Intersects(gameObject.GetComponent<BoxCollider>().bounds) && other.gameObject.name == PlayerMovement.NoToThrowOn.ToString())
+        if (other.gameObject.layer == 8 && other.bounds.Intersects(gameObject.GetComponent<BoxCollider>().bounds) && other.gameObject.name == PlayerMovement.HopNo.ToString())
         {
+            PlayerMovement.isHopping = true;
             //transitionTweener = DOTween.To(() => GetComponent<Rigidbody>().drag, x => GetComponent<Rigidbody>().drag = x, 2, 0.3f);
             //transitionTweener.OnUpdate(() => Debug.Log(GetComponent<Rigidbody>().drag));
             Debug.Log("farigh");
@@ -30,5 +31,11 @@ public class StoneCollision : MonoBehaviour
             GetComponent<Rigidbody>().drag += increment;
             StartCoroutine(Delay(rb));
         }
+        else
+        {
+
+        }
     }
+
+
 }

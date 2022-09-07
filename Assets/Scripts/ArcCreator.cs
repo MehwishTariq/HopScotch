@@ -44,7 +44,7 @@ public class ArcCreator : MonoBehaviour
         float Dist;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(ray.origin, ray.direction, Color.red);
-        if (p.Raycast(ray, out Dist) && Input.GetMouseButton(1))
+        if (p.Raycast(ray, out Dist) && Input.GetMouseButton(1) && !PlayerMovement.isHopping)
         {
             lr.positionCount = (int)numPoints;
             Dir = ray.GetPoint(Dist) - player.transform.position;
