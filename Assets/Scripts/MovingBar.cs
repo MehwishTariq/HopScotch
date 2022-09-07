@@ -23,6 +23,7 @@ public class MovingBar : MonoBehaviour
     Ease type;
     [SerializeField]
     Text demoText;
+ 
 
 
 

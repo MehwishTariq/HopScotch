@@ -38,8 +38,10 @@ public class PlayerMovement : MonoBehaviour
         descend = false;
     }
 
-  
+
     // Update is called once per frame
+    [SerializeField]
+    bool temp = false;
     void Update()
     {
         
@@ -58,6 +60,12 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
             {
                 jumpType = bar.currentBar;
+                if(jumpType == BarColor.SkipJump && temp==true)
+                {
+                    NoToMoveOn++;
+                    jumpType = BarColor.OneLegJump;
+                    temp = false;
+                }
             }
         }
         
@@ -85,8 +93,9 @@ public class PlayerMovement : MonoBehaviour
 
                             NoToMoveOn--;
                             controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0),0.1f);
-                        }
 
+                        }
+                        temp = true;
                         jumpType = BarColor.None;
                         oneLegHop = false;
                         Debug.Log(NoToMoveOn);
@@ -186,5 +195,7 @@ public class PlayerMovement : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Dir), Time.deltaTime * 5f);
             }
         }
+       
+
     }
 }
