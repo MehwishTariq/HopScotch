@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Red
-  - Green
-  - Yellow
+  - OneLegJump
+  - TwoLegJump
+  - SkipJump
   layers:
   - Default
   - TransparentFX

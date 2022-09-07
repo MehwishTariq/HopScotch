@@ -11,13 +11,20 @@ public class PlayerMovement : MonoBehaviour
     public bool StopMovement = false;
     public bool IsAiming = false;
 
-    public static int NoToThrowOn;
+    public int NoToMoveOn;
+    public static bool isHopping;
+
+    
     [SerializeField]
-    int tempNo;
+    public static int HopNo;
     public bool oneLegHop, twoLegHop;
     public bool ascend, descend;
-    float jumpAmount = 4;
+    public bool activateBar;
 
+    public Transform startPos;
+
+    public MovingBar bar;
+    BarColor jumpType;
     public List<Transform> boxes;
 
     // Start is called before the first frame update
@@ -25,7 +32,8 @@ public class PlayerMovement : MonoBehaviour
     {
         controller = GetComponent<Transform>();
         anim = GetComponentInChildren<Animator>();
-        NoToThrowOn = 1;
+        HopNo = 1;
+        NoToMoveOn = 1;
         ascend = true;
         descend = false;
     }
@@ -34,13 +42,26 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tempNo = NoToThrowOn;
+        
         if (StopMovement)
         {
             return;
         }
-     
-        if (Input.GetKey(KeyCode.O) && !oneLegHop)
+            
+        if(isHopping)
+        {
+            if (!activateBar)
+            {
+                bar.StartMoving();
+                activateBar = true;
+            }
+            if (Input.GetKey(KeyCode.Space))
+            {
+                jumpType = bar.currentBar;
+            }
+        }
+        
+        if (jumpType == BarColor.OneLegJump && !oneLegHop && isHopping)
         {
             IsAiming = false;
             //controller.AddForce(new Vector3(controller.position.x, Vector2.up.y * jumpAmount, 0), ForceMode.Impulse);
@@ -54,44 +75,52 @@ public class PlayerMovement : MonoBehaviour
 
                 if (ascend)
                 {
-                    controller.DOLocalJump(boxes[NoToThrowOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
+                    controller.DOLocalJump(boxes[NoToMoveOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
                     {
-                        NoToThrowOn++;
-                        if (NoToThrowOn > boxes.Count)
+                        NoToMoveOn++;
+                        if (NoToMoveOn > boxes.Count)
                         {
-                                ascend = false;
-                                descend = true;
+                            ascend = false;
+                            descend = true;
 
-                                NoToThrowOn--;
-                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0),0.1f);
-                         }
-                        
+                            NoToMoveOn--;
+                            controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0),0.1f);
+                        }
+
+                        jumpType = BarColor.None;
                         oneLegHop = false;
-                        Debug.Log(NoToThrowOn);
+                        Debug.Log(NoToMoveOn);
                     });
                 }
                 else if (descend)
                 {
-                    controller.DOLocalJump(boxes[NoToThrowOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
+                    controller.DOLocalJump(boxes[NoToMoveOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
                     {
-                        NoToThrowOn--;
-                        if (NoToThrowOn < 1)
+                        NoToMoveOn--;
+                        if (NoToMoveOn < 1)
                         {
                             ascend = true;
                             descend = false;
-                            controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
-                            NoToThrowOn++;
+                            isHopping = false;
+                            bar.KillNow();
+                            activateBar = false;
+                            controller.DOLocalJump(startPos.position, 0.5f, 1, 0.8f).OnComplete(() =>
+                            {
+                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
+                                HopNo++;
+                            });
+                            NoToMoveOn++;
                         }
-
+                        jumpType = BarColor.None;
                         oneLegHop = false;
-                        Debug.Log(NoToThrowOn);
+                        Debug.Log(NoToMoveOn);
                     });
                 }
 
             }
         }
 
-        if (Input.GetKey(KeyCode.T) && !twoLegHop)
+        if (jumpType == BarColor.TwoLegJump && !twoLegHop && isHopping)
         {
             IsAiming = false;
             //controller.AddForce(new Vector3(controller.position.x, Vector2.up.y * jumpAmount, 0), ForceMode.Impulse);
@@ -105,38 +134,39 @@ public class PlayerMovement : MonoBehaviour
                 //anim.Play("TwoLegJump");
                 if (ascend)
                 {
-                    controller.DOLocalJump((boxes[NoToThrowOn].position + boxes[NoToThrowOn - 1].position) / 2, 0.5f, 1, 0.8f).OnComplete(() =>
+                    controller.DOLocalJump((boxes[NoToMoveOn].position + boxes[NoToMoveOn - 1].position) / 2, 0.5f, 1, 0.8f).OnComplete(() =>
                     {
-                        NoToThrowOn += 2;
-                        if (NoToThrowOn > boxes.Count)
+                        NoToMoveOn += 2;
+                        if (NoToMoveOn > boxes.Count)
                         {
-                                ascend = false;
-                                descend = true;
-                                NoToThrowOn -= 3;
-                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0), 0.1f);
+                            ascend = false;
+                            descend = true;
+                            NoToMoveOn -= 3;
+                           
+                            controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0), 0.1f);
                         }
-                       
+                        jumpType = BarColor.None;
                         twoLegHop = false;
-                        Debug.Log(NoToThrowOn);
+                        Debug.Log(NoToMoveOn);
                     });
                 }
                 else if (descend)
                 {
                     
-                    controller.DOLocalJump((boxes[NoToThrowOn-1].position + boxes[NoToThrowOn-2].position) / 2, 0.5f, 1, 0.8f).OnComplete(() =>
+                    controller.DOLocalJump((boxes[NoToMoveOn - 1].position + boxes[NoToMoveOn - 2].position) / 2, 0.5f, 1, 0.8f).OnComplete(() =>
                     {
-                       
-                            NoToThrowOn -= 2;
-                            if (NoToThrowOn - 1 < 0)
-                            {
-                                ascend = true;
-                                descend = false;
-                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
-                            }
-                        
 
+                        NoToMoveOn -= 2;
+                        if (NoToMoveOn - 1 < 0)
+                        {
+                            ascend = true;
+                            descend = false;
+                            controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
+                        }
+
+                        jumpType = BarColor.None;
                         twoLegHop = false;
-                        Debug.Log(NoToThrowOn);
+                        Debug.Log(NoToMoveOn);
                     });
                 }
 
