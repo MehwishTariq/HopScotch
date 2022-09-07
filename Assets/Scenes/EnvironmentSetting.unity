@@ -595,11 +595,12 @@ MonoBehaviour:
   speed: 2
   StopMovement: 0
   IsAiming: 0
-  tempNo: 0
+  NoToMoveOn: 0
   oneLegHop: 0
   twoLegHop: 0
   ascend: 0
   descend: 0
+  activateBar: 0
   startPos: {fileID: 815824870}
   bar: {fileID: 29740089}
   boxes:
@@ -2420,6 +2421,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673781412394168412, guid: 5e5ab2b2b6e35e941b3da7b43adcc621,
+        type: 3}
+      propertyPath: timeMin
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673781412394168412, guid: 5e5ab2b2b6e35e941b3da7b43adcc621,
+        type: 3}
+      propertyPath: timeMax
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8673781412544825392, guid: 5e5ab2b2b6e35e941b3da7b43adcc621,
         type: 3}

@@ -108,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
                             {
                                 controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
                                 HopNo++;
+                                anim.SetTrigger("Idle");
                             });
                             NoToMoveOn++;
                         }
