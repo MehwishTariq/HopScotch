@@ -7,6 +7,9 @@ TagManager:
   - OneLegJump
   - TwoLegJump
   - SkipJump
+  - LeftLeg
+  - RightLeg
+  - Stone
   layers:
   - Default
   - TransparentFX
