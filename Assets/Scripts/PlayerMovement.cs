@@ -26,7 +26,8 @@ public class PlayerMovement : MonoBehaviour
     public MovingBar bar;
     BarColor jumpType;
     public List<Transform> boxes;
-
+    [SerializeField]
+    int tempHopNumber;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,9 +43,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     [SerializeField]
     bool temp = false;
+    [SerializeField]
+    public BarColor tempJumpType = BarColor.None;
+    [SerializeField]
+    bool testing;
     void Update()
     {
-        
+        if(testing)
+            HopNo = tempHopNumber;
+
         if (StopMovement)
         {
             return;
@@ -60,10 +67,18 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
             {
                 jumpType = bar.currentBar;
-                if(jumpType == BarColor.SkipJump && temp==true)
+                if(jumpType == BarColor.SkipJump && temp==true )
                 {
-                    NoToMoveOn++;
-                    jumpType = BarColor.OneLegJump;
+                    if (ascend)
+                        NoToMoveOn++;
+                    if (descend)
+                        NoToMoveOn--;
+
+
+                    if (HopNo == 5 || HopNo == 8)
+                        jumpType = BarColor.TwoLegJump;
+                    else
+                        jumpType = tempJumpType;
                     temp = false;
                 }
             }
@@ -103,28 +118,52 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else if (descend)
                 {
-                    controller.DOLocalJump(boxes[NoToMoveOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
+                    if (NoToMoveOn < 1)
                     {
-                        NoToMoveOn--;
-                        if (NoToMoveOn < 1)
+                        ascend = true;
+                        descend = false;
+                        isHopping = false;
+                        bar.KillNow();
+                        activateBar = false;
+                        controller.DOLocalJump(startPos.position, 0.5f, 1, 0.8f).OnComplete(() =>
                         {
-                            ascend = true;
-                            descend = false;
-                            isHopping = false;
-                            bar.KillNow();
-                            activateBar = false;
-                            controller.DOLocalJump(startPos.position, 0.5f, 1, 0.8f).OnComplete(() =>
-                            {
-                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
-                                HopNo++;
-                                anim.SetTrigger("Idle");
-                            });
-                            NoToMoveOn++;
-                        }
+                            controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
+                            HopNo++;
+                            Destroy(StoneMovement.currentStone);
+                            anim.SetTrigger("Idle");
+                        });
+                        NoToMoveOn++;
                         jumpType = BarColor.None;
                         oneLegHop = false;
                         Debug.Log(NoToMoveOn);
-                    });
+                    }
+                    else
+                    {
+                        controller.DOLocalJump(boxes[NoToMoveOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
+                        {
+                            NoToMoveOn--;
+                            if (NoToMoveOn < 1)
+                            {
+                                ascend = true;
+                                descend = false;
+                                isHopping = false;
+                                bar.KillNow();
+                                activateBar = false;
+                                controller.DOLocalJump(startPos.position, 0.5f, 1, 0.8f).OnComplete(() =>
+                                {
+                                    controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
+                                    Destroy(StoneMovement.currentStone);
+                                    HopNo++;
+                                    anim.SetTrigger("Idle");
+                                });
+                                NoToMoveOn++;
+                            }
+                            jumpType = BarColor.None;
+                            oneLegHop = false;
+                            Debug.Log(NoToMoveOn);
+                        });
+                    }
+                    
                 }
 
             }

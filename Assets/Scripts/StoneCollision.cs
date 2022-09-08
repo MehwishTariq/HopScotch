@@ -10,32 +10,48 @@ public class StoneCollision : MonoBehaviour
     float time;
     [SerializeField]
     float increment;
+    [SerializeField]
+    bool xyz;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 8 && other.bounds.Intersects(gameObject.GetComponent<BoxCollider>().bounds) && other.gameObject.name == PlayerMovement.HopNo.ToString())
+        if (other.gameObject.layer == 8 && xyz==false)
         {
-            PlayerMovement.isHopping = true;
-            //transitionTweener = DOTween.To(() => GetComponent<Rigidbody>().drag, x => GetComponent<Rigidbody>().drag = x, 2, 0.3f);
-            //transitionTweener.OnUpdate(() => Debug.Log(GetComponent<Rigidbody>().drag));
-            Debug.Log("farigh");
-            StartCoroutine(Delay(GetComponent<Rigidbody>()));
-            //GetComponent<Rigidbody>().drag = 50;
-        }
-    }
-    IEnumerator Delay(Rigidbody rb)
-    {
-        yield return new WaitForSeconds(time);
-        if(GetComponent<Rigidbody>().drag< 50)
-        {
-            GetComponent<Rigidbody>().drag += increment;
-            StartCoroutine(Delay(rb));
-        }
-        else
-        {
+            GetComponent<Rigidbody>().isKinematic = true;
+            if(other.GetComponent<ImBOX>().number == PlayerMovement.HopNo.ToString())
+            {
+                PlayerMovement.isHopping = true;
+            }
+            else
+            {
+                Destroy(StoneMovement.currentStone);
+
+            }
 
         }
     }
+    //IEnumerator Delay(Rigidbody rb,Collider other)
+    //{
+    //    yield return new WaitForSeconds(time);
+    //    if(GetComponent<Rigidbody>().drag< 50)
+    //    {
+    //        GetComponent<Rigidbody>().drag += increment;
+    //        StartCoroutine(Delay(rb,other));
+    //    }
+    //    else
+    //    {
+    //        if (other.gameObject.layer == 8 /*&& other.bounds.Intersects(gameObject.GetComponent<BoxCollider>().bounds)*/ && (other.GetComponent<ImBOX>().number == PlayerMovement.HopNo.ToString()))
+    //        {
+    //            PlayerMovement.isHopping = true;
+    //        }
+    //        else
+    //        {
+    //            Destroy(StoneMovement.currentStone);
+
+    //        }
+           
+    //    }
+    //}
 
 
 }
