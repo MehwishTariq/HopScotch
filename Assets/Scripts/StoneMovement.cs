@@ -10,6 +10,7 @@ public class StoneMovement : MonoBehaviour
 
     public GameObject Stone;
     public Transform ShotPoint;
+    public static GameObject currentStone;
 
     void Update()
     {
@@ -32,7 +33,7 @@ public class StoneMovement : MonoBehaviour
                 anim.Play("Throw", 0);
                 GameObject CreatedStone = Instantiate(Stone, ShotPoint.position, ShotPoint.rotation);
                 CreatedStone.GetComponent<Rigidbody>().velocity = GetComponent<ArcCreator>().Dir * BlastPower;
-
+                currentStone = CreatedStone;
             }
         }
         else
