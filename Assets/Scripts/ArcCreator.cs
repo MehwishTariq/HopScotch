@@ -42,7 +42,7 @@ public class ArcCreator : MonoBehaviour
         //Vector3 startingVelocity = stoneMove.ShotPoint.forward * stoneMove.BlastPower;
         Plane p = new Plane(Vector3.up, 0f);
         float Dist;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition * 1.5f);
         Debug.DrawRay(ray.origin, ray.direction, Color.red);
         if (p.Raycast(ray, out Dist) && Input.GetMouseButton(1) && !PlayerMovement.isHopping)
         {

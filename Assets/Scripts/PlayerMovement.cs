@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     bool testing;
 
+    bool HasReset;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,7 +65,9 @@ public class PlayerMovement : MonoBehaviour
         isHopping = false;
         bar.KillNow();
         activateBar = false;
-        
+        oneLegHop = false;
+        twoLegHop = false;
+        HasReset = true;
         jumpType = BarColor.None;
         controller.DORotate(new Vector3(0, 90, 0), 0.1f).OnComplete(() =>
         {
@@ -129,6 +133,7 @@ public class PlayerMovement : MonoBehaviour
 
                 if (ascend)
                 {
+                    controller.DORotate(new Vector3(0, -90, 0), 0.1f);
                     controller.DOLocalJump(boxes[NoToMoveOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
                     {
                         NoToMoveOn++;
@@ -173,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
                         controller.DOLocalJump(boxes[NoToMoveOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
                         {
                             NoToMoveOn--;
-                            if (NoToMoveOn < 1)
+                            if (NoToMoveOn < 1 && !HasReset)
                             {
                                 ascend = true;
                                 descend = false;
@@ -213,6 +218,7 @@ public class PlayerMovement : MonoBehaviour
                 anim.SetTrigger("twoLeg");
                 if (ascend)
                 {
+                    controller.DORotate(new Vector3(0, -90, 0), 0.1f);
                     controller.DOLocalJump((boxes[NoToMoveOn].position + boxes[NoToMoveOn - 1].position) / 2, 0.5f, 1, 0.8f).OnComplete(() =>
                     {
                         NoToMoveOn += 2;
@@ -256,12 +262,12 @@ public class PlayerMovement : MonoBehaviour
         {
             Plane p = new Plane(Vector3.up, 0f);
             float Dist;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition * 1.5f);
             Debug.DrawRay(ray.origin, ray.direction, Color.red);
             if (p.Raycast(ray, out Dist) && Input.GetMouseButton(1))
             {
                 Vector3 Dir = ray.GetPoint(Dist) - transform.position;
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Dir), Time.deltaTime * 5f);
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Dir), Time.deltaTime * 3f);
             }
         }
        

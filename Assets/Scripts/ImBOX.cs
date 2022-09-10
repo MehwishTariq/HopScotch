@@ -28,6 +28,7 @@ public class ImBOX : MonoBehaviour
         }
         else if((other.tag == "RightLeg" || other.tag == "LeftLeg"))
         {
+            //for skipping
             if (other.GetComponentInParent<PlayerMovement>().ascend)
             {
                 other.GetComponentInParent<PlayerMovement>().tempJumpType = ascendJumpType;
