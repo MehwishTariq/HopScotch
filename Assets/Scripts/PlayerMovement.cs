@@ -28,6 +28,14 @@ public class PlayerMovement : MonoBehaviour
     public List<Transform> boxes;
     [SerializeField]
     int tempHopNumber;
+    // Update is called once per frame
+    [SerializeField]
+    bool temp = false;
+    [SerializeField]
+    public BarColor tempJumpType = BarColor.None;
+    [SerializeField]
+    bool testing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,14 +47,39 @@ public class PlayerMovement : MonoBehaviour
         descend = false;
     }
 
+    public void RemoveBool()
+    {
+        foreach(Transform x in boxes)
+        {
+            x.gameObject.GetComponent<ImBOX>().stoneHere = false;
+        }
+    }
 
-    // Update is called once per frame
-    [SerializeField]
-    bool temp = false;
-    [SerializeField]
-    public BarColor tempJumpType = BarColor.None;
-    [SerializeField]
-    bool testing;
+    public void ResetPlayerToStart()
+    {
+        Debug.Log("Reset");
+        ascend = true;
+        descend = false;
+        isHopping = false;
+        bar.KillNow();
+        activateBar = false;
+        
+        jumpType = BarColor.None;
+        controller.DORotate(new Vector3(0, 90, 0), 0.1f).OnComplete(() =>
+        {
+            controller.DOMove(startPos.position, 0.5f).OnComplete(() =>
+            {
+                Debug.Log(HopNo + " hopNo");
+                controller.DORotate(new Vector3(0, -90, 0), 0.1f);
+                Destroy(StoneMovement.currentStone);
+                RemoveBool();
+                anim.SetBool("FailWalk", false);
+                NoToMoveOn = 1;
+            });
+        });
+        
+    }
+   
     void Update()
     {
         if(testing)
@@ -87,14 +120,12 @@ public class PlayerMovement : MonoBehaviour
         if (jumpType == BarColor.OneLegJump && !oneLegHop && isHopping)
         {
             IsAiming = false;
-            //controller.AddForce(new Vector3(controller.position.x, Vector2.up.y * jumpAmount, 0), ForceMode.Impulse);
             oneLegHop = true;
 
             Debug.Log("Jumpp");
             if (oneLegHop)
             {
                 anim.SetTrigger("oneLeg");
-                //anim.Play("OneLegJump");
 
                 if (ascend)
                 {
@@ -108,7 +139,6 @@ public class PlayerMovement : MonoBehaviour
 
                             NoToMoveOn--;
                             controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0),0.1f);
-
                         }
                         temp = true;
                         jumpType = BarColor.None;
@@ -130,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
                             controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
                             HopNo++;
                             Destroy(StoneMovement.currentStone);
+                            RemoveBool();
                             anim.SetTrigger("Idle");
                         });
                         NoToMoveOn++;
@@ -153,6 +184,7 @@ public class PlayerMovement : MonoBehaviour
                                 {
                                     controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
                                     Destroy(StoneMovement.currentStone);
+                                    RemoveBool();
                                     HopNo++;
                                     anim.SetTrigger("Idle");
                                 });
@@ -172,7 +204,6 @@ public class PlayerMovement : MonoBehaviour
         if (jumpType == BarColor.TwoLegJump && !twoLegHop && isHopping)
         {
             IsAiming = false;
-            //controller.AddForce(new Vector3(controller.position.x, Vector2.up.y * jumpAmount, 0), ForceMode.Impulse);
             twoLegHop = true;
 
             Debug.Log("Jumpp");
@@ -180,7 +211,6 @@ public class PlayerMovement : MonoBehaviour
             {
 
                 anim.SetTrigger("twoLeg");
-                //anim.Play("TwoLegJump");
                 if (ascend)
                 {
                     controller.DOLocalJump((boxes[NoToMoveOn].position + boxes[NoToMoveOn - 1].position) / 2, 0.5f, 1, 0.8f).OnComplete(() =>

@@ -25,7 +25,7 @@ public class StoneCollision : MonoBehaviour
             else
             {
                 Destroy(StoneMovement.currentStone);
-
+                FindObjectOfType<PlayerMovement>().RemoveBool();
             }
 
         }
