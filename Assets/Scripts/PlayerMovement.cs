@@ -36,17 +36,43 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     bool testing;
 
+    public static bool gameStarted = false;
     bool HasReset;
+
+    void OnEnable()
+    {
+        EventManager.instance.onStart += SetPlayer;
+        EventManager.instance.onWin += onGameDone;
+        EventManager.instance.onFail += onGameDone;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.instance.onStart -= SetPlayer;
+        EventManager.instance.onWin -= onGameDone;
+        EventManager.instance.onFail -= onGameDone;
+    }
+
+    public void onGameDone()
+    {
+        gameStarted = false;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<Transform>();
         anim = GetComponentInChildren<Animator>();
+    }
+
+    void SetPlayer()
+    {
+        Debug.Log("setPlayer");
         HopNo = 1;
         NoToMoveOn = 1;
         ascend = true;
         descend = false;
+        gameStarted = true;
     }
 
     public void RemoveBool()
@@ -86,215 +112,209 @@ public class PlayerMovement : MonoBehaviour
    
     void Update()
     {
-        if(testing)
-            HopNo = tempHopNumber;
+        if (gameStarted)
+        {
+            if (testing)
+                HopNo = tempHopNumber;
 
-        if (StopMovement)
-        {
-            return;
-        }
-            
-        if(isHopping)
-        {
-            //if (!activateBar)
-            //{
-            //    bar.StartMoving();
-            //    activateBar = true;
-            //}
-            if (Input.GetKey(KeyCode.Space))
+           
+            if (isHopping)
             {
-                jumpType = bar.currentBar;
-                if(jumpType == BarColor.SkipJump && temp==true )
+                Debug.Log("hoppingtrue");
+                //if (!activateBar)
+                //{
+                //    bar.StartMoving();
+                //    activateBar = true;
+                //}
+                if (Input.GetKey(KeyCode.Space))
                 {
-                    if (ascend)
-                        NoToMoveOn++;
-                    if (descend)
-                        NoToMoveOn--;
+                    Debug.Log("skipp");
+                    jumpType = BarColor.SkipJump;// bar.currentBar;
+                    if (jumpType == BarColor.SkipJump && temp == true)
+                    {
+                        if (ascend)
+                            NoToMoveOn++;
+                        if (descend)
+                            NoToMoveOn--;
 
 
-                    if (HopNo == 5 || HopNo == 8)
-                        jumpType = BarColor.TwoLegJump;
-                    else
-                        jumpType = tempJumpType;
-                    temp = false;
+                        if (HopNo == 5 || HopNo == 8)
+                            jumpType = BarColor.TwoLegJump;
+                        else
+                            jumpType = tempJumpType;
+                        temp = false;
+                    }
                 }
             }
-        }
-        
-        if ( Input.GetKey(KeyCode.Alpha1))
-        {
-            jumpType = BarColor.OneLegJump;
-        }
-        if (Input.GetKey(KeyCode.Alpha2))
-        {
-            jumpType = BarColor.TwoLegJump;
-        }
 
-        if (jumpType == BarColor.OneLegJump && !oneLegHop && isHopping)
-        {
-            IsAiming = false;
-            oneLegHop = true;
-
-            Debug.Log("Jumpp");
-            if (oneLegHop)
+            if (Input.GetKey(KeyCode.Alpha1))
             {
-                anim.SetTrigger("oneLeg");
+                jumpType = BarColor.OneLegJump;
+            }
+            if (Input.GetKey(KeyCode.Alpha2))
+            {
+                jumpType = BarColor.TwoLegJump;
+            }
 
-                if (ascend)
+            if (jumpType == BarColor.OneLegJump && !oneLegHop && isHopping)
+            {
+                IsAiming = false;
+                oneLegHop = true;
+
+                Debug.Log("Jumpp");
+                if (oneLegHop)
                 {
-                    controller.DORotate(new Vector3(0, -90, 0), 0.1f);
-                    controller.DOLocalJump(boxes[NoToMoveOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
-                    {
-                        ScoreManager.instance.SetScore(ScoreType.CorrectJump, boxes[NoToMoveOn - 1]);
+                    anim.SetTrigger("oneLeg");
 
-                        NoToMoveOn++;
-                        if (NoToMoveOn > boxes.Count)
-                        {
-                            ascend = false;
-                            descend = true;
-
-                            NoToMoveOn--;
-                            controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0), 0.1f);
-                        }
-                        temp = true;
-                        jumpType = BarColor.None;
-                        oneLegHop = false;
-                        Debug.Log(NoToMoveOn);
-                    });
-                }
-                else if (descend)
-                {
-                    if (NoToMoveOn < 1)
+                    if (ascend)
                     {
-                        ascend = true;
-                        descend = false;
-                        isHopping = false;
-                        bar.KillNow();
-                        activateBar = false;
-                        controller.DOLocalJump(startPos.position, 0.5f, 1, 0.8f).OnComplete(() =>
-                        {
-                            controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
-                            HopNo++;
-                            Destroy(StoneMovement.currentStone);
-                            RemoveBool();
-                            anim.SetTrigger("Idle");
-                        });
-                        ScoreManager.instance.SetScore(ScoreType.CompleteRound, startPos);
-
-                        NoToMoveOn++;
-                        jumpType = BarColor.None;
-                        oneLegHop = false;
-                        Debug.Log(NoToMoveOn);
-                    }
-                    else
-                    {
+                        controller.DORotate(new Vector3(0, -90, 0), 0.1f);
                         controller.DOLocalJump(boxes[NoToMoveOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
                         {
-                            ScoreManager.instance.SetScore(ScoreType.CorrectJump, boxes[NoToMoveOn - 1]);
+                            
+                            NoToMoveOn++;
+                            if (NoToMoveOn > boxes.Count)
+                            {
+                                ascend = false;
+                                descend = true;
 
-                            NoToMoveOn--;
-                            if (NoToMoveOn < 1 && !HasReset)
+                                NoToMoveOn--;
+                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0), 0.1f);
+                            }
+                            temp = true;
+                            jumpType = BarColor.None;
+                            oneLegHop = false;
+                            Debug.Log(NoToMoveOn);
+                        });
+                    }
+                    else if (descend)
+                    {
+                        if (NoToMoveOn < 1)
+                        {
+                            ascend = true;
+                            descend = false;
+                            isHopping = false;
+                            bar.KillNow();
+                            activateBar = false;
+                            controller.DOLocalJump(startPos.position, 0.5f, 1, 0.8f).OnComplete(() =>
+                            {
+                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
+                                HopNo++;
+                                Destroy(StoneMovement.currentStone);
+                                RemoveBool();
+                                anim.SetTrigger("Idle");
+                            });
+                            
+                            NoToMoveOn++;
+                            jumpType = BarColor.None;
+                            oneLegHop = false;
+                            Debug.Log(NoToMoveOn);
+                        }
+                        else
+                        {
+                            controller.DOLocalJump(boxes[NoToMoveOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
+                            {
+                                
+                                NoToMoveOn--;
+                                if (NoToMoveOn < 1 && !HasReset)
+                                {
+                                    ascend = true;
+                                    descend = false;
+                                    isHopping = false;
+                                    bar.KillNow();
+                                    activateBar = false;
+                                    controller.DOLocalJump(startPos.position, 0.5f, 1, 0.8f).OnComplete(() =>
+                                    {
+                                        controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
+                                        Destroy(StoneMovement.currentStone);
+                                        RemoveBool();
+                                        if (HopNo > boxes.Count)
+                                            EventManager.instance.GameWin();
+                                        else
+                                            HopNo++;
+                                        anim.SetTrigger("Idle");
+                                    });
+                                    NoToMoveOn++;
+                                }
+                                jumpType = BarColor.None;
+                                oneLegHop = false;
+
+                                Debug.Log(NoToMoveOn);
+                            });
+                        }
+
+                    }
+
+                }
+            }
+
+
+            if (jumpType == BarColor.TwoLegJump && !twoLegHop && isHopping)
+            {
+                IsAiming = false;
+                twoLegHop = true;
+
+                Debug.Log("Jumpp");
+                if (twoLegHop)
+                {
+
+                    anim.SetTrigger("twoLeg");
+                    if (ascend)
+                    {
+                        controller.DORotate(new Vector3(0, -90, 0), 0.1f);
+                        controller.DOLocalJump((boxes[NoToMoveOn].position + boxes[NoToMoveOn - 1].position) / 2, 0.5f, 1, 0.8f).OnComplete(() =>
+                        {
+                            
+                            NoToMoveOn += 2;
+                            if (NoToMoveOn > boxes.Count)
+                            {
+                                ascend = false;
+                                descend = true;
+                                NoToMoveOn -= 3;
+
+                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0), 0.1f);
+                            }
+                            jumpType = BarColor.None;
+                            twoLegHop = false;
+
+                            Debug.Log(NoToMoveOn);
+                        });
+                    }
+                    else if (descend)
+                    {
+
+                        controller.DOLocalJump((boxes[NoToMoveOn - 1].position + boxes[NoToMoveOn - 2].position) / 2, 0.5f, 1, 0.8f).OnComplete(() =>
+                        {
+                            NoToMoveOn -= 2;
+                            if (NoToMoveOn - 1 < 0)
                             {
                                 ascend = true;
                                 descend = false;
-                                isHopping = false;
-                                bar.KillNow();
-                                activateBar = false;
-                                controller.DOLocalJump(startPos.position, 0.5f, 1, 0.8f).OnComplete(() =>
-                                {
-                                    controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
-                                    Destroy(StoneMovement.currentStone);
-                                    RemoveBool();
-                                    HopNo++;
-                                    anim.SetTrigger("Idle");
-                                });
-                                NoToMoveOn++;
+                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
                             }
+
                             jumpType = BarColor.None;
-                            oneLegHop = false;
-                            
+                            twoLegHop = false;
                             Debug.Log(NoToMoveOn);
                         });
                     }
 
                 }
-
             }
-        }
 
-        
-        if (jumpType == BarColor.TwoLegJump && !twoLegHop && isHopping)
-        {
-            IsAiming = false;
-            twoLegHop = true;
-
-            Debug.Log("Jumpp");
-            if (twoLegHop)
+            else if (IsAiming)
             {
-
-                anim.SetTrigger("twoLeg");
-                if (ascend)
+                Plane p = new Plane(Vector3.up, 0f);
+                float Dist;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition * 1.5f);
+                Debug.DrawRay(ray.origin, ray.direction, Color.red);
+                if (p.Raycast(ray, out Dist) && Input.GetMouseButton(1))
                 {
-                    controller.DORotate(new Vector3(0, -90, 0), 0.1f);
-                    controller.DOLocalJump((boxes[NoToMoveOn].position + boxes[NoToMoveOn - 1].position) / 2, 0.5f, 1, 0.8f).OnComplete(() =>
-                    {
-                        ScoreManager.instance.SetScore(ScoreType.CorrectJump, boxes[NoToMoveOn - 1]);
-                        ScoreManager.instance.SetScore(ScoreType.CorrectJump, boxes[NoToMoveOn]);
-
-                        NoToMoveOn += 2;
-                        if (NoToMoveOn > boxes.Count)
-                        {
-                            ascend = false;
-                            descend = true;
-                            NoToMoveOn -= 3;
-                           
-                            controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0), 0.1f);
-                        }
-                        jumpType = BarColor.None;
-                        twoLegHop = false;
-
-                        Debug.Log(NoToMoveOn);
-                    });
+                    Vector3 Dir = ray.GetPoint(Dist) - transform.position;
+                    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Dir), Time.deltaTime * 3f);
                 }
-                else if (descend)
-                {
-                    
-                    controller.DOLocalJump((boxes[NoToMoveOn - 1].position + boxes[NoToMoveOn - 2].position) / 2, 0.5f, 1, 0.8f).OnComplete(() =>
-                    {
-                        ScoreManager.instance.SetScore(ScoreType.CorrectJump, boxes[NoToMoveOn - 1]);
-                        ScoreManager.instance.SetScore(ScoreType.CorrectJump, boxes[NoToMoveOn]);
-
-
-                        NoToMoveOn -= 2;
-                        if (NoToMoveOn - 1 < 0)
-                        {
-                            ascend = true;
-                            descend = false;
-                            controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
-                        }
-
-                        jumpType = BarColor.None;
-                        twoLegHop = false;
-                        Debug.Log(NoToMoveOn);
-                    });
-                }
-
             }
-        }
 
-        else if (IsAiming)
-        {
-            Plane p = new Plane(Vector3.up, 0f);
-            float Dist;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition * 1.5f);
-            Debug.DrawRay(ray.origin, ray.direction, Color.red);
-            if (p.Raycast(ray, out Dist) && Input.GetMouseButton(1))
-            {
-                Vector3 Dir = ray.GetPoint(Dist) - transform.position;
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Dir), Time.deltaTime * 3f);
-            }
         }
-       
-
     }
 }

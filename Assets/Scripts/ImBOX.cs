@@ -16,27 +16,31 @@ public class ImBOX : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Stone")
-        {
-            stoneHere = true;
-        }
-        else if((other.tag== "RightLeg" || other.tag == "LeftLeg") && stoneHere)
-        {
-            Debug.Log("levelFailRestart");
-            other.GetComponentInParent<Animator>().SetBool("FailWalk", true);
-            other.GetComponentInParent<PlayerMovement>().ResetPlayerToStart();
-        }
-        else if((other.tag == "RightLeg" || other.tag == "LeftLeg"))
-        {
-            //for skipping
-            if (other.GetComponentInParent<PlayerMovement>().ascend)
+        if (PlayerMovement.gameStarted)
+        { 
+            if (other.tag == "Stone" && number != "0")
             {
-                other.GetComponentInParent<PlayerMovement>().tempJumpType = ascendJumpType;
+                stoneHere = true;
             }
-            else if (other.GetComponentInParent<PlayerMovement>().descend)
+            else if ((other.tag == "RightLeg" || other.tag == "LeftLeg") && stoneHere)
             {
-                other.GetComponentInParent<PlayerMovement>().tempJumpType = descendJumpType;
-            } 
+                Debug.Log("levelFailRestart");
+                other.GetComponentInParent<Animator>().SetBool("FailWalk", true);
+                other.GetComponentInParent<PlayerMovement>().ResetPlayerToStart();
+                EventManager.instance.Foul();
+            }
+            else if ((other.tag == "RightLeg" || other.tag == "LeftLeg"))
+            {
+                if (other.GetComponentInParent<PlayerMovement>().ascend)
+                {
+                    other.GetComponentInParent<PlayerMovement>().tempJumpType = ascendJumpType;
+                }
+                else if (other.GetComponentInParent<PlayerMovement>().descend)
+                {
+                    other.GetComponentInParent<PlayerMovement>().tempJumpType = descendJumpType;
+                }
+            }
+           
         }
     }
     //void OnTriggerExit(Collider other)
