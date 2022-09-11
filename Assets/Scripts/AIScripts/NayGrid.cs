@@ -17,7 +17,32 @@ public class NayGrid : MonoBehaviour
     [SerializeField]
     NayaTree temp ;
 
-    void Start()
+    void OnEnable()
+    {
+        EventManager.instance.onStart += AIStart;
+        EventManager.instance.onWin += onGameDone;
+        EventManager.instance.onFail += onGameDone;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.instance.onStart -= AIStart;
+        EventManager.instance.onWin -= onGameDone;
+        EventManager.instance.onFail -= onGameDone;
+    }
+
+
+    public void onGameDone()
+    {
+        foreach (NayaTree x in trees)
+        {
+            x.enabled = false;
+            x.gameObject.GetComponent<BoxCollider>().enabled = false;
+        }
+    }
+
+
+    public void AIStart()
     {
         StartCoroutine(ThrowStone());
     }
@@ -84,6 +109,10 @@ public class NayGrid : MonoBehaviour
             StartCoroutine(ThrowStone());
             //aiScript.GetComponent<CapsuleCollider>().enabled = true;
             //SetTree();
+        }
+        else
+        {
+            EventManager.instance.GameFailed();
         }
     }
 }

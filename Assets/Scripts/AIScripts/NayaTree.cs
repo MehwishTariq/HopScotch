@@ -21,8 +21,6 @@ public class NayaTree : MonoBehaviour
     void Awake()
     {
         initialForwardLink = forwardLink;
-       
-
     }
     public void SetInitialLink()
     {

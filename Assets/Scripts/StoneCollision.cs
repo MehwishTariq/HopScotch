@@ -5,7 +5,6 @@ using DG.Tweening;
 
 public class StoneCollision : MonoBehaviour
 {
-    private Tweener transitionTweener;
     [SerializeField]
     float time;
     [SerializeField]
@@ -15,13 +14,14 @@ public class StoneCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 8 && xyz==false)
+        if (other.gameObject.layer == 8 && xyz == false)
         {
             GetComponent<Rigidbody>().isKinematic = true;
             if (other.GetComponent<ImBOX>())
-            { 
+            {
                 if (other.GetComponent<ImBOX>().number == PlayerMovement.HopNo.ToString())
                 {
+                    Debug.Log("rightBox");
                     PlayerMovement.isHopping = true;
                 }
                 else
@@ -29,10 +29,6 @@ public class StoneCollision : MonoBehaviour
                     Destroy(StoneMovement.currentStone);
                     FindObjectOfType<PlayerMovement>().RemoveBool();
                 }
-            }
-
-            else { 
-                
             }
 
         }
