@@ -10,6 +10,7 @@ TagManager:
   - LeftLeg
   - RightLeg
   - Stone
+  - AI
   layers:
   - Default
   - TransparentFX

@@ -96,11 +96,11 @@ public class PlayerMovement : MonoBehaviour
             
         if(isHopping)
         {
-            if (!activateBar)
-            {
-                bar.StartMoving();
-                activateBar = true;
-            }
+            //if (!activateBar)
+            //{
+            //    bar.StartMoving();
+            //    activateBar = true;
+            //}
             if (Input.GetKey(KeyCode.Space))
             {
                 jumpType = bar.currentBar;
@@ -121,6 +121,15 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         
+        if ( Input.GetKey(KeyCode.Alpha1))
+        {
+            jumpType = BarColor.OneLegJump;
+        }
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            jumpType = BarColor.TwoLegJump;
+        }
+
         if (jumpType == BarColor.OneLegJump && !oneLegHop && isHopping)
         {
             IsAiming = false;
@@ -143,11 +152,12 @@ public class PlayerMovement : MonoBehaviour
                             descend = true;
 
                             NoToMoveOn--;
-                            controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0),0.1f);
+                            controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0), 0.1f);
                         }
                         temp = true;
                         jumpType = BarColor.None;
                         oneLegHop = false;
+                       
                         Debug.Log(NoToMoveOn);
                     });
                 }
@@ -171,6 +181,7 @@ public class PlayerMovement : MonoBehaviour
                         NoToMoveOn++;
                         jumpType = BarColor.None;
                         oneLegHop = false;
+
                         Debug.Log(NoToMoveOn);
                     }
                     else
@@ -197,15 +208,18 @@ public class PlayerMovement : MonoBehaviour
                             }
                             jumpType = BarColor.None;
                             oneLegHop = false;
+                            
+
                             Debug.Log(NoToMoveOn);
                         });
                     }
-                    
+
                 }
 
             }
         }
 
+        
         if (jumpType == BarColor.TwoLegJump && !twoLegHop && isHopping)
         {
             IsAiming = false;
@@ -232,6 +246,8 @@ public class PlayerMovement : MonoBehaviour
                         }
                         jumpType = BarColor.None;
                         twoLegHop = false;
+                        
+
                         Debug.Log(NoToMoveOn);
                     });
                 }
@@ -251,6 +267,7 @@ public class PlayerMovement : MonoBehaviour
 
                         jumpType = BarColor.None;
                         twoLegHop = false;
+                        
                         Debug.Log(NoToMoveOn);
                     });
                 }
