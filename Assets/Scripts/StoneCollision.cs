@@ -18,14 +18,21 @@ public class StoneCollision : MonoBehaviour
         if (other.gameObject.layer == 8 && xyz==false)
         {
             GetComponent<Rigidbody>().isKinematic = true;
-            if(other.GetComponent<ImBOX>().number == PlayerMovement.HopNo.ToString())
-            {
-                PlayerMovement.isHopping = true;
+            if (other.GetComponent<ImBOX>())
+            { 
+                if (other.GetComponent<ImBOX>().number == PlayerMovement.HopNo.ToString())
+                {
+                    PlayerMovement.isHopping = true;
+                }
+                else
+                {
+                    Destroy(StoneMovement.currentStone);
+                    FindObjectOfType<PlayerMovement>().RemoveBool();
+                }
             }
-            else
-            {
-                Destroy(StoneMovement.currentStone);
-                FindObjectOfType<PlayerMovement>().RemoveBool();
+
+            else { 
+                
             }
 
         }

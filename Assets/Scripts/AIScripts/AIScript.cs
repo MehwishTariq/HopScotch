@@ -20,10 +20,21 @@ public class AIScript : MonoBehaviour
     [SerializeField]
     public bool backward;
 
+    [SerializeField]
+    public GameObject Stone;
+    public static GameObject thrownStone;
 
+    [SerializeField]
+    public Transform ShotPoint;
 
+    public void Throw(Transform BoxToJump)
+    {
+        animator.Play("Throw", 0);
+        GameObject CreatedStone = Instantiate(Stone, ShotPoint.transform.position, Quaternion.identity);
+        CreatedStone.transform.DOMove(BoxToJump.position, 0.3f);
+        thrownStone = CreatedStone;
+    }
 
-   
     public void MoveTo(Vector3 obj)
     {
         transform.DOLocalJump(obj,0.2f,1, time).OnComplete(() =>

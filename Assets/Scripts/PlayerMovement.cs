@@ -145,6 +145,8 @@ public class PlayerMovement : MonoBehaviour
                     controller.DORotate(new Vector3(0, -90, 0), 0.1f);
                     controller.DOLocalJump(boxes[NoToMoveOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
                     {
+                        ScoreManager.instance.SetScore(ScoreType.CorrectJump, boxes[NoToMoveOn - 1]);
+
                         NoToMoveOn++;
                         if (NoToMoveOn > boxes.Count)
                         {
@@ -157,7 +159,6 @@ public class PlayerMovement : MonoBehaviour
                         temp = true;
                         jumpType = BarColor.None;
                         oneLegHop = false;
-                       
                         Debug.Log(NoToMoveOn);
                     });
                 }
@@ -178,16 +179,19 @@ public class PlayerMovement : MonoBehaviour
                             RemoveBool();
                             anim.SetTrigger("Idle");
                         });
+                        ScoreManager.instance.SetScore(ScoreType.CompleteRound, startPos);
+
                         NoToMoveOn++;
                         jumpType = BarColor.None;
                         oneLegHop = false;
-
                         Debug.Log(NoToMoveOn);
                     }
                     else
                     {
                         controller.DOLocalJump(boxes[NoToMoveOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
                         {
+                            ScoreManager.instance.SetScore(ScoreType.CorrectJump, boxes[NoToMoveOn - 1]);
+
                             NoToMoveOn--;
                             if (NoToMoveOn < 1 && !HasReset)
                             {
@@ -209,7 +213,6 @@ public class PlayerMovement : MonoBehaviour
                             jumpType = BarColor.None;
                             oneLegHop = false;
                             
-
                             Debug.Log(NoToMoveOn);
                         });
                     }
@@ -235,6 +238,9 @@ public class PlayerMovement : MonoBehaviour
                     controller.DORotate(new Vector3(0, -90, 0), 0.1f);
                     controller.DOLocalJump((boxes[NoToMoveOn].position + boxes[NoToMoveOn - 1].position) / 2, 0.5f, 1, 0.8f).OnComplete(() =>
                     {
+                        ScoreManager.instance.SetScore(ScoreType.CorrectJump, boxes[NoToMoveOn - 1]);
+                        ScoreManager.instance.SetScore(ScoreType.CorrectJump, boxes[NoToMoveOn]);
+
                         NoToMoveOn += 2;
                         if (NoToMoveOn > boxes.Count)
                         {
@@ -246,7 +252,6 @@ public class PlayerMovement : MonoBehaviour
                         }
                         jumpType = BarColor.None;
                         twoLegHop = false;
-                        
 
                         Debug.Log(NoToMoveOn);
                     });
@@ -256,6 +261,9 @@ public class PlayerMovement : MonoBehaviour
                     
                     controller.DOLocalJump((boxes[NoToMoveOn - 1].position + boxes[NoToMoveOn - 2].position) / 2, 0.5f, 1, 0.8f).OnComplete(() =>
                     {
+                        ScoreManager.instance.SetScore(ScoreType.CorrectJump, boxes[NoToMoveOn - 1]);
+                        ScoreManager.instance.SetScore(ScoreType.CorrectJump, boxes[NoToMoveOn]);
+
 
                         NoToMoveOn -= 2;
                         if (NoToMoveOn - 1 < 0)
@@ -267,7 +275,6 @@ public class PlayerMovement : MonoBehaviour
 
                         jumpType = BarColor.None;
                         twoLegHop = false;
-                        
                         Debug.Log(NoToMoveOn);
                     });
                 }

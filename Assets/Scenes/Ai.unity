@@ -1265,6 +1265,8 @@ MonoBehaviour:
   boxCollider: {fileID: 306532221}
   forward: 1
   backward: 0
+  Stone: {fileID: 4119928293525222979, guid: 2422c8b8cf559a44595d0143747bbf0d, type: 3}
+  ShotPoint: {fileID: 95510462}
 --- !u!4 &306532219
 Transform:
   m_ObjectHideFlags: 0
