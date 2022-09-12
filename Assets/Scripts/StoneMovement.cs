@@ -18,7 +18,7 @@ public class StoneMovement : MonoBehaviour
         //{
         //    return;
         //}
-        if (PlayerMovement.gameStarted)
+        if (GameManager.instance.gameStarted)
         {
             if (Input.GetMouseButton(1) && (!GetComponentInParent<PlayerMovement>().oneLegHop || !GetComponentInParent<PlayerMovement>().twoLegHop) && !PlayerMovement.isHopping)
             {

@@ -37,7 +37,7 @@ public class ArcCreator : MonoBehaviour
         //{
         //    return;
         //}
-        if (PlayerMovement.gameStarted)
+        if (GameManager.instance.gameStarted)
         {
             List<Vector3> points = new List<Vector3>();
             Vector3 startingPosition = stoneMove.ShotPoint.position;

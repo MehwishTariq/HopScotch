@@ -19,6 +19,7 @@ public class TimeManager : MonoBehaviour
         EventManager.instance.onFoul += AddTimeOnFoul;
         EventManager.instance.onFail += SetTimeinBoard;
         EventManager.instance.onWin += SetTimeinBoard;
+
     }
 
     private void OnDisable()
@@ -33,6 +34,7 @@ public class TimeManager : MonoBehaviour
     {
         Debug.Log("startTimer");
         allowTimer = !allowTimer;
+       
     }
     // Update is called once per frame
     void Update()
@@ -43,12 +45,14 @@ public class TimeManager : MonoBehaviour
 
     public void SetTimeinBoard()
     {
+        StartTimer();
         LeaderBoardData.instance.SetData(PlayerName, clockTime);
     }
 
     public void AddTimeOnFoul()
     {
         clockTime += foulTimeAdd;
+        GameManager.instance.wrongJump = false;
     }
 
     void GameTimer()

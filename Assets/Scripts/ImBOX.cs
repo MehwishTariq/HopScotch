@@ -14,9 +14,12 @@ public class ImBOX : MonoBehaviour
     [SerializeField]
     BarColor descendJumpType;
 
+    [SerializeField]
+    BarColor jumpTypeforMe;
+
     void OnTriggerEnter(Collider other)
     {
-        if (PlayerMovement.gameStarted)
+        if (GameManager.instance.gameStarted)
         { 
             if (other.tag == "Stone" && number != "0")
             {
@@ -27,7 +30,7 @@ public class ImBOX : MonoBehaviour
                 Debug.Log("levelFailRestart");
                 other.GetComponentInParent<Animator>().SetBool("FailWalk", true);
                 other.GetComponentInParent<PlayerMovement>().ResetPlayerToStart();
-                EventManager.instance.Foul();
+                //EventManager.instance.Foul();
             }
             else if ((other.tag == "RightLeg" || other.tag == "LeftLeg"))
             {
