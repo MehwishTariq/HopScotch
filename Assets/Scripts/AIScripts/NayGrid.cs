@@ -34,6 +34,7 @@ public class NayGrid : MonoBehaviour
 
     public void onGameDone()
     {
+        GameManager.instance.gameStarted = false;
         foreach (NayaTree x in trees)
         {
             x.enabled = false;
@@ -112,6 +113,7 @@ public class NayGrid : MonoBehaviour
         }
         else
         {
+            Debug.Log("GameLost");
             EventManager.instance.GameFailed();
         }
     }

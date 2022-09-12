@@ -33,10 +33,13 @@ public class PlayerMovement : MonoBehaviour
     bool temp = false;
     [SerializeField]
     public BarColor tempJumpType = BarColor.None;
+
+    [SerializeField]
+    public BarColor JumpCheck = BarColor.None;
+
     [SerializeField]
     bool testing;
 
-    public static bool gameStarted = false;
     bool HasReset;
 
     void OnEnable()
@@ -55,7 +58,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void onGameDone()
     {
-        gameStarted = false;
+        GameManager.instance.gameStarted = false;
+        ResetPlayerToStart();
     }
 
     // Start is called before the first frame update
@@ -72,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         NoToMoveOn = 1;
         ascend = true;
         descend = false;
-        gameStarted = true;
+        JumpCheck = BarColor.OneLegJump;
     }
 
     public void RemoveBool()
@@ -95,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
         twoLegHop = false;
         HasReset = true;
         jumpType = BarColor.None;
+        GameManager.instance.wrongJump = false;
         controller.DORotate(new Vector3(0, 90, 0), 0.1f).OnComplete(() =>
         {
             controller.DOMove(startPos.position, 0.5f).OnComplete(() =>
@@ -112,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
    
     void Update()
     {
-        if (gameStarted)
+        if (GameManager.instance.gameStarted)
         {
             if (testing)
                 HopNo = tempHopNumber;
@@ -146,16 +151,46 @@ public class PlayerMovement : MonoBehaviour
                     }
                 }
             }
+            
+            
+            if (NoToMoveOn == 3 || NoToMoveOn == 4 ||
+                NoToMoveOn == 6 || NoToMoveOn == 7 ||
+                NoToMoveOn == 9 || NoToMoveOn == 10)
+            {
+                if (boxes[NoToMoveOn - 1].GetComponent<ImBOX>().stoneHere || boxes[NoToMoveOn - 2].GetComponent<ImBOX>().stoneHere)
+                    JumpCheck = BarColor.OneLegJump;
+                else
+                    JumpCheck = BarColor.TwoLegJump;
+            }
+            else
+                JumpCheck = BarColor.OneLegJump;
 
             if (Input.GetKey(KeyCode.Alpha1))
             {
+                twoLegHop = false;
                 jumpType = BarColor.OneLegJump;
+                if (jumpType != JumpCheck && !GameManager.instance.wrongJump)
+                {
+                    GameManager.instance.wrongJump = true;
+                    anim.SetBool("FailWalk", true);
+                    ResetPlayerToStart();
+                    Debug.Log("wrongjump");
+                }
             }
             if (Input.GetKey(KeyCode.Alpha2))
             {
+                oneLegHop = false;
                 jumpType = BarColor.TwoLegJump;
+                if (jumpType != JumpCheck && !GameManager.instance.wrongJump)
+                {
+                    GameManager.instance.wrongJump = true;
+                    anim.SetBool("FailWalk", true);
+                    ResetPlayerToStart();
+                    Debug.Log("wrongjump2");
+                }
             }
 
+            
             if (jumpType == BarColor.OneLegJump && !oneLegHop && isHopping)
             {
                 IsAiming = false;
@@ -229,7 +264,11 @@ public class PlayerMovement : MonoBehaviour
                                         Destroy(StoneMovement.currentStone);
                                         RemoveBool();
                                         if (HopNo > boxes.Count)
+                                        {
+                                            Debug.Log("GameWon");
                                             EventManager.instance.GameWin();
+                                            
+                                        }
                                         else
                                             HopNo++;
                                         anim.SetTrigger("Idle");
