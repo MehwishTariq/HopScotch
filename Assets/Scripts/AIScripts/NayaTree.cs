@@ -31,7 +31,15 @@ public class NayaTree : MonoBehaviour
         Debug.Log("trgigere");
         if (other.gameObject.CompareTag("AI"))
         {
-            StartCoroutine(MoveAI(other.gameObject.GetComponent<AIScript>()));
+            if (other.gameObject.GetComponent<AIScript>().currentStoneLocation == index)
+            {
+                other.gameObject.GetComponent<AIScript>().WalkToStart(grid.startTree);
+            }
+            else
+            {
+
+                StartCoroutine(MoveAI(other.gameObject.GetComponent<AIScript>()));
+            }
         }
     }
     void storeBackward(Transform t,Transform store)
@@ -139,8 +147,11 @@ public class NayaTree : MonoBehaviour
                 if (index == 0)
                 {
                     aIScript.backward = false;
+
                     GetComponent<BoxCollider>().enabled = false;
                     grid.ResetGraph();
+                    if (AIScript.thrownStone != null)
+                        Destroy(AIScript.thrownStone);
                     aIScript.Rotate(GetComponent<BoxCollider>(), true, false);
 
                 } // 
