@@ -17,6 +17,9 @@ public class NayGrid : MonoBehaviour
     [SerializeField]
     NayaTree temp ;
 
+    [SerializeField]
+    int randomNum;
+
     void OnEnable()
     {
         EventManager.instance.onStart += AIStart;
@@ -48,21 +51,55 @@ public class NayGrid : MonoBehaviour
         StartCoroutine(ThrowStone());
     }
 
-    IEnumerator ThrowStone() {
+    List<int> idk = new List<int>();
+    public IEnumerator ThrowStone() {
+        idk.Clear();
+
+        for (int i = 0; i < trees.Length; i++)
+        {
+            if(j!=i+1)
+                idk.Add(i + 1);
+        }
+        foreach (var item in idk)
+        {
+            Debug.Log("item:" + item);
+        }
         yield return new WaitForSecondsRealtime(1f);
-        aiScript.Throw(trees[j - 1].transform);
-        Debug.Log("here");
-        yield return new WaitForSecondsRealtime(2f);
-        SetTree();
-        Debug.Log("her2e");
-        aiScript.GetComponent<CapsuleCollider>().enabled = true;
+        
+        if(Random.Range(0,100)<aiScript.difficulty.chancesOfWin && Random.Range(0, 100) > 0)
+        {
+            aiScript.ResetDifficulty();
+            aiScript.Throw(trees[j - 1].transform,false);
+            aiScript.currentStoneLocation = j;
+            yield return new WaitForSecondsRealtime(2f);
+            if (Random.Range(0, 100) < aiScript.difficulty.chancesOfWin)
+            {
+              
+                SetTree(j);
+
+            }
+            else
+            {
+                Debug.Log("wrongTree");
+                SetTree(idk[Random.Range(0, idk.Count)]);
+            }
+            aiScript.GetComponent<CapsuleCollider>().enabled = true;
+        }
+        else
+        {
+            aiScript.difficulty.chancesOfWin++;
+            aiScript.Throw(trees[idk[Random.Range(0,idk.Count)]-1].transform,true);
+            yield return new WaitForSecondsRealtime(5f);
+            StartCoroutine(ThrowStone());
+        }
+       
     }
 
 
     [ContextMenu("Do Something")]
-    public void SetTree()
+    public void SetTree(int value)
     {
-        int index = j - 1;
+        int index = value - 1;
         trees[index].GetComponent<NayaTree>().enabled = false;
         if (index == 0)//Stone on A
         {
@@ -93,19 +130,11 @@ public class NayGrid : MonoBehaviour
     public void ResetGraph()
     {
         aiScript.GetComponent<CapsuleCollider>().enabled = false;
-        startTree.SetInitialLink();
-        foreach (var item in trees)
-        {
-            item.SetInitialLink();
-            item.enabled = true;
-            item.GetComponent<BoxCollider>().enabled = true;
-
-            item.backwardLink.Clear();
-        }
+        ResetGridToDefault();
         j++;
         if(j<10)
         {
-            Destroy(AIScript.thrownStone);
+          
             aiScript.animator.SetTrigger("Idle");
             StartCoroutine(ThrowStone());
             //aiScript.GetComponent<CapsuleCollider>().enabled = true;
@@ -115,6 +144,18 @@ public class NayGrid : MonoBehaviour
         {
             Debug.Log("GameLost");
             EventManager.instance.GameFailed();
+        }
+    }
+    public void ResetGridToDefault()
+    {
+        startTree.SetInitialLink();
+        foreach (var item in trees)
+        {
+            item.SetInitialLink();
+            item.enabled = true;
+            item.GetComponent<BoxCollider>().enabled = true;
+
+            item.backwardLink.Clear();
         }
     }
 }
