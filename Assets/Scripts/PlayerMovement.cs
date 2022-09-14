@@ -42,8 +42,17 @@ public class PlayerMovement : MonoBehaviour
 
     bool HasReset;
 
+    public List<int> twoNumbers = new List<int>();//{ 3, 4, 6, 7, 9, 10 };
+
     void OnEnable()
     {
+
+        twoNumbers.Add(3);
+        twoNumbers.Add(4);
+        twoNumbers.Add(6);
+        twoNumbers.Add(7);
+        twoNumbers.Add(9);
+        twoNumbers.Add(10);
         EventManager.instance.onStart += SetPlayer;
         EventManager.instance.onWin += onGameDone;
         EventManager.instance.onFail += onGameDone;
@@ -122,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
             if (testing)
                 HopNo = tempHopNumber;
 
-           
+
             if (isHopping)
             {
                 Debug.Log("hoppingtrue");
@@ -151,19 +160,42 @@ public class PlayerMovement : MonoBehaviour
                     }
                 }
             }
-            
-            
-            if (NoToMoveOn == 3 || NoToMoveOn == 4 ||
-                NoToMoveOn == 6 || NoToMoveOn == 7 ||
-                NoToMoveOn == 9 || NoToMoveOn == 10)
+
+            if (boxes[NoToMoveOn - 1].GetComponent<ImBOX>().stoneHere)
             {
-                if (boxes[NoToMoveOn - 1].GetComponent<ImBOX>().stoneHere || boxes[NoToMoveOn - 2].GetComponent<ImBOX>().stoneHere)
+                if (twoNumbers.Contains(NoToMoveOn))
+                {
+                    Debug.Log("CheckJump");
                     JumpCheck = BarColor.OneLegJump;
-                else
-                    JumpCheck = BarColor.TwoLegJump;
+                }
             }
-            else
-                JumpCheck = BarColor.OneLegJump;
+
+            //if (ascend)
+            //{
+            //    if (NoToMoveOn == 3 || 
+            //        NoToMoveOn == 4 ||
+            //        NoToMoveOn == 7 ||
+            //        NoToMoveOn == 10 ||
+            //        NoToMoveOn == 6 ||
+            //        NoToMoveOn == 9)
+            //    {
+            //        if (HopNo == 4)
+            //            JumpCheck = BarColor.OneLegJump;
+            //        else
+            //        {
+            //            Debug.Log("CheckJump: " + NoToMoveOn);
+            //            if (boxes[NoToMoveOn - 1].GetComponent<ImBOX>().stoneHere)
+            //                JumpCheck = BarColor.OneLegJump;
+            //            else
+            //                JumpCheck = BarColor.TwoLegJump;
+            //        }
+            //    }
+            //    else
+            //        JumpCheck = BarColor.OneLegJump;
+            //}
+           
+
+
 
             if (Input.GetKey(KeyCode.Alpha1))
             {
