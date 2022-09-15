@@ -2166,12 +2166,14 @@ MonoBehaviour:
   - {fileID: 464806070}
   - {fileID: 677753155}
   - {fileID: 112207665}
-  tempHopNumber: 3
+  tempHopNumber: 5
   temp: 1
   tempJumpType: 0
   JumpCheck: 0
-  testing: 1
+  testing: 0
+  HasReset: 0
   twoNumbers: 
+  disableInput: 1
 --- !u!1 &319351158
 GameObject:
   m_ObjectHideFlags: 0
