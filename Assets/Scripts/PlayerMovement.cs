@@ -39,10 +39,13 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     bool testing;
-
-    bool HasReset;
+    [SerializeField]
+    public bool HasReset;
 
     public List<int> twoNumbers = new List<int>();//{ 3, 4, 6, 7, 9, 10 };
+
+    [SerializeField]
+    public bool disableInput = false;
 
     void OnEnable()
     {
@@ -123,13 +126,19 @@ public class PlayerMovement : MonoBehaviour
         });
         
     }
-   
+
     void Update()
     {
+        if (testing)
+            HopNo = tempHopNumber;
+
+        if (disableInput)
+            return; 
+
+
         if (GameManager.instance.gameStarted)
         {
-            if (testing)
-                HopNo = tempHopNumber;
+            
 
 
             if (isHopping)
@@ -142,6 +151,7 @@ public class PlayerMovement : MonoBehaviour
                 //}
                 if (Input.GetKey(KeyCode.Space))
                 {
+                    disableInput = true;
                     Debug.Log("skipp");
                     jumpType = BarColor.SkipJump;// bar.currentBar;
                     if (jumpType == BarColor.SkipJump && temp == true)
@@ -161,44 +171,82 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            if (boxes[NoToMoveOn - 1].GetComponent<ImBOX>().stoneHere)
+            if ((NoToMoveOn == 6 || NoToMoveOn == 3 || NoToMoveOn == 9))
             {
-                if (twoNumbers.Contains(NoToMoveOn))
+                if (!boxes[NoToMoveOn].GetComponent<ImBOX>().stoneHere)
                 {
-                    Debug.Log("CheckJump");
+                    JumpCheck = BarColor.TwoLegJump;
+
+                    Debug.Log("SettingTwoLeg");
+                }
+                else
+                {
+                    Debug.Log("SettingOneLeg");
+                    JumpCheck = BarColor.OneLegJump;
+                }
+            } 
+            else if (NoToMoveOn == 1 || NoToMoveOn == 2 || NoToMoveOn == 5 || NoToMoveOn ==8)
+            {
+                if (!boxes[NoToMoveOn - 1].GetComponent<ImBOX>().stoneHere)
+                {
+                    Debug.Log("SettingOneLeg---Else");
+                    JumpCheck = BarColor.OneLegJump;
+                }
+                
+            }
+            else if (NoToMoveOn == 7 || NoToMoveOn == 4 || NoToMoveOn==10)
+            {
+                if (!boxes[NoToMoveOn - 2].GetComponent<ImBOX>().stoneHere)
+                {
+                    JumpCheck = BarColor.TwoLegJump;
+
+                    Debug.Log("SettingTwoLeg-----elseIF");
+                }
+                else
+                {
+                    Debug.Log("SettingOneLeg-----elseIF");
                     JumpCheck = BarColor.OneLegJump;
                 }
             }
+                //if (boxes[NoToMoveOn - 1].GetComponent<ImBOX>().stoneHere)
+                //{
+                //    if (twoNumbers.Contains(NoToMoveOn))
+                //    {
+                //        Debug.Log("CheckJump");
+                //        JumpCheck = BarColor.OneLegJump;
+                //    }
+                //}
 
-            //if (ascend)
-            //{
-            //    if (NoToMoveOn == 3 || 
-            //        NoToMoveOn == 4 ||
-            //        NoToMoveOn == 7 ||
-            //        NoToMoveOn == 10 ||
-            //        NoToMoveOn == 6 ||
-            //        NoToMoveOn == 9)
-            //    {
-            //        if (HopNo == 4)
-            //            JumpCheck = BarColor.OneLegJump;
-            //        else
-            //        {
-            //            Debug.Log("CheckJump: " + NoToMoveOn);
-            //            if (boxes[NoToMoveOn - 1].GetComponent<ImBOX>().stoneHere)
-            //                JumpCheck = BarColor.OneLegJump;
-            //            else
-            //                JumpCheck = BarColor.TwoLegJump;
-            //        }
-            //    }
-            //    else
-            //        JumpCheck = BarColor.OneLegJump;
-            //}
-           
+                //if (ascend)
+                //{
+                //    if (NoToMoveOn == 3 || 
+                //        NoToMoveOn == 4 ||
+                //        NoToMoveOn == 7 ||
+                //        NoToMoveOn == 10 ||
+                //        NoToMoveOn == 6 ||
+                //        NoToMoveOn == 9)
+                //    {
+                //        if (HopNo == 4)
+                //            JumpCheck = BarColor.OneLegJump;
+                //        else
+                //        {
+                //            Debug.Log("CheckJump: " + NoToMoveOn);
+                //            if (boxes[NoToMoveOn - 1].GetComponent<ImBOX>().stoneHere)
+                //                JumpCheck = BarColor.OneLegJump;
+                //            else
+                //                JumpCheck = BarColor.TwoLegJump;
+                //        }
+                //    }
+                //    else
+                //        JumpCheck = BarColor.OneLegJump;
+                //}
+
 
 
 
             if (Input.GetKey(KeyCode.Alpha1))
             {
+                disableInput = true;
                 twoLegHop = false;
                 jumpType = BarColor.OneLegJump;
                 if (jumpType != JumpCheck && !GameManager.instance.wrongJump)
@@ -211,6 +259,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.Alpha2))
             {
+                disableInput = true;
                 oneLegHop = false;
                 jumpType = BarColor.TwoLegJump;
                 if (jumpType != JumpCheck && !GameManager.instance.wrongJump)
@@ -240,17 +289,29 @@ public class PlayerMovement : MonoBehaviour
                         {
                             
                             NoToMoveOn++;
-                            if (NoToMoveOn > boxes.Count)
+                            if (NoToMoveOn >= boxes.Count)
                             {
                                 ascend = false;
                                 descend = true;
 
-                                NoToMoveOn--;
-                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0), 0.1f);
+                                NoToMoveOn = NoToMoveOn - 2;
+                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0), 0.1f).OnComplete(()=> {
+
+                                    temp = true;
+                                    jumpType = BarColor.None;
+                                    oneLegHop = false;
+                                    disableInput = false;
+
+                                });
                             }
-                            temp = true;
-                            jumpType = BarColor.None;
-                            oneLegHop = false;
+                            else
+                            {
+                                temp = true;
+                                jumpType = BarColor.None;
+                                oneLegHop = false;
+                                disableInput = false;
+                            }
+                            
                             Debug.Log(NoToMoveOn);
                         });
                     }
@@ -275,6 +336,7 @@ public class PlayerMovement : MonoBehaviour
                             NoToMoveOn++;
                             jumpType = BarColor.None;
                             oneLegHop = false;
+                            disableInput = false;
                             Debug.Log(NoToMoveOn);
                         }
                         else
@@ -292,25 +354,40 @@ public class PlayerMovement : MonoBehaviour
                                     activateBar = false;
                                     controller.DOLocalJump(startPos.position, 0.5f, 1, 0.8f).OnComplete(() =>
                                     {
-                                        controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
-                                        Destroy(StoneMovement.currentStone);
-                                        RemoveBool();
-                                        if (HopNo > boxes.Count)
-                                        {
-                                            Debug.Log("GameWon");
-                                            EventManager.instance.GameWin();
-                                            
-                                        }
-                                        else
-                                            HopNo++;
-                                        anim.SetTrigger("Idle");
+                                        controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f).OnComplete(()=> {
+
+                                            jumpType = BarColor.None;
+                                            oneLegHop = false;
+
+                                            Debug.Log(NoToMoveOn);
+                                            disableInput = false;
+                                            Destroy(StoneMovement.currentStone);
+                                            RemoveBool();
+                                            if (HopNo > boxes.Count)
+                                            {
+                                                Debug.Log("GameWon");
+                                                EventManager.instance.GameWin();
+
+                                            }
+                                            else
+                                                HopNo++;
+                                            anim.SetTrigger("Idle");
+                                        });
+                                       
+
+                                        
                                     });
                                     NoToMoveOn++;
                                 }
-                                jumpType = BarColor.None;
-                                oneLegHop = false;
+                                else
+                                {
+                                    jumpType = BarColor.None;
+                                    oneLegHop = false;
 
-                                Debug.Log(NoToMoveOn);
+                                    Debug.Log(NoToMoveOn);
+                                    disableInput = false;
+                                }
+                                
                             });
                         }
 
@@ -337,18 +414,34 @@ public class PlayerMovement : MonoBehaviour
                         {
                             
                             NoToMoveOn += 2;
+                            Debug.Log("NoToMoveOn:" + NoToMoveOn);
+                            Debug.Log("boxes.Count:" + boxes.Count);
+
                             if (NoToMoveOn > boxes.Count)
                             {
                                 ascend = false;
                                 descend = true;
                                 NoToMoveOn -= 3;
 
-                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0), 0.1f);
-                            }
-                            jumpType = BarColor.None;
-                            twoLegHop = false;
+                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0), 0.1f).OnComplete(()=>
+                                {
+                                    Debug.Log("goBack");
+                                    jumpType = BarColor.None;
+                                    twoLegHop = false;
+                                    disableInput = false;
+                                    Debug.Log(NoToMoveOn);
+                                    temp = true;
 
-                            Debug.Log(NoToMoveOn);
+                                });
+                            }
+                            else
+                            {
+                                jumpType = BarColor.None;
+                                twoLegHop = false;
+
+                                disableInput = false;
+                            }
+
                         });
                     }
                     else if (descend)
@@ -361,12 +454,23 @@ public class PlayerMovement : MonoBehaviour
                             {
                                 ascend = true;
                                 descend = false;
-                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
+                                controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f).OnComplete(()=>{
+
+                                    jumpType = BarColor.None;
+                                    twoLegHop = false;
+                                    Debug.Log(NoToMoveOn);
+                                    disableInput = false;
+                                });
+                            }
+                            else
+                            {
+                                jumpType = BarColor.None;
+                                twoLegHop = false;
+                                Debug.Log(NoToMoveOn);
+                                disableInput = false;
                             }
 
-                            jumpType = BarColor.None;
-                            twoLegHop = false;
-                            Debug.Log(NoToMoveOn);
+                          
                         });
                     }
 
