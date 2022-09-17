@@ -8,6 +8,7 @@ public class TimeManager : MonoBehaviour
     public string PlayerName;
     public Text time;
     public float foulTimeAdd;
+    public float maxScore;
 
     float clockTime = 0;
     bool allowTimer = false;
@@ -46,7 +47,7 @@ public class TimeManager : MonoBehaviour
     public void SetTimeinBoard()
     {
         StartTimer();
-        LeaderBoardData.instance.SetData(PlayerName, clockTime);
+        LeaderBoardData.instance.SetData(PlayerName, clockTime, maxScore);
     }
 
     public void AddTimeOnFoul()
