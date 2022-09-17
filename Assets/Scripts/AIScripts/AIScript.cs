@@ -71,12 +71,19 @@ public class AIScript : MonoBehaviour
         GameObject CreatedStone = Instantiate(Stone, ShotPoint.transform.position, Quaternion.identity);
         CreatedStone.transform.DOMove(BoxToJump.position, 0.3f);
         if (destroy)
+        {
+            
             Destroy(CreatedStone, 2f);
+            Invoke("ChangeMat", 2f);
+        }
         else
             thrownStone = CreatedStone;
         
     }
-
+    void ChangeMat()
+    {
+        FindObjectOfType<NayGrid>().SetMaterial(null, false);
+    }
     public void MoveTo(Vector3 obj)
     {
         transform.DOLocalJump(obj,0.2f,1, time).OnComplete(() =>
@@ -106,8 +113,11 @@ public class AIScript : MonoBehaviour
         transform.DORotate(transform.eulerAngles + new Vector3(0, 180, 0), 0.5f).OnComplete(() =>
         {
             animator.SetTrigger("FailWalk");
-            if(thrownStone!=null)
+            if (thrownStone != null)
+            {
                 Destroy(thrownStone);
+                FindObjectOfType<NayGrid>().SetMaterial(null, false);
+            }
             transform.DOMove(tree.transform.position, 1.5f).OnComplete(() =>
             {
                 transform.DORotate(transform.eulerAngles + new Vector3(0, 180, 0), 0.5f).OnComplete(()=>{

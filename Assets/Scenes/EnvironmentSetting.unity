@@ -1271,7 +1271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7fdd24241b71b24ba4014f0de833935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiScript: {fileID: 0}
+  aiScript: {fileID: 1878684215}
   trees:
   - {fileID: 1064908824}
   - {fileID: 1469814909}
@@ -4884,6 +4884,8 @@ MonoBehaviour:
   leaderBoard: {fileID: 728869709}
   gameStarted: 0
   wrongJump: 0
+  defaultMat: {fileID: 2100000, guid: 9d1ca55e2263fd54589900465f90d06e, type: 2}
+  selectedMat: {fileID: 2100000, guid: 04ef62fdd0cd8c346a33e6989a662997, type: 2}
 --- !u!4 &906453250
 Transform:
   m_ObjectHideFlags: 0
@@ -9573,7 +9575,7 @@ PrefabInstance:
     - target: {fileID: 2985657498967588205, guid: 60637b7b29216124782536ba0c5ca95c,
         type: 3}
       propertyPath: difficulty.chancesOfWin
-      value: 100
+      value: 99
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60637b7b29216124782536ba0c5ca95c, type: 3}
@@ -10095,6 +10097,18 @@ MonoBehaviour:
   ascendJumpType: 1
   descendJumpType: 1
   jumpTypeforMe: 0
+--- !u!114 &1878684215 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2985657498967588205, guid: 60637b7b29216124782536ba0c5ca95c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1801919650}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea5c5bb6aa6caaf4d98fea8d77df6bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1902129941
 GameObject:
   m_ObjectHideFlags: 0

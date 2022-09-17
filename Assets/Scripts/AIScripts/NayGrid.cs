@@ -52,6 +52,17 @@ public class NayGrid : MonoBehaviour
     }
 
     List<int> idk = new List<int>();
+
+
+    public void SetMaterial(Transform current, bool canSet)
+    {
+        foreach (var item in trees)
+        {
+            item.gameObject.GetComponent<MeshRenderer>().material = GameManager.instance.defaultMat;
+        }
+        if (canSet)
+            current.gameObject.GetComponent<MeshRenderer>().material = GameManager.instance.selectedMat;
+    }
     public IEnumerator ThrowStone() {
         idk.Clear();
 
@@ -70,6 +81,7 @@ public class NayGrid : MonoBehaviour
         {
             aiScript.ResetDifficulty();
             aiScript.Throw(trees[j - 1].transform,false);
+            SetMaterial(trees[j - 1].transform, true);
             aiScript.currentStoneLocation = j;
             yield return new WaitForSecondsRealtime(2f);
             if (Random.Range(0, 100) < aiScript.difficulty.chancesOfWin)
@@ -88,7 +100,9 @@ public class NayGrid : MonoBehaviour
         else
         {
             aiScript.difficulty.chancesOfWin++;
-            aiScript.Throw(trees[idk[Random.Range(0,idk.Count)]-1].transform,true);
+            int i = Random.Range(0, idk.Count);
+            SetMaterial(trees[idk[i] - 1].transform, true);
+            aiScript.Throw(trees[idk[i]-1].transform,true);;
             yield return new WaitForSecondsRealtime(5f);
             StartCoroutine(ThrowStone());
         }
@@ -132,7 +146,7 @@ public class NayGrid : MonoBehaviour
         aiScript.GetComponent<CapsuleCollider>().enabled = false;
         ResetGridToDefault();
         j++;
-        if(j<10)
+        if(j<=10)
         {
           
             aiScript.animator.SetTrigger("Idle");
