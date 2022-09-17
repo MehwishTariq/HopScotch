@@ -5,5 +5,5 @@ using UnityEngine.UI;
 
 public class DataRef : MonoBehaviour
 {
-    public Text name, time;
+    public Text Name, time, score;
 }

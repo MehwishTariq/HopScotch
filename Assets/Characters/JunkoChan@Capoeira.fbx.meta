@@ -1,0 +1,193 @@
+fileFormatVersion: 2
+guid: db8d211ac5c167e418502d5dbc92b549
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      74: -3100369314251171874
+    second: Idle
+  - first:
+      74: 2667949614841947897
+    second: Walk
+  - first:
+      74: 5522812681064789136
+    second: Run
+  - first:
+      74: -7813635296899823279
+    second: Crouch
+  - first:
+      74: 8188127341929038847
+    second: CrouchingWalk
+  - first:
+      74: 6964730622301668343
+    second: Sword_Ready
+  - first:
+      74: -2080384601316977772
+    second: Sword_Iai
+  - first:
+      74: -9186377425525433351
+    second: Sword_Slash
+  - first:
+      74: 8768261722472793359
+    second: Sword_Slash2
+  - first:
+      74: 6626047819758785912
+    second: Sword_JumpSlash
+  - first:
+      74: -5859075218101108237
+    second: Sword_Guard
+  - first:
+      74: 1270146436142616998
+    second: Sword_Parry
+  - first:
+      74: 447515021751652662
+    second: ChainSaw_Idle
+  - first:
+      74: -7775848989341511132
+    second: ChainSaw_Slash
+  - first:
+      74: 794947960517421449
+    second: ChainSaw_Slash2
+  - first:
+      74: -4415773694437326836
+    second: NailGun_Idle
+  - first:
+      74: -576408369497331048
+    second: NailGun_Aim
+  - first:
+      74: -6185155371445809522
+    second: Throw
+  - first:
+      74: 5539831331247536789
+    second: Jump
+  - first:
+      74: 3174788039533167909
+    second: Jump_ascending
+  - first:
+      74: -1500354584072067147
+    second: Falling
+  - first:
+      74: -478826145111450914
+    second: Grounded
+  - first:
+      74: 2157117808382569344
+    second: Damaged
+  - first:
+      74: 1624593205714598167
+    second: Down
+  - first:
+      74: 5047138897551691640
+    second: Dizzy
+  - first:
+      74: 1354083256325142241
+    second: Sleep
+  - first:
+      74: -5236701712879215102
+    second: WakeUp
+  - first:
+      74: 6007417343056220348
+    second: Cry
+  - first:
+      74: 6852479170260081588
+    second: Irritated
+  - first:
+      74: 689727143527590355
+    second: Happy
+  - first:
+      74: 8229133400217991701
+    second: Saltbae
+  - first:
+      74: -203655887218126122
+    second: mixamo.com
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
