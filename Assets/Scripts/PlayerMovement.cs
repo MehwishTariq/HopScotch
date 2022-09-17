@@ -80,7 +80,15 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<Transform>();
         anim = GetComponentInChildren<Animator>();
     }
-
+    public void SetMaterial(Transform current,bool canSet)
+    {
+        foreach (var item in boxes)
+        {
+            item.gameObject.GetComponent<MeshRenderer>().material = GameManager.instance.defaultMat;
+        }
+        if(canSet)
+            current.gameObject.GetComponent<MeshRenderer>().material = GameManager.instance.selectedMat;
+    }
     void SetPlayer()
     {
         Debug.Log("setPlayer");
@@ -119,6 +127,8 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log(HopNo + " hopNo");
                 controller.DORotate(new Vector3(0, -90, 0), 0.1f);
                 Destroy(StoneMovement.currentStone);
+                
+                 SetMaterial(null, false);
                 RemoveBool();
                 anim.SetBool("FailWalk", false);
                 NoToMoveOn = 1;
@@ -127,6 +137,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    bool canSkip;
     void Update()
     {
         if (testing)
@@ -135,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
         if (disableInput)
             return; 
 
-
+        
         if (GameManager.instance.gameStarted)
         {
             
@@ -143,6 +154,11 @@ public class PlayerMovement : MonoBehaviour
 
             if (isHopping)
             {
+
+                if (NoToMoveOn == HopNo)
+                    canSkip = true;
+                else
+                    canSkip = false;
                 Debug.Log("hoppingtrue");
                 //if (!activateBar)
                 //{
@@ -151,23 +167,50 @@ public class PlayerMovement : MonoBehaviour
                 //}
                 if (Input.GetKey(KeyCode.Space))
                 {
-                    disableInput = true;
-                    Debug.Log("skipp");
-                    jumpType = BarColor.SkipJump;// bar.currentBar;
-                    if (jumpType == BarColor.SkipJump && temp == true)
+
+                    if (canSkip)
                     {
-                        if (ascend)
-                            NoToMoveOn++;
-                        if (descend)
-                            NoToMoveOn--;
+                        disableInput = true;
+                        Debug.Log("skipp");
+                        jumpType = BarColor.SkipJump;// bar.currentBar;
+                        if (jumpType == BarColor.SkipJump && temp == true)
+                        {
+                            if (ascend)
+                                NoToMoveOn++;
+                            if (descend)
+                                NoToMoveOn--;
 
 
-                        if (HopNo == 5 || HopNo == 8)
-                            jumpType = BarColor.TwoLegJump;
-                        else
-                            jumpType = tempJumpType;
-                        temp = false;
+                            if (HopNo == 5 || HopNo == 8)
+                                jumpType = BarColor.TwoLegJump;
+                            else
+                                jumpType = tempJumpType;
+                            temp = false;
+                        }
                     }
+                    else
+                    {
+                            if (ascend)
+                                NoToMoveOn++;
+                            if (descend)
+                                NoToMoveOn--;
+                            disableInput = true;
+                            anim.SetTrigger("oneLeg");
+                            controller.DOLocalJump(boxes[NoToMoveOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
+                            {
+                                disableInput = false;
+                                if (!GameManager.instance.wrongJump)
+                                {
+                                    GameManager.instance.wrongJump = true;
+                                    anim.SetBool("FailWalk", true);
+                                    ResetPlayerToStart();
+                                    Debug.Log("wrongjump");
+                                }
+                            });
+                            return;
+                        //LevelFail
+                    }
+                    
                 }
             }
 
@@ -208,39 +251,7 @@ public class PlayerMovement : MonoBehaviour
                     JumpCheck = BarColor.OneLegJump;
                 }
             }
-                //if (boxes[NoToMoveOn - 1].GetComponent<ImBOX>().stoneHere)
-                //{
-                //    if (twoNumbers.Contains(NoToMoveOn))
-                //    {
-                //        Debug.Log("CheckJump");
-                //        JumpCheck = BarColor.OneLegJump;
-                //    }
-                //}
-
-                //if (ascend)
-                //{
-                //    if (NoToMoveOn == 3 || 
-                //        NoToMoveOn == 4 ||
-                //        NoToMoveOn == 7 ||
-                //        NoToMoveOn == 10 ||
-                //        NoToMoveOn == 6 ||
-                //        NoToMoveOn == 9)
-                //    {
-                //        if (HopNo == 4)
-                //            JumpCheck = BarColor.OneLegJump;
-                //        else
-                //        {
-                //            Debug.Log("CheckJump: " + NoToMoveOn);
-                //            if (boxes[NoToMoveOn - 1].GetComponent<ImBOX>().stoneHere)
-                //                JumpCheck = BarColor.OneLegJump;
-                //            else
-                //                JumpCheck = BarColor.TwoLegJump;
-                //        }
-                //    }
-                //    else
-                //        JumpCheck = BarColor.OneLegJump;
-                //}
-
+               
 
 
 
@@ -329,6 +340,7 @@ public class PlayerMovement : MonoBehaviour
                                 controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
                                 HopNo++;
                                 Destroy(StoneMovement.currentStone);
+                                SetMaterial(startPos, false);
                                 RemoveBool();
                                 anim.SetTrigger("Idle");
                             });

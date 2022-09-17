@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public GameObject leaderBoard;
     public bool gameStarted;
     public bool wrongJump;
+    public Material defaultMat;
+    public Material selectedMat;
+
 
     private void Awake()
     {
