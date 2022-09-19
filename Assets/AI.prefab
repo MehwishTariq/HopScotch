@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322233018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1.0000001}
-  m_LocalPosition: {x: -7.2783494, y: 0.19607769, z: 11.983927}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2985657498967588203}
@@ -43,9 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240cadcee5b9bea48896c198caa66d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerName: AI_1
+  PlayerName: I_m_ME
   time: {fileID: 0}
-  foulTimeAdd: 0
+  foulTimeAdd: 4
+  maxScore: 200
+  allowTimer: 0
 --- !u!1 &2985657498160194560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,7 +2314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2985657498967588203
 Transform:
   m_ObjectHideFlags: 0
@@ -2369,6 +2371,7 @@ MonoBehaviour:
   Stone: {fileID: 4119928293525222979, guid: 65a086d6d7f97b245b96d781c22d3709, type: 3}
   ShotPoint: {fileID: 2985657498597475008}
   currentStoneLocation: 0
+  AI_timeData: {fileID: 1322233020}
 --- !u!136 &2985657498967588202
 CapsuleCollider:
   m_ObjectHideFlags: 0

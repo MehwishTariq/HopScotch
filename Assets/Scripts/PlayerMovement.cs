@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform startPos;
 
-    public MovingBar bar;
     BarColor jumpType;
     public List<Transform> boxes;
     [SerializeField]
@@ -42,20 +41,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     public bool HasReset;
 
-    public List<int> twoNumbers = new List<int>();//{ 3, 4, 6, 7, 9, 10 };
-
     [SerializeField]
     public bool disableInput = false;
 
+    public TimeManager time;
+
     void OnEnable()
     {
-
-        twoNumbers.Add(3);
-        twoNumbers.Add(4);
-        twoNumbers.Add(6);
-        twoNumbers.Add(7);
-        twoNumbers.Add(9);
-        twoNumbers.Add(10);
         EventManager.instance.onStart += SetPlayer;
         EventManager.instance.onWin += onGameDone;
         EventManager.instance.onFail += onGameDone;
@@ -113,8 +105,6 @@ public class PlayerMovement : MonoBehaviour
         ascend = true;
         descend = false;
         isHopping = false;
-        bar.KillNow();
-        activateBar = false;
         oneLegHop = false;
         twoLegHop = false;
         HasReset = true;
@@ -149,9 +139,6 @@ public class PlayerMovement : MonoBehaviour
         
         if (GameManager.instance.gameStarted)
         {
-            
-
-
             if (isHopping)
             {
 
@@ -186,6 +173,8 @@ public class PlayerMovement : MonoBehaviour
                             else
                                 jumpType = tempJumpType;
                             temp = false;
+
+                            GameManager.instance.SetRemarks(false, true);
                         }
                     }
                     else
@@ -202,8 +191,11 @@ public class PlayerMovement : MonoBehaviour
                                 if (!GameManager.instance.wrongJump)
                                 {
                                     GameManager.instance.wrongJump = true;
+                                    time.AddTimeOnFoul();
+                                    GameManager.instance.SetRemarks(true, true);
                                     anim.SetBool("FailWalk", true);
                                     ResetPlayerToStart();
+                                   
                                     Debug.Log("wrongjump");
                                 }
                             });
@@ -263,6 +255,8 @@ public class PlayerMovement : MonoBehaviour
                 if (jumpType != JumpCheck && !GameManager.instance.wrongJump)
                 {
                     GameManager.instance.wrongJump = true;
+                    time.AddTimeOnFoul();
+                    GameManager.instance.SetRemarks(true, true);
                     anim.SetBool("FailWalk", true);
                     ResetPlayerToStart();
                     Debug.Log("wrongjump");
@@ -279,6 +273,8 @@ public class PlayerMovement : MonoBehaviour
                     anim.SetBool("FailWalk", true);
                     ResetPlayerToStart();
                     Debug.Log("wrongjump2");
+                    time.AddTimeOnFoul();
+                    GameManager.instance.SetRemarks(true, true);
                 }
             }
 
@@ -292,7 +288,7 @@ public class PlayerMovement : MonoBehaviour
                 if (oneLegHop)
                 {
                     anim.SetTrigger("oneLeg");
-
+                    GameManager.instance.SetRemarks(false, true);
                     if (ascend)
                     {
                         controller.DORotate(new Vector3(0, -90, 0), 0.1f);
@@ -333,8 +329,6 @@ public class PlayerMovement : MonoBehaviour
                             ascend = true;
                             descend = false;
                             isHopping = false;
-                            bar.KillNow();
-                            activateBar = false;
                             controller.DOLocalJump(startPos.position, 0.5f, 1, 0.8f).OnComplete(() =>
                             {
                                 controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
@@ -362,8 +356,6 @@ public class PlayerMovement : MonoBehaviour
                                     ascend = true;
                                     descend = false;
                                     isHopping = false;
-                                    bar.KillNow();
-                                    activateBar = false;
                                     controller.DOLocalJump(startPos.position, 0.5f, 1, 0.8f).OnComplete(() =>
                                     {
                                         controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f).OnComplete(()=> {
@@ -375,7 +367,7 @@ public class PlayerMovement : MonoBehaviour
                                             disableInput = false;
                                             Destroy(StoneMovement.currentStone);
                                             RemoveBool();
-                                            if (HopNo > boxes.Count)
+                                            if (HopNo >= boxes.Count)
                                             {
                                                 Debug.Log("GameWon");
                                                 EventManager.instance.GameWin();
@@ -413,7 +405,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 IsAiming = false;
                 twoLegHop = true;
-
+                GameManager.instance.SetRemarks(false, true);
                 Debug.Log("Jumpp");
                 if (twoLegHop)
                 {

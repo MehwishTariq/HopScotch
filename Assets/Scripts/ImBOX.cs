@@ -30,6 +30,8 @@ public class ImBOX : MonoBehaviour
                 Debug.Log("levelFailRestart");
                 other.GetComponentInParent<Animator>().SetBool("FailWalk", true);
                 other.GetComponentInParent<PlayerMovement>().ResetPlayerToStart();
+                other.GetComponentInParent<PlayerMovement>().time.AddTimeOnFoul();
+                GameManager.instance.SetRemarks(true, true);
                 //EventManager.instance.Foul();
             }
             else if ((other.tag == "RightLeg" || other.tag == "LeftLeg"))

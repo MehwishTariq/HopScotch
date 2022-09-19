@@ -29,7 +29,7 @@ public class NayaTree : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         //Debug.Log("trgigere");
-        if (other.gameObject.CompareTag("AI"))
+        if (other.gameObject.CompareTag("AI") && GameManager.instance.gameStarted)
         {
             if (other.gameObject.GetComponent<AIScript>().currentStoneLocation == index)
             {
@@ -37,7 +37,7 @@ public class NayaTree : MonoBehaviour
             }
             else
             {
-
+                GameManager.instance.SetRemarks(false, false);
                 StartCoroutine(MoveAI(other.gameObject.GetComponent<AIScript>()));
             }
         }

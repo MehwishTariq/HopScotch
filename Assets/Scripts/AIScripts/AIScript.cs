@@ -49,6 +49,8 @@ public class AIScript : MonoBehaviour
 
     public int currentStoneLocation;
 
+    public TimeManager AI_timeData;
+
     //public void Throw(Transform BoxToJump)
     //{
     //    animator.Play("Throw", 0);
@@ -113,6 +115,8 @@ public class AIScript : MonoBehaviour
         transform.DORotate(transform.eulerAngles + new Vector3(0, 180, 0), 0.5f).OnComplete(() =>
         {
             animator.SetTrigger("FailWalk");
+            AI_timeData.AddTimeOnFoul();
+            GameManager.instance.SetRemarks(true, false);
             if (thrownStone != null)
             {
                 Destroy(thrownStone);
