@@ -26,6 +26,7 @@ public class StoneCollision : MonoBehaviour
                     p.disableInput = false;
                     p.HasReset = false;
                     p.SetMaterial(other.GetComponent<ImBOX>().transform, true);
+                    AudioManager.instance.Play("StoneThrow");
                     PlayerMovement.isHopping = true;
 
                 }

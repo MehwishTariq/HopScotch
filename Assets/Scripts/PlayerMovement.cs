@@ -154,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
                 //}
                 if (Input.GetKey(KeyCode.Space))
                 {
-
+                    
                     if (canSkip)
                     {
                         disableInput = true;
@@ -167,6 +167,7 @@ public class PlayerMovement : MonoBehaviour
                             if (descend)
                                 NoToMoveOn--;
 
+                            AudioManager.instance.Play("Hop");
 
                             if (HopNo == 5 || HopNo == 8)
                                 jumpType = BarColor.TwoLegJump;
@@ -190,6 +191,7 @@ public class PlayerMovement : MonoBehaviour
                                 disableInput = false;
                                 if (!GameManager.instance.wrongJump)
                                 {
+                                    AudioManager.instance.Play("Wrong");
                                     GameManager.instance.wrongJump = true;
                                     time.AddTimeOnFoul();
                                     GameManager.instance.SetRemarks(true, true);
@@ -254,6 +256,7 @@ public class PlayerMovement : MonoBehaviour
                 jumpType = BarColor.OneLegJump;
                 if (jumpType != JumpCheck && !GameManager.instance.wrongJump)
                 {
+                    AudioManager.instance.Play("Wrong");
                     GameManager.instance.wrongJump = true;
                     time.AddTimeOnFoul();
                     GameManager.instance.SetRemarks(true, true);
@@ -269,6 +272,8 @@ public class PlayerMovement : MonoBehaviour
                 jumpType = BarColor.TwoLegJump;
                 if (jumpType != JumpCheck && !GameManager.instance.wrongJump)
                 {
+                    AudioManager.instance.Play("Wrong");
+
                     GameManager.instance.wrongJump = true;
                     anim.SetBool("FailWalk", true);
                     ResetPlayerToStart();
@@ -294,7 +299,7 @@ public class PlayerMovement : MonoBehaviour
                         controller.DORotate(new Vector3(0, -90, 0), 0.1f);
                         controller.DOLocalJump(boxes[NoToMoveOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
                         {
-                            
+                            AudioManager.instance.Play("Hop");
                             NoToMoveOn++;
                             if (NoToMoveOn >= boxes.Count)
                             {
@@ -331,7 +336,9 @@ public class PlayerMovement : MonoBehaviour
                             isHopping = false;
                             controller.DOLocalJump(startPos.position, 0.5f, 1, 0.8f).OnComplete(() =>
                             {
+                                AudioManager.instance.Play("Hop");
                                 controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
+                                AudioManager.instance.Play("RoundComplete");
                                 HopNo++;
                                 Destroy(StoneMovement.currentStone);
                                 SetMaterial(startPos, false);
@@ -349,7 +356,7 @@ public class PlayerMovement : MonoBehaviour
                         {
                             controller.DOLocalJump(boxes[NoToMoveOn - 1].position, 0.5f, 1, 0.8f).OnComplete(() =>
                             {
-                                
+                                AudioManager.instance.Play("Hop");
                                 NoToMoveOn--;
                                 if (NoToMoveOn < 1 && !HasReset)
                                 {
@@ -374,7 +381,10 @@ public class PlayerMovement : MonoBehaviour
 
                                             }
                                             else
+                                            {
+                                                AudioManager.instance.Play("RoundComplete");
                                                 HopNo++;
+                                            }
                                             anim.SetTrigger("Idle");
                                         });
                                        
@@ -416,7 +426,7 @@ public class PlayerMovement : MonoBehaviour
                         controller.DORotate(new Vector3(0, -90, 0), 0.1f);
                         controller.DOLocalJump((boxes[NoToMoveOn].position + boxes[NoToMoveOn - 1].position) / 2, 0.5f, 1, 0.8f).OnComplete(() =>
                         {
-                            
+                            AudioManager.instance.Play("Hop");
                             NoToMoveOn += 2;
                             Debug.Log("NoToMoveOn:" + NoToMoveOn);
                             Debug.Log("boxes.Count:" + boxes.Count);
@@ -453,6 +463,8 @@ public class PlayerMovement : MonoBehaviour
 
                         controller.DOLocalJump((boxes[NoToMoveOn - 1].position + boxes[NoToMoveOn - 2].position) / 2, 0.5f, 1, 0.8f).OnComplete(() =>
                         {
+                            AudioManager.instance.Play("Hop");
+
                             NoToMoveOn -= 2;
                             if (NoToMoveOn - 1 < 0)
                             {
