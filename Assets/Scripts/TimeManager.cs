@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,13 +12,13 @@ public class TimeManager : MonoBehaviour
     public float maxScore;
 
     float clockTime = 0;
-    bool allowTimer = false;
+    [SerializeField]
+    bool allowTimer;
     
 
-    private void OnEnable()
+    private void Start()
     {
         EventManager.instance.onStart += StartTimer;
-        EventManager.instance.onFoul += AddTimeOnFoul;
         EventManager.instance.onFail += SetTimeinBoard;
         EventManager.instance.onWin += SetTimeinBoard;
 
@@ -26,15 +27,14 @@ public class TimeManager : MonoBehaviour
     private void OnDisable()
     {
         EventManager.instance.onStart -= StartTimer;
-        EventManager.instance.onFoul -= AddTimeOnFoul;
         EventManager.instance.onFail -= SetTimeinBoard;
         EventManager.instance.onWin -= SetTimeinBoard;
     }
 
-    void StartTimer()
+    public void StartTimer()
     {
         Debug.Log("startTimer");
-        allowTimer = !allowTimer;
+        allowTimer = true;
        
     }
     // Update is called once per frame
@@ -46,13 +46,19 @@ public class TimeManager : MonoBehaviour
 
     public void SetTimeinBoard()
     {
-        StartTimer();
+        allowTimer = false;
         LeaderBoardData.instance.SetData(PlayerName, clockTime, maxScore);
+        
     }
+
 
     public void AddTimeOnFoul()
     {
+        Debug.Log("AddTime");
         clockTime += foulTimeAdd;
+        time.GetComponent<RectTransform>().DOScale(1.5f, 0.3f).OnComplete(() => {
+            time.GetComponent<RectTransform>().DOScale(1f, 0.3f);
+        });
         GameManager.instance.wrongJump = false;
     }
 

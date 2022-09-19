@@ -43,9 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240cadcee5b9bea48896c198caa66d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerName: AI_2
+  PlayerName: xyz999
   time: {fileID: 0}
-  foulTimeAdd: 0
+  foulTimeAdd: 4
+  maxScore: 200
+  allowTimer: 0
 --- !u!1 &1917242878752464386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2170,7 +2172,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1917242880171235129
 Transform:
   m_ObjectHideFlags: 0
@@ -2217,7 +2219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficulty:
     difficulyType: 1
-    chancesOfWin: 50
+    chancesOfWin: 60
   moving: 0
   time: 1
   animator: {fileID: 1917242879614762389}
@@ -2227,6 +2229,7 @@ MonoBehaviour:
   Stone: {fileID: 4119928293525222979, guid: 65a086d6d7f97b245b96d781c22d3709, type: 3}
   ShotPoint: {fileID: 1917242879139116887}
   currentStoneLocation: 0
+  AI_timeData: {fileID: 1648466511}
 --- !u!136 &1917242880171235128
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class EventManager : MonoBehaviour
     {
         instance = this;
     }
+
     public delegate void OnGameStart();
     public  event OnGameStart onStart;
 
@@ -19,8 +20,9 @@ public class EventManager : MonoBehaviour
     public delegate void OnGameWon();
     public  event OnGameWon onWin;
 
-    public delegate void OnFoul();
-    public  event OnFoul onFoul;
+
+    public delegate void DataAdded();
+    public event DataAdded onAddData;
 
     public  void GameStarted()
     {
@@ -28,21 +30,21 @@ public class EventManager : MonoBehaviour
 
     }
 
+    public void DataAdded_()
+    {
+        onAddData?.Invoke();
+    }
+
     public  void GameFailed()
     {
+        GameManager.instance.gameFailed = true;
         onFail?.Invoke();
     }
 
     public  void GameWin()
     {
+        GameManager.instance.gameWon = true;
         onWin?.Invoke();
     }
-
-
-    public  void Foul()
-    {
-        onFoul?.Invoke();
-    }
-
 
 }

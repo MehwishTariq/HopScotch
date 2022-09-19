@@ -6,6 +6,9 @@ using UnityEngine;
 public class NayGrid : MonoBehaviour
 {
     [SerializeField]
+    GameObject[] All_aiScript;
+
+    [SerializeField]
     AIScript aiScript;
     [SerializeField]
     public NayaTree[] trees;
@@ -20,8 +23,18 @@ public class NayGrid : MonoBehaviour
     [SerializeField]
     int randomNum;
 
-    void OnEnable()
+    void Start()
     {
+        All_aiScript[Random.Range(0, All_aiScript.Length)].SetActive(true);
+        Debug.Log(GameManager.instance.otherAi.Count);
+
+        foreach (GameObject x in All_aiScript)
+        {
+            if (x.activeInHierarchy)
+                aiScript = x.GetComponent<AIScript>();
+            else
+                GameManager.instance.otherAi.Add(x.GetComponent<AIScript>().AI_timeData);
+        }
         EventManager.instance.onStart += AIStart;
         EventManager.instance.onWin += onGameDone;
         EventManager.instance.onFail += onGameDone;
@@ -49,6 +62,7 @@ public class NayGrid : MonoBehaviour
     public void AIStart()
     {
         StartCoroutine(ThrowStone());
+
     }
 
     List<int> idk = new List<int>();
