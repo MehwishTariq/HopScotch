@@ -8,10 +8,10 @@ public class Data
 {
     public string name;
     public float Time;
-    public float Score;
+    public int Score;
     public float maxScore;
 
-    public Data(string playerName, float gametime, float _maxScore, float _score)
+    public Data(string playerName, float gametime, float _maxScore, int _score)
     {
         name = playerName;
         Time = gametime;
@@ -64,7 +64,8 @@ public class LeaderBoardData : MonoBehaviour
         float x = minTime / playerTime;
         return (int)(max_Score * x);
     }
-    
+
+    public int dataForTwo = 0;
     public void SetData(string name, float clocktime, float _maxScore)
     {
         Debug.Log("SetDAta" + PlayerPrefs.GetInt(name, 0));
@@ -75,7 +76,7 @@ public class LeaderBoardData : MonoBehaviour
             {
                 x.Time = clocktime;
                 x.maxScore = _maxScore;
-                x.Score = PlayerPrefs.GetInt(name);
+                x.Score = PlayerPrefs.GetInt(name,0);
                 break;
             }
             else
@@ -85,71 +86,68 @@ public class LeaderBoardData : MonoBehaviour
 
         if (notFound == leaderBoard.Count)
         {
-            if(GameManager.instance.gameFailed && name == "Player")
-                leaderBoard.Add(new Data(name, clocktime, _maxScore, Score(clocktime, 0)));
-            else if(GameManager.instance.gameWon && name != "Player")
-                leaderBoard.Add(new Data(name, clocktime, _maxScore, Score(clocktime, 0)));
+            if (GameManager.instance.gameFailed && name == "Player")
+            {
+                leaderBoard.Add(new Data(name, clocktime, _maxScore, PlayerPrefs.GetInt(name, 0) + Score(clocktime, 0)));
+                PlayerPrefs.SetInt(name, PlayerPrefs.GetInt(name) + Score(clocktime, 0));
+            }
+            else if (GameManager.instance.gameWon && name != "Player")
+            { 
+                leaderBoard.Add(new Data(name, clocktime, _maxScore, PlayerPrefs.GetInt(name, 0) + Score(clocktime, 0)));
+                PlayerPrefs.SetInt(name, PlayerPrefs.GetInt(name) + Score(clocktime, 0));
+            }
             else
-                leaderBoard.Add(new Data(name, clocktime, _maxScore, Score(clocktime, _maxScore)));
+            { 
+                leaderBoard.Add(new Data(name, clocktime, _maxScore, PlayerPrefs.GetInt(name, 0) + Score(clocktime, _maxScore)));
+                PlayerPrefs.SetInt(name, PlayerPrefs.GetInt(name) + Score(clocktime, _maxScore));
+            }
         }
-        InstantiateDataSets(name, clocktime, _maxScore);
+
        
-        i--;
-        if (GameManager.instance.gameFailed || GameManager.instance.gameWon)
+        dataForTwo++;
+
+
+        if ((GameManager.instance.gameFailed || GameManager.instance.gameWon) && dataForTwo >= 5)
         {
+            SortList();
+            InstantiateDataSets();
+
             GameManager.instance.ShowLeaderBoard();
             GameManager.instance.gameStarted = false;
+            dataForTwo = 0;
         }
     }
     
-    public void InstantiateDataSets(string name, float clocktime, float _maxScore)
+    void SortList()
     {
-        GameObject data = Instantiate(dataSet, GameManager.instance.leaderBoard.transform);
-        data.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, i * 105f, 0);
-        data.GetComponent<RectTransform>().rotation = Quaternion.identity;
-        data.GetComponent<DataRef>().Name.text = name;
-
-        if (GameManager.instance.gameFailed && name == "Player")
+        leaderBoard.Sort(delegate (Data a, Data b)
         {
-            PlayerPrefs.SetInt(name, PlayerPrefs.GetInt(name) + Score(clocktime, 0));
-        }
-        else if (GameManager.instance.gameWon && name != "Player")
-        {
-            PlayerPrefs.SetInt(name, PlayerPrefs.GetInt(name) + Score(clocktime, 0));
-        }
-        else
-        {
-            PlayerPrefs.SetInt(name, PlayerPrefs.GetInt(name) + Score(clocktime, _maxScore));
-        }
-        data.GetComponent<DataRef>().score.text = PlayerPrefs.GetInt(name).ToString();
-        //int minutes = (int)clocktime / 60;
-        //int seconds = (int)clocktime % 60;
-
-        //data.GetComponent<DataRef>().time.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-
-
+            return a.Score
+            .CompareTo(
+              b.Score);
+        });
+        leaderBoard.Reverse();
     }
 
-    //public void CreateRows()
-    //{
-    //    int i = 0;
-    //    foreach(Data x in leaderBoard)
-    //    {
-    //        GameObject data = Instantiate(dataSet, dataSetParent.transform);
-    //        data.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, (i+1) * 105f, 0);
-    //        data.GetComponent<RectTransform>().rotation = Quaternion.identity;
-    //        data.GetComponent<DataRef>().Name.text = x.name;
-    //        data.GetComponent<DataRef>().score.text = Score(x.Time, x.maxScore).ToString();
+    public void InstantiateDataSets()
+    {
+        int i = 1, j = 1;
+        foreach (Data x in leaderBoard)
+        {
+            GameObject data = Instantiate(dataSet, GameManager.instance.leaderBoard.transform);
+            data.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, i * 105f, 0);
+            data.GetComponent<RectTransform>().rotation = Quaternion.identity;
+            data.GetComponent<DataRef>().Name.text = x.name;
+            data.GetComponent<DataRef>().rank.text = j.ToString()+".";
+            
+            data.GetComponent<DataRef>().score.text = PlayerPrefs.GetInt(x.name).ToString();
 
+            j++;
+            i--;
 
-    //        int minutes = (int)x.Time / 60;
-    //        int seconds = (int)x.Time % 60;
+        }
 
-    //        data.GetComponent<DataRef>().time.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-    //        i++;
-    //    }
-    //    GameManager.instance.ShowLeaderBoard();
-    //}
+    }
 
     public float GetData(string name)
     {

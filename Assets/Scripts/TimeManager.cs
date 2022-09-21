@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TimeManager : MonoBehaviour
 {
     public string PlayerName;
-    public Text time;
+    public Text time, playerName;
     public float foulTimeAdd;
     public float maxScore;
 
@@ -18,6 +18,7 @@ public class TimeManager : MonoBehaviour
 
     private void Start()
     {
+        playerName.text = PlayerName;
         EventManager.instance.onStart += StartTimer;
         EventManager.instance.onFail += SetTimeinBoard;
         EventManager.instance.onWin += SetTimeinBoard;
