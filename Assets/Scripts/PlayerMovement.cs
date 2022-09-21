@@ -373,6 +373,7 @@ public class PlayerMovement : MonoBehaviour
                                             Debug.Log(NoToMoveOn);
                                             disableInput = false;
                                             Destroy(StoneMovement.currentStone);
+                                            SetMaterial(startPos.transform, false);
                                             RemoveBool();
                                             if (HopNo >= boxes.Count)
                                             {
