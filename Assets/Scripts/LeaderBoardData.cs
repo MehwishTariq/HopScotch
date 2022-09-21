@@ -122,10 +122,10 @@ public class LeaderBoardData : MonoBehaviour
             PlayerPrefs.SetInt(name, PlayerPrefs.GetInt(name) + Score(clocktime, _maxScore));
         }
         data.GetComponent<DataRef>().score.text = PlayerPrefs.GetInt(name).ToString();
-        int minutes = (int)clocktime / 60;
-        int seconds = (int)clocktime % 60;
+        //int minutes = (int)clocktime / 60;
+        //int seconds = (int)clocktime % 60;
 
-        data.GetComponent<DataRef>().time.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        //data.GetComponent<DataRef>().time.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
 
     }
