@@ -378,6 +378,8 @@ public class PlayerMovement : MonoBehaviour
                                             if (HopNo >= boxes.Count)
                                             {
                                                 Debug.Log("GameWon");
+
+                                                AudioManager.instance.Play("Win");
                                                 EventManager.instance.GameWin();
 
                                             }

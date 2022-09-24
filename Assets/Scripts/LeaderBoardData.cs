@@ -134,9 +134,9 @@ public class LeaderBoardData : MonoBehaviour
         int i = 1, j = 1;
         foreach (Data x in leaderBoard)
         {
-            GameObject data = Instantiate(dataSet, GameManager.instance.leaderBoard.transform);
-            data.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -100 - (185 * i)/*(i * -186) - 285f*/, 0);
-            data.GetComponent<RectTransform>().rotation = Quaternion.identity;
+            GameObject data = Instantiate(dataSet, GameManager.instance.content.transform);
+            //data.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -100 - (185 * i)/*(i * -186) - 285f*/, 0);
+            //data.GetComponent<RectTransform>().rotation = Quaternion.identity;
             data.GetComponent<DataRef>().Name.text = x.name;
             data.GetComponent<DataRef>().rank.text = j.ToString()+".";
             

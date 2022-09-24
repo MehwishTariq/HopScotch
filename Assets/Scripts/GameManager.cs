@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager instance;
-    public GameObject leaderBoard;
+    public GameObject leaderBoard, content;
     public bool gameStarted, gameFailed, gameWon;
     public bool wrongJump;
     public Material defaultMat;
@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
     }
    
     public void SetTimeofOtherAi()
