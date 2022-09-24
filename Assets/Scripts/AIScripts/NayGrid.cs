@@ -171,6 +171,7 @@ public class NayGrid : MonoBehaviour
         else
         {
             Debug.Log("GameLost");
+            AudioManager.instance.Play("Lose");
             EventManager.instance.GameFailed();
         }
     }
