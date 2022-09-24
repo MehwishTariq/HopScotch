@@ -34,7 +34,7 @@ public class TimeManager : MonoBehaviour
 
     public void StartTimer()
     {
-        Debug.Log("startTimer");
+       
         allowTimer = true;
        
     }
@@ -55,7 +55,7 @@ public class TimeManager : MonoBehaviour
 
     public void AddTimeOnFoul()
     {
-        Debug.Log("AddTime");
+        
         clockTime += foulTimeAdd;
         time.GetComponent<RectTransform>().DOScale(1.5f, 0.3f).OnComplete(() => {
             time.GetComponent<RectTransform>().DOScale(1f, 0.3f);

@@ -83,7 +83,6 @@ public class PlayerMovement : MonoBehaviour
     }
     void SetPlayer()
     {
-        Debug.Log("setPlayer");
         HopNo = 1;
         NoToMoveOn = 1;
         ascend = true;
@@ -101,7 +100,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void ResetPlayerToStart()
     {
-        Debug.Log("Reset");
         ascend = true;
         descend = false;
         isHopping = false;
@@ -114,7 +112,6 @@ public class PlayerMovement : MonoBehaviour
         {
             controller.DOMove(startPos.position, 0.5f).OnComplete(() =>
             {
-                Debug.Log(HopNo + " hopNo");
                 controller.DORotate(new Vector3(0, -90, 0), 0.1f);
                 Destroy(StoneMovement.currentStone);
                 
@@ -146,7 +143,6 @@ public class PlayerMovement : MonoBehaviour
                     canSkip = true;
                 else
                     canSkip = false;
-                Debug.Log("hoppingtrue");
                 //if (!activateBar)
                 //{
                 //    bar.StartMoving();
@@ -158,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
                     if (canSkip)
                     {
                         disableInput = true;
-                        Debug.Log("skipp");
+                        
                         jumpType = BarColor.SkipJump;// bar.currentBar;
                         if (jumpType == BarColor.SkipJump && temp == true)
                         {
@@ -198,7 +194,7 @@ public class PlayerMovement : MonoBehaviour
                                     anim.SetBool("FailWalk", true);
                                     ResetPlayerToStart();
                                    
-                                    Debug.Log("wrongjump");
+                                   
                                 }
                             });
                             return;
@@ -214,11 +210,11 @@ public class PlayerMovement : MonoBehaviour
                 {
                     JumpCheck = BarColor.TwoLegJump;
 
-                    Debug.Log("SettingTwoLeg");
+                    
                 }
                 else
                 {
-                    Debug.Log("SettingOneLeg");
+                    
                     JumpCheck = BarColor.OneLegJump;
                 }
             } 
@@ -226,7 +222,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (!boxes[NoToMoveOn - 1].GetComponent<ImBOX>().stoneHere)
                 {
-                    Debug.Log("SettingOneLeg---Else");
+                    
                     JumpCheck = BarColor.OneLegJump;
                 }
                 
@@ -237,11 +233,10 @@ public class PlayerMovement : MonoBehaviour
                 {
                     JumpCheck = BarColor.TwoLegJump;
 
-                    Debug.Log("SettingTwoLeg-----elseIF");
                 }
                 else
                 {
-                    Debug.Log("SettingOneLeg-----elseIF");
+
                     JumpCheck = BarColor.OneLegJump;
                 }
             }
@@ -262,7 +257,7 @@ public class PlayerMovement : MonoBehaviour
                     GameManager.instance.SetRemarks(true, true);
                     anim.SetBool("FailWalk", true);
                     ResetPlayerToStart();
-                    Debug.Log("wrongjump");
+                    
                 }
             }
             if (Input.GetKey(KeyCode.Alpha2))
@@ -277,7 +272,7 @@ public class PlayerMovement : MonoBehaviour
                     GameManager.instance.wrongJump = true;
                     anim.SetBool("FailWalk", true);
                     ResetPlayerToStart();
-                    Debug.Log("wrongjump2");
+                    
                     time.AddTimeOnFoul();
                     GameManager.instance.SetRemarks(true, true);
                 }
@@ -289,7 +284,7 @@ public class PlayerMovement : MonoBehaviour
                 IsAiming = false;
                 oneLegHop = true;
 
-                Debug.Log("Jumpp");
+                
                 if (oneLegHop)
                 {
                     anim.SetTrigger("oneLeg");
@@ -324,7 +319,7 @@ public class PlayerMovement : MonoBehaviour
                                 disableInput = false;
                             }
                             
-                            Debug.Log(NoToMoveOn);
+                            
                         });
                     }
                     else if (descend)
@@ -350,7 +345,7 @@ public class PlayerMovement : MonoBehaviour
                             jumpType = BarColor.None;
                             oneLegHop = false;
                             disableInput = false;
-                            Debug.Log(NoToMoveOn);
+                           
                         }
                         else
                         {
@@ -370,14 +365,14 @@ public class PlayerMovement : MonoBehaviour
                                             jumpType = BarColor.None;
                                             oneLegHop = false;
 
-                                            Debug.Log(NoToMoveOn);
+                                            
                                             disableInput = false;
                                             Destroy(StoneMovement.currentStone);
                                             SetMaterial(startPos.transform, false);
                                             RemoveBool();
                                             if (HopNo >= boxes.Count)
                                             {
-                                                Debug.Log("GameWon");
+                                                
 
                                                 AudioManager.instance.Play("Win");
                                                 EventManager.instance.GameWin();
@@ -401,7 +396,7 @@ public class PlayerMovement : MonoBehaviour
                                     jumpType = BarColor.None;
                                     oneLegHop = false;
 
-                                    Debug.Log(NoToMoveOn);
+                                    
                                     disableInput = false;
                                 }
                                 
@@ -419,7 +414,7 @@ public class PlayerMovement : MonoBehaviour
                 IsAiming = false;
                 twoLegHop = true;
                 GameManager.instance.SetRemarks(false, true);
-                Debug.Log("Jumpp");
+               
                 if (twoLegHop)
                 {
 
@@ -431,8 +426,7 @@ public class PlayerMovement : MonoBehaviour
                         {
                             AudioManager.instance.Play("Hop");
                             NoToMoveOn += 2;
-                            Debug.Log("NoToMoveOn:" + NoToMoveOn);
-                            Debug.Log("boxes.Count:" + boxes.Count);
+                            
 
                             if (NoToMoveOn > boxes.Count)
                             {
@@ -442,11 +436,10 @@ public class PlayerMovement : MonoBehaviour
 
                                 controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, 180, 0), 0.1f).OnComplete(()=>
                                 {
-                                    Debug.Log("goBack");
+                                    
                                     jumpType = BarColor.None;
                                     twoLegHop = false;
                                     disableInput = false;
-                                    Debug.Log(NoToMoveOn);
                                     temp = true;
 
                                 });
@@ -477,7 +470,6 @@ public class PlayerMovement : MonoBehaviour
 
                                     jumpType = BarColor.None;
                                     twoLegHop = false;
-                                    Debug.Log(NoToMoveOn);
                                     disableInput = false;
                                 });
                             }
@@ -485,7 +477,7 @@ public class PlayerMovement : MonoBehaviour
                             {
                                 jumpType = BarColor.None;
                                 twoLegHop = false;
-                                Debug.Log(NoToMoveOn);
+                                
                                 disableInput = false;
                             }
 
@@ -501,7 +493,7 @@ public class PlayerMovement : MonoBehaviour
                 Plane p = new Plane(Vector3.up, 0f);
                 float Dist;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition * 1.5f);
-                Debug.DrawRay(ray.origin, ray.direction, Color.red);
+                //Debug.DrawRay(ray.origin, ray.direction, Color.red);
                 if (p.Raycast(ray, out Dist) && Input.GetMouseButton(1))
                 {
                     Vector3 Dir = ray.GetPoint(Dist) - transform.position;

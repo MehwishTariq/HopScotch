@@ -45,7 +45,7 @@ public class ArcCreator : MonoBehaviour
             Plane p = new Plane(Vector3.up, 0f);
             float Dist;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition * 1.5f);
-            Debug.DrawRay(ray.origin, ray.direction, Color.red);
+            //Debug.DrawRay(ray.origin, ray.direction, Color.red);
             if (p.Raycast(ray, out Dist) && Input.GetMouseButton(1) && !PlayerMovement.isHopping)
             {
                 lr.positionCount = (int)numPoints;

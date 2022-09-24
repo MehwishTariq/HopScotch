@@ -28,7 +28,6 @@ public class NayaTree : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("trgigere");
         if (other.gameObject.CompareTag("AI") && GameManager.instance.gameStarted)
         {
             if (other.gameObject.GetComponent<AIScript>().currentStoneLocation == index)
@@ -72,7 +71,7 @@ public class NayaTree : MonoBehaviour
                     Vector3 position = ((forwardLink[0].position + forwardLink[1].position) / 2);
                     aIScript.MoveTo(position);
                     aIScript.animator.SetTrigger("Twoleg");
-                    //Debug.Log("twoLeg");
+                    
                 }
 
                 else if (forwardLink.Length > 0)
@@ -92,7 +91,7 @@ public class NayaTree : MonoBehaviour
                     aIScript.MoveTo(forwardLink[0].position);
 
                     aIScript.animator.SetTrigger("Oneleg");
-                   // Debug.Log("OneLeg");
+                   
                     //OneLegJump
                 }
                 if (forwardLink.Length == 2)
@@ -134,14 +133,14 @@ public class NayaTree : MonoBehaviour
                     aIScript.MoveTo(position);
 
                     aIScript.animator.SetTrigger("Twoleg");
-                    //Debug.Log("twoLeg");
+                    
                 }
                 else if (backwardLink.Count > 0)
                 {
                     aIScript.MoveTo(backwardLink[0].position);
 
                     aIScript.animator.SetTrigger("Oneleg");
-                    //Debug.Log("OneLeg");
+                    
                 }
 
                 if (index == 0)

@@ -68,7 +68,6 @@ public class LeaderBoardData : MonoBehaviour
     public int dataForTwo = 0;
     public void SetData(string name, float clocktime, float _maxScore)
     {
-        Debug.Log("SetDAta" + PlayerPrefs.GetInt(name, 0));
         int notFound = 0;
         foreach (Data x in leaderBoard)
         {
@@ -82,8 +81,7 @@ public class LeaderBoardData : MonoBehaviour
             else
                 notFound++;
         }
-        Debug.Log("notFound" + notFound);
-
+        
         if (notFound == leaderBoard.Count)
         {
             if (GameManager.instance.gameFailed && name == "Player")
