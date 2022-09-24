@@ -21,7 +21,7 @@ public class StoneCollision : MonoBehaviour
             {
                 if (other.GetComponent<ImBOX>().number == PlayerMovement.HopNo.ToString())
                 {
-                    Debug.Log("rightBox");
+                    
                     PlayerMovement p = FindObjectOfType<PlayerMovement>();
                     p.disableInput = false;
                     p.HasReset = false;

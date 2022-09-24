@@ -54,10 +54,7 @@ public class Tree : MonoBehaviour
            aIScript.MoveTo(position);
            
             aIScript.animator.SetTrigger("Twoleg");
-            Debug.Log("twoLeg");
-
-            
-            Debug.Break();
+           
             //TwoLegJump
         }
         else if (forwardLinkLeft != null)
@@ -65,8 +62,7 @@ public class Tree : MonoBehaviour
             aIScript.MoveTo(forwardLinkLeft.position);
 
             aIScript.animator.SetTrigger("Oneleg");
-            Debug.Log("OneLeg");
-            Debug.Break();
+           
             //OneLegJump
         }
         if (forwardLinkLeft != null)

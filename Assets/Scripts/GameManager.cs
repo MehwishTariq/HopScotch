@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log("StartGame");
+       
         EventManager.instance.GameStarted();
         gameStarted = true;
     }

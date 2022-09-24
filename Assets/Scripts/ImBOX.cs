@@ -27,7 +27,6 @@ public class ImBOX : MonoBehaviour
             }
             else if ((other.tag == "RightLeg" || other.tag == "LeftLeg") && stoneHere)
             {
-                Debug.Log("levelFailRestart");
                 other.GetComponentInParent<Animator>().SetBool("FailWalk", true);
                 other.GetComponentInParent<PlayerMovement>().ResetPlayerToStart();
                 other.GetComponentInParent<PlayerMovement>().time.AddTimeOnFoul();

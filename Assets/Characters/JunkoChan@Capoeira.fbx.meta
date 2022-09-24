@@ -114,7 +114,88 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Idle' has import animation warnings that might
+      lower retargeting quality:\nNote: Activate translation DOF on avatar to improve
+      retargeting quality.\n\t'Chest' is inbetween humanoid transforms and has rotation
+      animation that will be discarded.\n\nClip 'Walk' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Chest' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\nClip 'Run' has import
+      animation warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Chest' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\nClip 'Crouch'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'CrouchingWalk' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Sword_Ready' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Sword_Iai' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Sword_Slash' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Sword_Slash2' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Sword_JumpSlash' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Sword_Guard' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Sword_Parry' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ChainSaw_Idle' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ChainSaw_Slash' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ChainSaw_Slash2' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'NailGun_Idle' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'NailGun_Aim' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Throw' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Damaged' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Down' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Dizzy' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Sleep' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'WakeUp' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Irritated' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Happy' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Saltbae' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'mixamo.com' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chest'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -131,7 +212,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 2
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
@@ -168,8 +249,698 @@ ModelImporter:
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
-    human: []
-    skeleton: []
+    human:
+    - boneName: Hip
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ULeg_L_
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ULeg_R_
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: DLeg_L_
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: DLeg_R_
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Foot_L_
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Foot_R_
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Shoulder_L_
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Shoulder_R_
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: UArm_L_
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: UArm_R_
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: DArm_L_
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: DArm_R_
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Hand_L_
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Hand_R_
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Toe_L_
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Toe_R_
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Eye_L_
+      humanName: LeftEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Eye_R_
+      humanName: RightEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Face 1
+      humanName: Jaw
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Oya1_L_
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Oya2_L_
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Hito1_L_
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Hito2_L_
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Naka1_L_
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Naka2_L_
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Kusu1_L_
+      humanName: Left Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Kusu2_L_
+      humanName: Left Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Koyu1_L_
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Koyu2_L_
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Oya1_R_
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Oya2_R_
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Hito1_R_
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Hito2_R_
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Naka1_R_
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Naka2_R_
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Kusu1_R_
+      humanName: Right Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Kusu2_R_
+      humanName: Right Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Koyu1_R_
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Koyu2_R_
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: JunkoChan@Capoeira(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mesh
+      parentName: JunkoChan@Capoeira(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Body
+      parentName: Mesh
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Face
+      parentName: Mesh
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Eye[]
+      parentName: Mesh
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Katana 1
+      parentName: Mesh
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hip
+      parentName: JunkoChan@Capoeira(Clone)
+      position: {x: 0, y: 0.80939746, z: -0.045316566}
+      rotation: {x: -0, y: -0.000000011641532, z: 0.000000011641532, w: 1}
+      scale: {x: 1, y: 1, z: 0.9999999}
+    - name: Skirt_backside_L_
+      parentName: Hip
+      position: {x: -0.10967571, y: 0.10353927, z: -0.07002735}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Skirt_backside_R_
+      parentName: Hip
+      position: {x: 0.10967571, y: 0.10353927, z: -0.07002735}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Skirt_frontside_L_
+      parentName: Hip
+      position: {x: -0.12383659, y: 0.092806086, z: 0.04058894}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Skirt_frontside_R_
+      parentName: Hip
+      position: {x: 0.11994478, y: 0.092378534, z: 0.048709467}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Skirt_back
+      parentName: Hip
+      position: {x: -0, y: 0.10122627, z: -0.10968762}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Skirt_front
+      parentName: Hip
+      position: {x: -0, y: 0.08957985, z: 0.1110654}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Katana
+      parentName: Hip
+      position: {x: -0.14210005, y: 0.09397903, z: -0.028693415}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: ULeg_R_
+      parentName: Hip
+      position: {x: 0.07310964, y: 0.0096031185, z: -0.026663827}
+      rotation: {x: 9.3173604e-17, y: 0.000000014551915, z: -0.000000008731149, w: 1}
+      scale: {x: 1, y: 0.9999998, z: 1.0000001}
+    - name: DLeg_R_
+      parentName: ULeg_R_
+      position: {x: 0.0100957295, y: -0.36464065, z: -0.021820812}
+      rotation: {x: 0.000000002910383, y: -0.0000000145519135, z: -0.0000000040017767,
+        w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: Foot_R_
+      parentName: DLeg_R_
+      position: {x: -0.0047403765, y: -0.32043663, z: -0.027072744}
+      rotation: {x: -0.000000008731148, y: 0.000000012369126, z: 0.0000000010913936,
+        w: 1}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Toe_R_
+      parentName: Foot_R_
+      position: {x: 0.000032401083, y: -0.110068984, z: 0.15503247}
+      rotation: {x: -0, y: -0, z: -3.0256282e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine
+      parentName: Hip
+      position: {x: -0, y: 0.12880935, z: -0.0022519492}
+      rotation: {x: 0.000000023283068, y: 0.000000023283064, z: -0.000000017462298,
+        w: 1}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: Chest
+      parentName: Spine
+      position: {x: -0, y: 0.17030548, z: -0.015226154}
+      rotation: {x: -0.000000023283068, y: -0.000000012551027, z: 0.000000004365574,
+        w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MuneRoot
+      parentName: Chest
+      position: {x: -0, y: 0.014580917, z: -0.0011388398}
+      rotation: {x: -0, y: -0, z: 1.5186279e-16, w: 1}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Oppai_R_
+      parentName: MuneRoot
+      position: {x: 0.056066222, y: 0.005769119, z: 0.040788565}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Oppai_L_
+      parentName: MuneRoot
+      position: {x: -0.056066222, y: 0.005769119, z: 0.040788565}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Shoulder_R_
+      parentName: Chest
+      position: {x: 0.079333216, y: 0.082800366, z: -0.02345871}
+      rotation: {x: -0.000000023228703, y: -4.6389026e-10, z: 0.027733414, w: 0.9996154}
+      scale: {x: 1, y: 1, z: 1}
+    - name: UArm_R_
+      parentName: Shoulder_R_
+      position: {x: 0.04472196, y: -0.01814705, z: -0.00000000834465}
+      rotation: {x: 0.000000046566132, y: -0.000000022555469, z: -0.000000017644197,
+        w: 1}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: DArm_R_
+      parentName: UArm_R_
+      position: {x: 0.1724657, y: -0.006026306, z: -0.0018782043}
+      rotation: {x: -0.000000023283068, y: 0.000000040745363, z: 0.000000008731148,
+        w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Hand_R_
+      parentName: DArm_R_
+      position: {x: 0.17227562, y: 0.0047653196, z: -0.003983612}
+      rotation: {x: -0.0016218064, y: 0.000022550184, z: -0.0701096, w: 0.99753803}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: Katana_hand
+      parentName: Hand_R_
+      position: {x: 0.07670494, y: 0.002862854, z: -0.0039247703}
+      rotation: {x: -0, y: -0, z: 2.9646117e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Koyu1_R_
+      parentName: Hand_R_
+      position: {x: 0.10757297, y: 0.03456886, z: -0.033788636}
+      rotation: {x: 0.001144994, y: -0.042032767, z: 0.07864606, w: 0.9960154}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Koyu2_R_
+      parentName: Koyu1_R_
+      position: {x: 0.045898817, y: 0.0012503815, z: 0}
+      rotation: {x: -0, y: -0, z: 4.235158e-18, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: Kusu1_R_
+      parentName: Hand_R_
+      position: {x: 0.10757297, y: 0.036398087, z: -0.0070215818}
+      rotation: {x: -0.000758521, y: -0.04650434, z: 0.09919309, w: 0.99398065}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Kusu2_R_
+      parentName: Kusu1_R_
+      position: {x: 0.04677116, y: -0.00076278683, z: 0}
+      rotation: {x: -0, y: -0, z: -1.2705505e-17, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: Naka1_R_
+      parentName: Hand_R_
+      position: {x: 0.10757297, y: 0.036398087, z: 0.017886998}
+      rotation: {x: -0.002010377, y: -0.04870957, z: 0.11120922, w: 0.9926005}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Naka2_R_
+      parentName: Naka1_R_
+      position: {x: 0.045247916, y: -0.0018674468, z: 0}
+      rotation: {x: -0, y: -0, z: -6.35275e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Oya1_R_
+      parentName: Hand_R_
+      position: {x: 0.05241184, y: -0.012425537, z: 0.05286313}
+      rotation: {x: -0.08936762, y: -0.20369966, z: 0.111412995, w: 0.9685593}
+      scale: {x: 1.0000001, y: 1, z: 0.9999999}
+    - name: Oya2_R_
+      parentName: Oya1_R_
+      position: {x: 0.043017082, y: -0.007919464, z: 0.020025797}
+      rotation: {x: -0, y: -0, z: 4.235164e-18, w: 1}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: Hito1_R_
+      parentName: Hand_R_
+      position: {x: 0.10757297, y: 0.031694565, z: 0.0430688}
+      rotation: {x: -0.0005295486, y: -0.01934765, z: 0.042555097, w: 0.9989066}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: Hito2_R_
+      parentName: Hito1_R_
+      position: {x: 0.046013527, y: 0.004199676, z: 0.002481966}
+      rotation: {x: -0, y: -0, z: -2.4233813e-23, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Neck
+      parentName: Chest
+      position: {x: -0, y: 0.14533576, z: -0.036763556}
+      rotation: {x: -0.000000023283064, y: 9.094938e-10, z: 7.2759504e-10, w: 1}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Head
+      parentName: Neck
+      position: {x: -0, y: 0.07477653, z: 0.00023710965}
+      rotation: {x: 0.000000011641532, y: -0, z: 7.275967e-10, w: 1}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: Face 1
+      parentName: Head
+      position: {x: -0.007956314, y: 0.013755951, z: 0.12326059}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: XSBone_000
+      parentName: Head
+      position: {x: 0.007956314, y: 0.013755951, z: 0.12326059}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Hair_Root
+      parentName: Head
+      position: {x: -0, y: 0.36349303, z: -0.011190779}
+      rotation: {x: 0.000000011641532, y: 0.000000011641533, z: -3.637975e-10, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Hair_Yoko_R_
+      parentName: Hair_Root
+      position: {x: 0.1864775, y: -0.020866547, z: -0.083611585}
+      rotation: {x: -0, y: -0, z: 3.2525933e-18, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Hair_Yoko1_R_
+      parentName: Hair_Yoko_R_
+      position: {x: 0.15929523, y: -0.047693785, z: -0.07090435}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Hair_Yoko_L_
+      parentName: Hair_Root
+      position: {x: -0.1864775, y: -0.020866547, z: -0.083611585}
+      rotation: {x: -0, y: -0, z: 3.2525933e-18, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Hair_Yoko1_L_
+      parentName: Hair_Yoko_L_
+      position: {x: -0.15929523, y: -0.047693785, z: -0.07090435}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Eye_R_
+      parentName: Head
+      position: {x: 0.056401804, y: 0.14721893, z: 0.070251495}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Eye_L_
+      parentName: Head
+      position: {x: -0.056401804, y: 0.14721893, z: 0.070251495}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Shoulder_L_
+      parentName: Chest
+      position: {x: -0.079333216, y: 0.082800366, z: -0.02345871}
+      rotation: {x: -2.522249e-11, y: 0.000000023681915, z: -0.02773342, w: 0.9996154}
+      scale: {x: 1, y: 1, z: 1}
+    - name: UArm_L_
+      parentName: Shoulder_L_
+      position: {x: -0.04472196, y: -0.01814705, z: -0.00000000834465}
+      rotation: {x: -0.000000011641529, y: -0.000000011641531, z: 0.000000011641532,
+        w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: DArm_L_
+      parentName: UArm_L_
+      position: {x: -0.1724657, y: -0.006026306, z: -0.0018782043}
+      rotation: {x: 0.000000008731146, y: 0.000000011641532, z: -0.000000002910383,
+        w: 1}
+      scale: {x: 1.0000004, y: 1, z: 1.0000004}
+    - name: Hand_L_
+      parentName: DArm_L_
+      position: {x: -0.17227562, y: 0.0047653196, z: -0.003983612}
+      rotation: {x: -0.0016218147, y: -0.000022550064, z: 0.070110366, w: 0.997538}
+      scale: {x: 0.99999976, y: 1.0000001, z: 0.99999976}
+    - name: Koyu1_L_
+      parentName: Hand_L_
+      position: {x: -0.10757297, y: 0.03456886, z: -0.033788636}
+      rotation: {x: 0.0011450315, y: 0.042032424, z: -0.07864542, w: 0.99601555}
+      scale: {x: 1.0000002, y: 1, z: 1.0000001}
+    - name: Koyu2_L_
+      parentName: Koyu1_L_
+      position: {x: -0.045898817, y: 0.0012503815, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000002, y: 1, z: 1.0000001}
+    - name: Kusu1_L_
+      parentName: Hand_L_
+      position: {x: -0.10757297, y: 0.036398087, z: -0.0070215818}
+      rotation: {x: -0.0007583689, y: 0.046503823, z: -0.099191114, w: 0.9939809}
+      scale: {x: 1.0000002, y: 0.9999999, z: 1}
+    - name: Kusu2_L_
+      parentName: Kusu1_L_
+      position: {x: -0.04677116, y: -0.00076278683, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Naka1_L_
+      parentName: Hand_L_
+      position: {x: -0.10757297, y: 0.036398087, z: 0.017886998}
+      rotation: {x: -0.0020103282, y: 0.048709396, z: -0.11120872, w: 0.9926006}
+      scale: {x: 1.0000002, y: 0.9999999, z: 1}
+    - name: Naka2_L_
+      parentName: Naka1_L_
+      position: {x: -0.045247916, y: -0.0018674468, z: 0}
+      rotation: {x: -0, y: -0, z: -6.776265e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Oya1_L_
+      parentName: Hand_L_
+      position: {x: -0.05241184, y: -0.012425537, z: 0.05286313}
+      rotation: {x: -0.089368, y: 0.20369971, z: -0.11141334, w: 0.9685592}
+      scale: {x: 1.0000002, y: 1, z: 1.0000001}
+    - name: Oya2_L_
+      parentName: Oya1_L_
+      position: {x: -0.043017082, y: -0.007919464, z: 0.020025797}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000002, y: 1, z: 1.0000002}
+    - name: Hito1_L_
+      parentName: Hand_L_
+      position: {x: -0.10757297, y: 0.031694565, z: 0.0430688}
+      rotation: {x: -0.0005296049, y: 0.01934775, z: -0.04255564, w: 0.9989067}
+      scale: {x: 1.0000002, y: 0.9999999, z: 1}
+    - name: Hito2_L_
+      parentName: Hito1_L_
+      position: {x: -0.046013527, y: 0.004199676, z: 0.002481966}
+      rotation: {x: -0, y: -0, z: -3.388132e-16, w: 1}
+      scale: {x: 1.0000002, y: 1, z: 1.0000001}
+    - name: ULeg_L_
+      parentName: Hip
+      position: {x: -0.07310964, y: 0.0096031185, z: -0.026663827}
+      rotation: {x: 0.0000000029103826, y: -0.000000034924604, z: -0.000000008731149,
+        w: 1}
+      scale: {x: 1, y: 1, z: 0.9999999}
+    - name: DLeg_L_
+      parentName: ULeg_L_
+      position: {x: -0.0100957295, y: -0.36464065, z: -0.021820812}
+      rotation: {x: 0.000000020372678, y: 0.000000064028434, z: -0.0000000029103848,
+        w: 1}
+      scale: {x: 1, y: 0.9999999, z: 1.0000002}
+    - name: Foot_L_
+      parentName: DLeg_L_
+      position: {x: 0.0047403765, y: -0.32043663, z: -0.027072744}
+      rotation: {x: -0.000000034924597, y: -0.000000005820766, z: 0.000000023283063,
+        w: 1}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000001}
+    - name: Toe_L_
+      parentName: Foot_L_
+      position: {x: -0.000032401083, y: -0.110068984, z: 0.15503247}
+      rotation: {x: -0, y: -0, z: -2.0328791e-16, w: 1}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000002}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5

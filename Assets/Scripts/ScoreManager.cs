@@ -33,7 +33,7 @@ public class ScoreManager : MonoBehaviour
     }
     public void SetScore(ScoreType _type, Transform jumpedBox)
     {
-        Debug.Log(jumpedBox.name);
+        
         int scoreGained = 0;
 
         foreach (Score x in scores)

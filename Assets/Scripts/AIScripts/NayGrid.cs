@@ -26,8 +26,7 @@ public class NayGrid : MonoBehaviour
     void Start()
     {
         All_aiScript[Random.Range(0, All_aiScript.Length)].SetActive(true);
-        Debug.Log(GameManager.instance.otherAi.Count);
-
+        
         foreach (GameObject x in All_aiScript)
         {
             if (x.activeInHierarchy)
@@ -85,10 +84,7 @@ public class NayGrid : MonoBehaviour
             if(j!=i+1)
                 idk.Add(i + 1);
         }
-        //foreach (var item in idk)
-        //{
-        //    Debug.Log("item:" + item);
-        //}
+       
         yield return new WaitForSecondsRealtime(1f);
         
         if(Random.Range(0,100)<aiScript.difficulty.chancesOfWin && Random.Range(0, 100) > 0)
@@ -106,7 +102,7 @@ public class NayGrid : MonoBehaviour
             }
             else
             {
-                //Debug.Log("wrongTree");
+                
                 SetTree(idk[Random.Range(0, idk.Count)]);
             }
             aiScript.GetComponent<CapsuleCollider>().enabled = true;
@@ -170,7 +166,7 @@ public class NayGrid : MonoBehaviour
         }
         else
         {
-            Debug.Log("GameLost");
+            
             AudioManager.instance.Play("Lose");
             EventManager.instance.GameFailed();
         }
