@@ -110,7 +110,7 @@ public class LeaderBoardData : MonoBehaviour
             SortList();
             InstantiateDataSets();
 
-            GameManager.instance.ShowLeaderBoard();
+            GameManager.instance.ShowResultScreen();
             GameManager.instance.gameStarted = false;
             dataForTwo = 0;
         }
