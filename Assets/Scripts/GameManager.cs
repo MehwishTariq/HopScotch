@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager instance;
-    public GameObject leaderBoard, content;
+    public GameObject leaderBoard, content, resultPanel, resultLine, confetti_Player, confetti_Ai;
     public bool gameStarted, gameFailed, gameWon;
     public bool wrongJump;
     public Material defaultMat;
@@ -84,11 +85,36 @@ public class GameManager : MonoBehaviour
         gameStarted = true;
     }
 
-    public void ShowLeaderBoard()
+    public IEnumerator ShowLeaderBoard()
     {
-        if(!leaderBoard.activeInHierarchy)
+        yield return new WaitForSecondsRealtime(1f);
+        resultPanel.SetActive(false);
+        if (!leaderBoard.activeInHierarchy)
             leaderBoard.SetActive(true);
         
+    }
+
+    public void ShowResultScreen()
+    {
+        resultPanel.SetActive(true);
+        if (gameWon)
+        {
+            confetti_Player.SetActive(true);
+            resultLine.GetComponent<TextMeshProUGUI>().text = "YOU WON!";
+        }
+        else
+        {
+            confetti_Ai.SetActive(true);
+            resultLine.GetComponent<TextMeshProUGUI>().text = "YOU LOST!";
+        }
+
+        resultLine.transform.DOScale(1.2f, 0.4f).OnComplete(() =>
+        {
+            resultLine.transform.DOScale(1f, 0.3f).OnComplete(() =>
+            {
+                StartCoroutine(ShowLeaderBoard());
+            });
+        });
     }
 
     public void PlayAgain()

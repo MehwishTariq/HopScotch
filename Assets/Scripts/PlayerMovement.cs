@@ -333,7 +333,6 @@ public class PlayerMovement : MonoBehaviour
                             {
                                 AudioManager.instance.Play("Hop");
                                 controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
-                                AudioManager.instance.Play("RoundComplete");
                                 HopNo++;
                                 Destroy(StoneMovement.currentStone);
                                 SetMaterial(startPos, false);
@@ -380,8 +379,7 @@ public class PlayerMovement : MonoBehaviour
                                             }
                                             else
                                             {
-                                                AudioManager.instance.Play("RoundComplete");
-                                                HopNo++;
+                                               HopNo++;
                                             }
                                             anim.SetTrigger("Idle");
                                         });
