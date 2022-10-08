@@ -37,6 +37,8 @@ public class NayGrid : MonoBehaviour
         EventManager.instance.onStart += AIStart;
         EventManager.instance.onWin += onGameDone;
         EventManager.instance.onFail += onGameDone;
+
+      
     }
 
     private void OnDisable()
@@ -61,6 +63,7 @@ public class NayGrid : MonoBehaviour
     public void AIStart()
     {
         StartCoroutine(ThrowStone());
+        GameManager.instance.AIHopNo.text = "Hop No : " + j.ToString();
 
     }
 
@@ -161,6 +164,7 @@ public class NayGrid : MonoBehaviour
           
             aiScript.animator.SetTrigger("Idle");
             StartCoroutine(ThrowStone());
+            GameManager.instance.AIHopNo.text = "Hop No : " + j.ToString();
             //aiScript.GetComponent<CapsuleCollider>().enabled = true;
             //SetTree();
         }

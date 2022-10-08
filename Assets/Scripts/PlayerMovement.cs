@@ -45,7 +45,8 @@ public class PlayerMovement : MonoBehaviour
     public bool disableInput = false;
 
     public TimeManager time;
-
+    [SerializeField]
+    float planeYPos;
     void OnEnable()
     {
         EventManager.instance.onStart += SetPlayer;
@@ -88,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
         ascend = true;
         descend = false;
         JumpCheck = BarColor.OneLegJump;
+        GameManager.instance.playerHopNo.text = "Hop No : " + HopNo.ToString();
     }
 
     public void RemoveBool()
@@ -125,6 +127,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     bool canSkip;
+    [SerializeField]
+    private float arcFactor;
+
     void Update()
     {
         if (testing)
@@ -334,6 +339,7 @@ public class PlayerMovement : MonoBehaviour
                                 AudioManager.instance.Play("Hop");
                                 controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
                                 HopNo++;
+                                GameManager.instance.playerHopNo.text = "Hop No : " + HopNo.ToString();
                                 Destroy(StoneMovement.currentStone);
                                 SetMaterial(startPos, false);
                                 RemoveBool();
@@ -380,6 +386,7 @@ public class PlayerMovement : MonoBehaviour
                                             else
                                             {
                                                HopNo++;
+                                                GameManager.instance.playerHopNo.text = "Hop No : " + HopNo.ToString();
                                             }
                                             anim.SetTrigger("Idle");
                                         });
@@ -488,9 +495,9 @@ public class PlayerMovement : MonoBehaviour
 
             else if (IsAiming)
             {
-                Plane p = new Plane(Vector3.up, 0f);
+                Plane p = new Plane(Vector3.up, planeYPos);
                 float Dist;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition * 1.5f);
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition * arcFactor);
                 //Debug.DrawRay(ray.origin, ray.direction, Color.red);
                 if (p.Raycast(ray, out Dist) && Input.GetMouseButton(1))
                 {
