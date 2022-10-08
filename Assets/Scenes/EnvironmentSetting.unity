@@ -1561,7 +1561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &349699629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1993,7 +1993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.7202716, a: 1}
+  m_Color: {r: 0.2392157, g: 0.6509804, b: 0.854902, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2012,7 +2012,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PLAYER
+  m_Text: 
 --- !u!222 &410258466
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6884,7 +6884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7100562, b: 0.495283, a: 1}
+  m_Color: {r: 0.9450981, g: 1, b: 0.52156866, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6903,7 +6903,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '00 : 00'
+  m_Text: 
 --- !u!222 &1625645389
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7184,7 +7184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.7202716, a: 1}
+  m_Color: {r: 0.2392157, g: 0.6509804, b: 0.854902, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7203,7 +7203,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PLAYER
+  m_Text: 
 --- !u!222 &1677713085
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7928,7 +7928,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1806205317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12843,7 +12843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7100562, b: 0.495283, a: 1}
+  m_Color: {r: 0.9450981, g: 1, b: 0.52156866, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -12862,7 +12862,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '00 : 00'
+  m_Text: 
 --- !u!1 &8673781412425623688
 GameObject:
   m_ObjectHideFlags: 0
