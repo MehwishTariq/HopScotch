@@ -79,8 +79,12 @@ public class PlayerMovement : MonoBehaviour
         {
             item.gameObject.GetComponent<MeshRenderer>().material = GameManager.instance.defaultMat;
         }
-        if(canSet)
+        if (canSet)
+        {
+            StopCoroutine(boxes[HopNo - 1].GetComponent<ImBOX>().coroutine);
             current.gameObject.GetComponent<MeshRenderer>().material = GameManager.instance.selectedMat;
+            
+        }
     }
     void SetPlayer()
     {
@@ -90,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
         descend = false;
         JumpCheck = BarColor.OneLegJump;
         GameManager.instance.playerHopNo.text = "Hop No : " + HopNo.ToString();
+        boxes[HopNo - 1].GetComponent<ImBOX>().coroutine = StartCoroutine(boxes[HopNo - 1].GetComponent<ImBOX>().BlinkMaterial());
     }
 
     public void RemoveBool()

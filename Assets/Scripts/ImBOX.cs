@@ -17,6 +17,16 @@ public class ImBOX : MonoBehaviour
     [SerializeField]
     BarColor jumpTypeforMe;
 
+    Renderer mat;
+
+    public Coroutine coroutine;
+
+    private void Start()
+    {
+        mat = GetComponent<Renderer>();
+        
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (GameManager.instance.gameStarted)
@@ -46,6 +56,17 @@ public class ImBOX : MonoBehaviour
             }
            
         }
+    }
+    
+    public IEnumerator BlinkMaterial()
+    {
+        yield return new WaitForSeconds(0.01f);     
+        mat.material.color = Color.green;
+        mat.material.DOFade(0.3f, 0.2f).OnComplete(() => {
+            mat.material.DOFade(1f, 0.2f).OnComplete(() => {
+                coroutine = StartCoroutine(BlinkMaterial());
+            });
+        });
     }
     //void OnTriggerExit(Collider other)
     //{
