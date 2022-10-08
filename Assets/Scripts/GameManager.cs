@@ -17,9 +17,14 @@ public class GameManager : MonoBehaviour
     public Material selectedMat;
 
     public Text PlayerRemarks;
+    [SerializeField]
+    float remarkDuration;
     public Text AIRemarks;
 
     public List<TimeManager> otherAi = new List<TimeManager>();
+    public Text playerHopNo;
+    public Text AIHopNo;
+
 
     private void Awake()
     {
@@ -40,21 +45,33 @@ public class GameManager : MonoBehaviour
     }
     public void SetRemarks(bool wrong, bool forPlayer)
     {
-        string[] wrongs = { "Aww!", "Ah Man!", ":(", ":'(" };
-        string[] rights = { "Cool!", "Yes!", "Awesome!", "Nice!" };
+        string[] wrongs = { "Wrong move!"};
+        string[] rights = { "Cool!", "Waaooo!", "Great Job!", "Nice!","Perfect!","Well Done!!" ,
+        "Hurraayy!","Yippee!"};
         if (forPlayer)
         {
-            if(wrong)
-                PlayerRemarks.text = wrongs[Random.Range(0, wrongs.Length)];
-            else
-                PlayerRemarks.text = rights[Random.Range(0, rights.Length)];
+            if (wrong)
+            {
 
-            PlayerRemarks.GetComponent<RectTransform>().DOScale(1.3f, 0.2f).OnComplete(() => {
-                PlayerRemarks.GetComponent<RectTransform>().DOScale(1f, 0.2f).OnComplete(() =>
+                PlayerRemarks.text = wrongs[Random.Range(0, wrongs.Length)];
+                PlayerRemarks.color = Color.red;
+            }
+            else
+            {
+                PlayerRemarks.color = new Color(
+                  Random.Range(0.5f, 0.5f),
+                  Random.Range(0.6f, 1f),
+                  Random.Range(0.6f, 1f)
+              );
+                PlayerRemarks.text = rights[Random.Range(0, rights.Length)];
+            }
+
+
+            
+            PlayerRemarks.GetComponent<RectTransform>().DOScale(1f, remarkDuration).OnComplete(() => {
+                PlayerRemarks.GetComponent<RectTransform>().DOScale(0.8f, remarkDuration-0.1f).OnComplete(() =>
                 {
-                    int i = 0;
-                    while (i < 3)
-                        i++;
+                    
                     PlayerRemarks.text = "";
                 });
             });
@@ -62,16 +79,26 @@ public class GameManager : MonoBehaviour
         else
         {
             if (wrong)
+            {
                 AIRemarks.text = wrongs[Random.Range(0, wrongs.Length)];
-            else
-                AIRemarks.text = rights[Random.Range(0, rights.Length)];
 
-            AIRemarks.GetComponent<RectTransform>().DOScale(1.3f, 0.2f).OnComplete(() => {
-                AIRemarks.GetComponent<RectTransform>().DOScale(1f, 0.2f).OnComplete(() =>
+                AIRemarks.color = Color.red;
+            }
+            else
+            {
+                AIRemarks.text = rights[Random.Range(0, rights.Length)];
+                AIRemarks.color = new Color(
+                  Random.Range(0.5f, 0.5f),
+                  Random.Range(0.6f, 1f),
+                  Random.Range(0.6f, 1f)
+              );
+
+            }
+
+            AIRemarks.GetComponent<RectTransform>().DOScale(1f, remarkDuration).OnComplete(() => {
+                AIRemarks.GetComponent<RectTransform>().DOScale(0.8f, remarkDuration-0.1f).OnComplete(() =>
                 {
-                    int i = 0;
-                    while (i < 3)
-                        i++;
+                    
                     AIRemarks.text = "";
                 });
             });
