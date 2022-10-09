@@ -29,7 +29,8 @@ public class LeaderBoardData : MonoBehaviour
     
     [SerializeField]
     float minTime;
-
+    [SerializeField]
+    TimeManager playerData;
 
     int i = 1;
 
@@ -84,12 +85,12 @@ public class LeaderBoardData : MonoBehaviour
         
         if (notFound == leaderBoard.Count)
         {
-            if (GameManager.instance.gameFailed && name == "Player")
+            if (GameManager.instance.gameFailed && name == playerData.PlayerName)
             {
                 leaderBoard.Add(new Data(name, clocktime, _maxScore, PlayerPrefs.GetInt(name, 0) + Score(clocktime, 0)));
                 PlayerPrefs.SetInt(name, PlayerPrefs.GetInt(name) + Score(clocktime, 0));
             }
-            else if (GameManager.instance.gameWon && name != "Player")
+            else if (GameManager.instance.gameWon && name != playerData.PlayerName)
             { 
                 leaderBoard.Add(new Data(name, clocktime, _maxScore, PlayerPrefs.GetInt(name, 0) + Score(clocktime, 0)));
                 PlayerPrefs.SetInt(name, PlayerPrefs.GetInt(name) + Score(clocktime, 0));

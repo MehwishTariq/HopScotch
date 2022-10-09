@@ -724,6 +724,7 @@ MonoBehaviour:
   j: 1
   temp: {fileID: 853790692}
   randomNum: 0
+  continueCoroutine: 0
 --- !u!1 &268601514
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,8 +2068,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 170, y: 58}
+  m_AnchoredPosition: {x: -8.799988, y: 0}
+  m_SizeDelta: {x: 160, y: 58}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &410258465
 MonoBehaviour:
@@ -2155,7 +2156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240cadcee5b9bea48896c198caa66d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerName: Player
+  PlayerName: JAKE
   time: {fileID: 8673781411717471423}
   playerName: {fileID: 410258465}
   foulTimeAdd: 4
@@ -2891,6 +2892,10 @@ PrefabInstance:
       propertyPath: playerName
       value: 
       objectReference: {fileID: 1677713084}
+    - target: {fileID: 1648466511, guid: ed8c0f9c67df3104e8b28dc707987b50, type: 3}
+      propertyPath: PlayerName
+      value: WILL
+      objectReference: {fileID: 0}
     - target: {fileID: 1917242880171235129, guid: ed8c0f9c67df3104e8b28dc707987b50,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4868,7 +4873,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 184.6}
-  m_SizeDelta: {x: 0, y: 73}
+  m_SizeDelta: {x: -0.0000076293945, y: 73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &970732011
 MonoBehaviour:
@@ -5598,6 +5603,10 @@ PrefabInstance:
       propertyPath: playerName
       value: 
       objectReference: {fileID: 1677713084}
+    - target: {fileID: 896611410, guid: c84c3c64e6259da4b8bd24c2be82be31, type: 3}
+      propertyPath: PlayerName
+      value: JANE
+      objectReference: {fileID: 0}
     - target: {fileID: 8979410858653463201, guid: c84c3c64e6259da4b8bd24c2be82be31,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6097,7 +6106,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 79
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6138,13 +6147,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1399755371}
-    characterCount: 7
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -7022,11 +7031,11 @@ RectTransform:
   m_Father: {fileID: 3763765}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0}
-  m_SizeDelta: {x: 125, y: 60}
-  m_Pivot: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 58}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1625645391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7266,7 +7275,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 170, y: 58}
+  m_SizeDelta: {x: 160, y: 58}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1677713084
 MonoBehaviour:
@@ -7940,6 +7949,10 @@ PrefabInstance:
       propertyPath: playerName
       value: 
       objectReference: {fileID: 1677713084}
+    - target: {fileID: 1322233020, guid: 60637b7b29216124782536ba0c5ca95c, type: 3}
+      propertyPath: PlayerName
+      value: KEVIN
+      objectReference: {fileID: 0}
     - target: {fileID: 2985657498967588200, guid: 60637b7b29216124782536ba0c5ca95c,
         type: 3}
       propertyPath: m_Name
@@ -8126,7 +8139,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825580415}
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: -0.5}
-  m_LocalPosition: {x: 0, y: -2.8999999, z: -0.24}
+  m_LocalPosition: {x: 0, y: -0.6, z: -0.24}
   m_LocalScale: {x: 0.52, y: 0.52, z: 0.52}
   m_Children: []
   m_Father: {fileID: 675484900}
@@ -8409,6 +8422,7 @@ MonoBehaviour:
   leaderBoard: []
   dataSet: {fileID: 5908328944825044104, guid: f9ef03e2ed6eb0249a307c081e433e5e, type: 3}
   minTime: 180
+  playerData: {fileID: 437149044}
   dataForTwo: 0
 --- !u!4 &1861220470
 Transform:
@@ -9267,7 +9281,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 184.6}
-  m_SizeDelta: {x: 0, y: 73}
+  m_SizeDelta: {x: 0.0000076293945, y: 73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045005556
 MonoBehaviour:
@@ -9376,7 +9390,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "   - Use Right Click and Drag the mouse to set the stone Trajectory.\n  
-    - Use Left Click to throw the stone.\n   - For Single Leg Jump on the tile, Press
+    - Use Left Click to throw the stone.\n   - For One Leg Jump on the tile, Press
     '1'.\n   - For Two Leg Jump on the tiles, Press '2'.\n   - To Skip the tile with
     the stone, Press 'Spacebar'.\n"
 --- !u!222 &2049845394
@@ -11926,6 +11940,11 @@ PrefabInstance:
       propertyPath: playerName
       value: 
       objectReference: {fileID: 1677713084}
+    - target: {fileID: 3662156444590266475, guid: 8171836fcc0931d4bae1ecf1a9753505,
+        type: 3}
+      propertyPath: PlayerName
+      value: SARAH
+      objectReference: {fileID: 0}
     - target: {fileID: 5642959187695099544, guid: 8171836fcc0931d4bae1ecf1a9753505,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12883,11 +12902,11 @@ RectTransform:
   m_Father: {fileID: 1604614187}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -20.28003, y: 0}
-  m_SizeDelta: {x: 125, y: 60}
-  m_Pivot: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 58}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &8673781411717471417
 GameObject:
   m_ObjectHideFlags: 0
