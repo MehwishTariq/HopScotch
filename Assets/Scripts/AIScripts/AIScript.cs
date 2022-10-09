@@ -85,6 +85,7 @@ public class AIScript : MonoBehaviour
     void ChangeMat()
     {
         FindObjectOfType<NayGrid>().SetMaterial(null, false);
+        FindObjectOfType<NayGrid>().StartMaterialBlink();
     }
     public void MoveTo(Vector3 obj)
     {
@@ -120,6 +121,7 @@ public class AIScript : MonoBehaviour
             if (thrownStone != null)
             {
                 Destroy(thrownStone);
+                FindObjectOfType<NayGrid>().StartMaterialBlink();
                 FindObjectOfType<NayGrid>().SetMaterial(null, false);
             }
             transform.DOMove(tree.transform.position, 1.5f).OnComplete(() =>
