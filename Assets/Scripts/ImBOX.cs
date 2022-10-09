@@ -19,8 +19,8 @@ public class ImBOX : MonoBehaviour
 
     Renderer mat;
 
-    public Coroutine coroutine;
-
+    public IEnumerator coroutine;
+    public bool continueCoroutine;
     private void Start()
     {
         mat = GetComponent<Renderer>();
@@ -57,16 +57,34 @@ public class ImBOX : MonoBehaviour
            
         }
     }
-    
+    public void StartMaterialBlink()
+    {
+        continueCoroutine = true;
+        coroutine = BlinkMaterial();
+        StartCoroutine(coroutine);
+    }
+    public void StopMaterialBlink()
+    {
+        if (coroutine != null)
+        {
+
+            continueCoroutine = false;
+            StopCoroutine(coroutine);
+            coroutine = null;
+        }
+    }
     public IEnumerator BlinkMaterial()
     {
         yield return new WaitForSeconds(0.01f);     
         mat.material.color = Color.green;
-        mat.material.DOFade(0.3f, 0.2f).OnComplete(() => {
-            mat.material.DOFade(1f, 0.2f).OnComplete(() => {
-                coroutine = StartCoroutine(BlinkMaterial());
-            });
-        });
+        mat.material.DOFade(0.3f, 0.2f);
+        yield return new WaitForSeconds(0.2f);
+        mat.material.DOFade(1f, 0.2f);
+        yield return new WaitForSeconds(0.2f);
+        if (continueCoroutine)
+            StartMaterialBlink();
+        else
+            StopMaterialBlink();
     }
     //void OnTriggerExit(Collider other)
     //{

@@ -81,7 +81,8 @@ public class PlayerMovement : MonoBehaviour
         }
         if (canSet)
         {
-            StopCoroutine(boxes[HopNo - 1].GetComponent<ImBOX>().coroutine);
+
+            boxes[HopNo - 1].GetComponent<ImBOX>().StopMaterialBlink();
             current.gameObject.GetComponent<MeshRenderer>().material = GameManager.instance.selectedMat;
             
         }
@@ -94,7 +95,9 @@ public class PlayerMovement : MonoBehaviour
         descend = false;
         JumpCheck = BarColor.OneLegJump;
         GameManager.instance.playerHopNo.text = "Hop No : " + HopNo.ToString();
-        boxes[HopNo - 1].GetComponent<ImBOX>().coroutine = StartCoroutine(boxes[HopNo - 1].GetComponent<ImBOX>().BlinkMaterial());
+        boxes[HopNo - 1].GetComponent<ImBOX>().StartMaterialBlink();
+       
+
     }
 
     public void RemoveBool()
@@ -107,6 +110,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void ResetPlayerToStart()
     {
+        boxes[HopNo - 1].GetComponent<ImBOX>().StopMaterialBlink();
         ascend = true;
         descend = false;
         isHopping = false;
@@ -122,10 +126,12 @@ public class PlayerMovement : MonoBehaviour
                 controller.DORotate(new Vector3(0, -90, 0), 0.1f);
                 Destroy(StoneMovement.currentStone);
                 
-                 SetMaterial(null, false);
+                SetMaterial(null, false);
                 RemoveBool();
                 anim.SetBool("FailWalk", false);
                 NoToMoveOn = 1;
+                boxes[HopNo - 1].GetComponent<ImBOX>().StartMaterialBlink();
+
             });
         });
         
@@ -345,6 +351,8 @@ public class PlayerMovement : MonoBehaviour
                                 controller.DORotate(controller.transform.rotation.eulerAngles + new Vector3(0, -180, 0), 0.1f);
                                 HopNo++;
                                 GameManager.instance.playerHopNo.text = "Hop No : " + HopNo.ToString();
+
+                                boxes[HopNo - 1].GetComponent<ImBOX>().StartMaterialBlink();
                                 Destroy(StoneMovement.currentStone);
                                 SetMaterial(startPos, false);
                                 RemoveBool();
@@ -392,6 +400,7 @@ public class PlayerMovement : MonoBehaviour
                                             {
                                                HopNo++;
                                                 GameManager.instance.playerHopNo.text = "Hop No : " + HopNo.ToString();
+                                                boxes[HopNo - 1].GetComponent<ImBOX>().StartMaterialBlink();
                                             }
                                             anim.SetTrigger("Idle");
                                         });

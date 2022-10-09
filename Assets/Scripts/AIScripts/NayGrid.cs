@@ -23,6 +23,10 @@ public class NayGrid : MonoBehaviour
     [SerializeField]
     int randomNum;
 
+    Renderer currentBoxRend;
+
+    public IEnumerator coroutine;
+    public bool continueCoroutine;
     void Start()
     {
         All_aiScript[Random.Range(0, All_aiScript.Length)].SetActive(true);
@@ -37,8 +41,8 @@ public class NayGrid : MonoBehaviour
         EventManager.instance.onStart += AIStart;
         EventManager.instance.onWin += onGameDone;
         EventManager.instance.onFail += onGameDone;
+        
 
-      
     }
 
     private void OnDisable()
@@ -58,12 +62,45 @@ public class NayGrid : MonoBehaviour
             x.gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
+    public void StartMaterialBlink()
+    {
+        currentBoxRend = trees[j - 1].GetComponent<Renderer>();
+        continueCoroutine = true;
+        coroutine = BlinkMaterial();
+        StartCoroutine(coroutine);
+    }
+    public void StopMaterialBlink()
+    {
+        if (coroutine != null)
+        {
 
-
+            continueCoroutine = false;
+            StopCoroutine(coroutine);
+            coroutine = null;
+        }
+    }
+    public IEnumerator BlinkMaterial()
+    {
+        yield return new WaitForSeconds(0.01f);
+        currentBoxRend.material.color = Color.green;
+        currentBoxRend.material.DOFade(0.3f, 0.2f);
+        yield return new WaitForSeconds(0.2f);
+        currentBoxRend.material.DOFade(1f, 0.2f);
+        yield return new WaitForSeconds(0.2f);
+        if (continueCoroutine)
+            StartMaterialBlink();
+        else
+            StopMaterialBlink();
+    }
     public void AIStart()
     {
-        StartCoroutine(ThrowStone());
+
+     
+        StartMaterialBlink();
         GameManager.instance.AIHopNo.text = "Hop No : " + j.ToString();
+
+        StartCoroutine(ThrowStone());
+
 
     }
 
@@ -94,11 +131,13 @@ public class NayGrid : MonoBehaviour
         {
             aiScript.ResetDifficulty();
             aiScript.Throw(trees[j - 1].transform,false);
+            StopMaterialBlink();
             SetMaterial(trees[j - 1].transform, true);
             aiScript.currentStoneLocation = j;
             yield return new WaitForSecondsRealtime(2f);
             if (Random.Range(0, 100) < aiScript.difficulty.chancesOfWin)
             {
+
               
                 SetTree(j);
 
@@ -114,6 +153,7 @@ public class NayGrid : MonoBehaviour
         {
             aiScript.difficulty.chancesOfWin++;
             int i = Random.Range(0, idk.Count);
+            StopMaterialBlink();
             SetMaterial(trees[idk[i] - 1].transform, true);
             aiScript.Throw(trees[idk[i]-1].transform,true);;
             yield return new WaitForSecondsRealtime(5f);
@@ -165,6 +205,7 @@ public class NayGrid : MonoBehaviour
             aiScript.animator.SetTrigger("Idle");
             StartCoroutine(ThrowStone());
             GameManager.instance.AIHopNo.text = "Hop No : " + j.ToString();
+            StartMaterialBlink();
             //aiScript.GetComponent<CapsuleCollider>().enabled = true;
             //SetTree();
         }
