@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager instance;
-    public GameObject leaderBoard, content, resultPanel, resultLine, confetti_Player, confetti_Ai;
+    public GameObject leaderBoard, PausePanel, content, resultPanel, resultLine, confetti_Player, confetti_Ai;
     public bool gameStarted, gameFailed, gameWon;
     public bool wrongJump;
     public Material defaultMat;
@@ -32,6 +32,26 @@ public class GameManager : MonoBehaviour
 
     }
    
+    public void PauseGame(bool pause)
+    {
+        if(pause)
+        {
+            Time.timeScale = 0;
+            PausePanel.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            PausePanel.SetActive(false);
+        }
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void SetTimeofOtherAi()
     {
         foreach (TimeManager x in otherAi)
