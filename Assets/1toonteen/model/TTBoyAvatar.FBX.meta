@@ -1,130 +1,374 @@
 fileFormatVersion: 2
 guid: 868173aa50ea011428813e7484277a3e
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: BODY
-    100002: HEAD
-    100004: ROOT
-    100006: TT
-    100008: TT Head
-    100010: TT L Calf
-    100012: TT L Clavicle
-    100014: TT L Finger0
-    100016: TT L Finger01
-    100018: TT L Finger02
-    100020: TT L Finger1
-    100022: TT L Finger11
-    100024: TT L Finger12
-    100026: TT L Finger2
-    100028: TT L Finger21
-    100030: TT L Finger22
-    100032: TT L Finger3
-    100034: TT L Finger31
-    100036: TT L Finger32
-    100038: TT L Finger4
-    100040: TT L Finger41
-    100042: TT L Finger42
-    100044: TT L Foot
-    100046: TT L Forearm
-    100048: TT L Hand
-    100050: TT L Thigh
-    100052: TT L Toe0
-    100054: TT L UpperArm
-    100056: TT Neck
-    100058: TT Pelvis
-    100060: TT R Calf
-    100062: TT R Clavicle
-    100064: TT R Finger0
-    100066: TT R Finger01
-    100068: TT R Finger02
-    100070: TT R Finger1
-    100072: TT R Finger11
-    100074: TT R Finger12
-    100076: TT R Finger2
-    100078: TT R Finger21
-    100080: TT R Finger22
-    100082: TT R Finger3
-    100084: TT R Finger31
-    100086: TT R Finger32
-    100088: TT R Finger4
-    100090: TT R Finger41
-    100092: TT R Finger42
-    100094: TT R Foot
-    100096: TT R Forearm
-    100098: TT R Hand
-    100100: TT R Thigh
-    100102: TT R Toe0
-    100104: TT R UpperArm
-    100106: TT Spine
-    100108: TT Spine1
-    100110: TT Spine2
-    100112: //RootNode
-    400000: BODY
-    400002: HEAD
-    400004: ROOT
-    400006: TT
-    400008: TT Head
-    400010: TT L Calf
-    400012: TT L Clavicle
-    400014: TT L Finger0
-    400016: TT L Finger01
-    400018: TT L Finger02
-    400020: TT L Finger1
-    400022: TT L Finger11
-    400024: TT L Finger12
-    400026: TT L Finger2
-    400028: TT L Finger21
-    400030: TT L Finger22
-    400032: TT L Finger3
-    400034: TT L Finger31
-    400036: TT L Finger32
-    400038: TT L Finger4
-    400040: TT L Finger41
-    400042: TT L Finger42
-    400044: TT L Foot
-    400046: TT L Forearm
-    400048: TT L Hand
-    400050: TT L Thigh
-    400052: TT L Toe0
-    400054: TT L UpperArm
-    400056: TT Neck
-    400058: TT Pelvis
-    400060: TT R Calf
-    400062: TT R Clavicle
-    400064: TT R Finger0
-    400066: TT R Finger01
-    400068: TT R Finger02
-    400070: TT R Finger1
-    400072: TT R Finger11
-    400074: TT R Finger12
-    400076: TT R Finger2
-    400078: TT R Finger21
-    400080: TT R Finger22
-    400082: TT R Finger3
-    400084: TT R Finger31
-    400086: TT R Finger32
-    400088: TT R Finger4
-    400090: TT R Finger41
-    400092: TT R Finger42
-    400094: TT R Foot
-    400096: TT R Forearm
-    400098: TT R Hand
-    400100: TT R Thigh
-    400102: TT R Toe0
-    400104: TT R UpperArm
-    400106: TT Spine
-    400108: TT Spine1
-    400110: TT Spine2
-    400112: //RootNode
-    2300000: HEAD
-    3300000: HEAD
-    4300000: BODY
-    4300002: HEAD
-    9500000: //RootNode
-    13700000: BODY
-    13700002: HEAD
-    2186277476908879412: ImportLogs
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: BODY
+  - first:
+      1: 100002
+    second: HEAD
+  - first:
+      1: 100004
+    second: ROOT
+  - first:
+      1: 100006
+    second: TT
+  - first:
+      1: 100008
+    second: TT Head
+  - first:
+      1: 100010
+    second: TT L Calf
+  - first:
+      1: 100012
+    second: TT L Clavicle
+  - first:
+      1: 100014
+    second: TT L Finger0
+  - first:
+      1: 100016
+    second: TT L Finger01
+  - first:
+      1: 100018
+    second: TT L Finger02
+  - first:
+      1: 100020
+    second: TT L Finger1
+  - first:
+      1: 100022
+    second: TT L Finger11
+  - first:
+      1: 100024
+    second: TT L Finger12
+  - first:
+      1: 100026
+    second: TT L Finger2
+  - first:
+      1: 100028
+    second: TT L Finger21
+  - first:
+      1: 100030
+    second: TT L Finger22
+  - first:
+      1: 100032
+    second: TT L Finger3
+  - first:
+      1: 100034
+    second: TT L Finger31
+  - first:
+      1: 100036
+    second: TT L Finger32
+  - first:
+      1: 100038
+    second: TT L Finger4
+  - first:
+      1: 100040
+    second: TT L Finger41
+  - first:
+      1: 100042
+    second: TT L Finger42
+  - first:
+      1: 100044
+    second: TT L Foot
+  - first:
+      1: 100046
+    second: TT L Forearm
+  - first:
+      1: 100048
+    second: TT L Hand
+  - first:
+      1: 100050
+    second: TT L Thigh
+  - first:
+      1: 100052
+    second: TT L Toe0
+  - first:
+      1: 100054
+    second: TT L UpperArm
+  - first:
+      1: 100056
+    second: TT Neck
+  - first:
+      1: 100058
+    second: TT Pelvis
+  - first:
+      1: 100060
+    second: TT R Calf
+  - first:
+      1: 100062
+    second: TT R Clavicle
+  - first:
+      1: 100064
+    second: TT R Finger0
+  - first:
+      1: 100066
+    second: TT R Finger01
+  - first:
+      1: 100068
+    second: TT R Finger02
+  - first:
+      1: 100070
+    second: TT R Finger1
+  - first:
+      1: 100072
+    second: TT R Finger11
+  - first:
+      1: 100074
+    second: TT R Finger12
+  - first:
+      1: 100076
+    second: TT R Finger2
+  - first:
+      1: 100078
+    second: TT R Finger21
+  - first:
+      1: 100080
+    second: TT R Finger22
+  - first:
+      1: 100082
+    second: TT R Finger3
+  - first:
+      1: 100084
+    second: TT R Finger31
+  - first:
+      1: 100086
+    second: TT R Finger32
+  - first:
+      1: 100088
+    second: TT R Finger4
+  - first:
+      1: 100090
+    second: TT R Finger41
+  - first:
+      1: 100092
+    second: TT R Finger42
+  - first:
+      1: 100094
+    second: TT R Foot
+  - first:
+      1: 100096
+    second: TT R Forearm
+  - first:
+      1: 100098
+    second: TT R Hand
+  - first:
+      1: 100100
+    second: TT R Thigh
+  - first:
+      1: 100102
+    second: TT R Toe0
+  - first:
+      1: 100104
+    second: TT R UpperArm
+  - first:
+      1: 100106
+    second: TT Spine
+  - first:
+      1: 100108
+    second: TT Spine1
+  - first:
+      1: 100110
+    second: TT Spine2
+  - first:
+      1: 100112
+    second: //RootNode
+  - first:
+      4: 400000
+    second: BODY
+  - first:
+      4: 400002
+    second: HEAD
+  - first:
+      4: 400004
+    second: ROOT
+  - first:
+      4: 400006
+    second: TT
+  - first:
+      4: 400008
+    second: TT Head
+  - first:
+      4: 400010
+    second: TT L Calf
+  - first:
+      4: 400012
+    second: TT L Clavicle
+  - first:
+      4: 400014
+    second: TT L Finger0
+  - first:
+      4: 400016
+    second: TT L Finger01
+  - first:
+      4: 400018
+    second: TT L Finger02
+  - first:
+      4: 400020
+    second: TT L Finger1
+  - first:
+      4: 400022
+    second: TT L Finger11
+  - first:
+      4: 400024
+    second: TT L Finger12
+  - first:
+      4: 400026
+    second: TT L Finger2
+  - first:
+      4: 400028
+    second: TT L Finger21
+  - first:
+      4: 400030
+    second: TT L Finger22
+  - first:
+      4: 400032
+    second: TT L Finger3
+  - first:
+      4: 400034
+    second: TT L Finger31
+  - first:
+      4: 400036
+    second: TT L Finger32
+  - first:
+      4: 400038
+    second: TT L Finger4
+  - first:
+      4: 400040
+    second: TT L Finger41
+  - first:
+      4: 400042
+    second: TT L Finger42
+  - first:
+      4: 400044
+    second: TT L Foot
+  - first:
+      4: 400046
+    second: TT L Forearm
+  - first:
+      4: 400048
+    second: TT L Hand
+  - first:
+      4: 400050
+    second: TT L Thigh
+  - first:
+      4: 400052
+    second: TT L Toe0
+  - first:
+      4: 400054
+    second: TT L UpperArm
+  - first:
+      4: 400056
+    second: TT Neck
+  - first:
+      4: 400058
+    second: TT Pelvis
+  - first:
+      4: 400060
+    second: TT R Calf
+  - first:
+      4: 400062
+    second: TT R Clavicle
+  - first:
+      4: 400064
+    second: TT R Finger0
+  - first:
+      4: 400066
+    second: TT R Finger01
+  - first:
+      4: 400068
+    second: TT R Finger02
+  - first:
+      4: 400070
+    second: TT R Finger1
+  - first:
+      4: 400072
+    second: TT R Finger11
+  - first:
+      4: 400074
+    second: TT R Finger12
+  - first:
+      4: 400076
+    second: TT R Finger2
+  - first:
+      4: 400078
+    second: TT R Finger21
+  - first:
+      4: 400080
+    second: TT R Finger22
+  - first:
+      4: 400082
+    second: TT R Finger3
+  - first:
+      4: 400084
+    second: TT R Finger31
+  - first:
+      4: 400086
+    second: TT R Finger32
+  - first:
+      4: 400088
+    second: TT R Finger4
+  - first:
+      4: 400090
+    second: TT R Finger41
+  - first:
+      4: 400092
+    second: TT R Finger42
+  - first:
+      4: 400094
+    second: TT R Foot
+  - first:
+      4: 400096
+    second: TT R Forearm
+  - first:
+      4: 400098
+    second: TT R Hand
+  - first:
+      4: 400100
+    second: TT R Thigh
+  - first:
+      4: 400102
+    second: TT R Toe0
+  - first:
+      4: 400104
+    second: TT R UpperArm
+  - first:
+      4: 400106
+    second: TT Spine
+  - first:
+      4: 400108
+    second: TT Spine1
+  - first:
+      4: 400110
+    second: TT Spine2
+  - first:
+      4: 400112
+    second: //RootNode
+  - first:
+      23: 2300000
+    second: HEAD
+  - first:
+      33: 3300000
+    second: HEAD
+  - first:
+      43: 4300000
+    second: BODY
+  - first:
+      43: 4300002
+    second: HEAD
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: BODY
+  - first:
+      137: 13700002
+    second: HEAD
+  - first:
+      41386430: 2186277476908879412
+    second: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -142,7 +386,7 @@ ModelImporter:
       name: teeth
     second: {instanceID: 0}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -150,7 +394,8 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
-    optimizeGameObjects: 0
+    optimizeGameObjects: 1
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -175,25 +420,34 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 0
     importBlendShapes: 1
     importCameras: 0
     importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 0
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 2
@@ -202,10 +456,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 2
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 0
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human:
     - boneName: TT Pelvis
       humanName: Hips
@@ -917,13 +1171,18 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 1
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

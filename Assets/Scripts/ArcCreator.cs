@@ -37,6 +37,11 @@ public class ArcCreator : MonoBehaviour
     
     [SerializeField]
     float planeYPos;
+    List<Vector3> points = new List<Vector3>();
+    Vector3 startingPosition;
+    Plane p;
+    Ray ray;
+
     private void Update()
     {
         //if (GetComponentInParent<PlayerMovement>().StopMovement)
@@ -45,16 +50,13 @@ public class ArcCreator : MonoBehaviour
         //}
         if (GameManager.instance.gameStarted)
         {
-
-           
-            List<Vector3> points = new List<Vector3>();
-            Vector3 startingPosition = stoneMove.ShotPoint.position;
+            points.Clear();
+            startingPosition = stoneMove.ShotPoint.position;
             //Vector3 startingVelocity = stoneMove.ShotPoint.forward * stoneMove.BlastPower;
-            Plane p = new Plane(Vector3.up, planeYPos);
-            float Dist;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition *factor);
-            Debug.DrawRay(ray.origin, ray.direction, Color.red);
-            if (p.Raycast(ray, out Dist) && Input.GetMouseButton(1) && !PlayerMovement.isHopping)
+            p = new Plane(Vector3.up, planeYPos);
+            
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition *factor);
+            if (p.Raycast(ray, out float Dist) /*&& Input.GetMouseButton(1)*/ && !PlayerMovement.isHopping)
             {
                 lr.positionCount = (int)numPoints;
                 Dir = ray.GetPoint(Dist) + offset - player.transform.position;

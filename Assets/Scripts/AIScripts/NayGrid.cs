@@ -83,14 +83,22 @@ public class NayGrid : MonoBehaviour
     {
         yield return new WaitForSeconds(0.01f);
         currentBoxRend.material.color = Color.green;
-        currentBoxRend.material.DOFade(0.3f, 0.2f);
-        yield return new WaitForSeconds(0.2f);
-        currentBoxRend.material.DOFade(1f, 0.2f);
-        yield return new WaitForSeconds(0.2f);
-        if (continueCoroutine)
-            StartMaterialBlink();
-        else
-            StopMaterialBlink();
+        currentBoxRend.material.DOFade(0.3f, 0.2f).OnComplete(()=> {
+            currentBoxRend.material.DOFade(1f, 0.2f).OnComplete(() =>
+            {
+                if (continueCoroutine)
+                    StartMaterialBlink();
+                else
+                    StopMaterialBlink();
+            });
+        });
+        //yield return new WaitForSeconds(0.2f);
+        //currentBoxRend.material.DOFade(1f, 0.2f);
+        //yield return new WaitForSeconds(0.2f);
+        //if (continueCoroutine)
+        //    StartMaterialBlink();
+        //else
+        //    StopMaterialBlink();
     }
     public void AIStart()
     {

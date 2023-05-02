@@ -11,6 +11,12 @@ public class StoneMovement : MonoBehaviour
     public GameObject Stone;
     public Transform ShotPoint;
     public static GameObject currentStone;
+    PlayerMovement player;
+    float HorizontalRotation, VericalRotation;
+    private void Start()
+    {
+        player = GetComponentInParent<PlayerMovement>();
+    }
 
     void Update()
     {
@@ -20,11 +26,11 @@ public class StoneMovement : MonoBehaviour
         //}
         if (GameManager.instance.gameStarted)
         {
-            if (Input.GetMouseButton(1) && (!GetComponentInParent<PlayerMovement>().oneLegHop || !GetComponentInParent<PlayerMovement>().twoLegHop) && !PlayerMovement.isHopping)
+            if (Input.GetMouseButton(0) && (!GetComponentInParent<PlayerMovement>().oneLegHop || !GetComponentInParent<PlayerMovement>().twoLegHop) && !PlayerMovement.isHopping)
             {
-                GetComponentInParent<PlayerMovement>().IsAiming = true;
-                float HorizontalRotation = Input.GetAxis("Mouse X");
-                float VericalRotation = Input.GetAxis("Mouse Y");
+                player.IsAiming = true;
+                HorizontalRotation = Input.GetAxis("Mouse X");
+                VericalRotation = Input.GetAxis("Mouse Y");
 
                 ShotPoint.rotation = Quaternion.Euler(ShotPoint.rotation.eulerAngles +
                     new Vector3(0, 0, VericalRotation * rotationSpeed));
@@ -41,7 +47,7 @@ public class StoneMovement : MonoBehaviour
             }
             else
             {
-                GetComponentInParent<PlayerMovement>().IsAiming = false;
+                player.IsAiming = false;
             }
         }
     }

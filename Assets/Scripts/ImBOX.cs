@@ -31,11 +31,11 @@ public class ImBOX : MonoBehaviour
     {
         if (GameManager.instance.gameStarted)
         { 
-            if (other.tag == "Stone" && number != "0")
+            if (other.CompareTag("Stone") && number != "0")
             {
                 stoneHere = true;
             }
-            else if ((other.tag == "RightLeg" || other.tag == "LeftLeg") && stoneHere)
+            else if ((other.CompareTag("RightLeg") || other.CompareTag("LeftLeg")) && stoneHere)
             {
                 other.GetComponentInParent<Animator>().SetBool("FailWalk", true);
                 other.GetComponentInParent<PlayerMovement>().ResetPlayerToStart();
@@ -43,7 +43,7 @@ public class ImBOX : MonoBehaviour
                 GameManager.instance.SetRemarks(true, true);
                 //EventManager.instance.Foul();
             }
-            else if ((other.tag == "RightLeg" || other.tag == "LeftLeg"))
+            else if ((other.CompareTag("RightLeg")|| other.CompareTag("LeftLeg")))
             {
                 if (other.GetComponentInParent<PlayerMovement>().ascend)
                 {

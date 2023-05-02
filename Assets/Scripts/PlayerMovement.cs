@@ -509,11 +509,10 @@ public class PlayerMovement : MonoBehaviour
 
             else if (IsAiming)
             {
-                Plane p = new Plane(Vector3.up, planeYPos);
-                float Dist;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition * arcFactor);
+                p = new Plane(Vector3.up, planeYPos);
+                ray = Camera.main.ScreenPointToRay(Input.mousePosition * arcFactor);
                 //Debug.DrawRay(ray.origin, ray.direction, Color.red);
-                if (p.Raycast(ray, out Dist) && Input.GetMouseButton(1))
+                if (p.Raycast(ray, out float Dist) && Input.GetMouseButton(1))
                 {
                     Vector3 Dir = ray.GetPoint(Dist) - transform.position;
                     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Dir), Time.deltaTime * 3f);
@@ -522,4 +521,6 @@ public class PlayerMovement : MonoBehaviour
 
         }
     }
+    Plane p;
+    Ray ray;
 }
