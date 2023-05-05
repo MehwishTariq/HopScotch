@@ -79,6 +79,24 @@ namespace CrazyGames.WindowComponents.ModelOptimizations
         }
 
         /**
+         * Find the paths of the scenes that will end up in the final build of the game.
+         */
+        static List<string> GetScenesInBuildPath()
+        {
+            var scenesInBuild = new List<string>();
+
+            foreach (var scene in EditorBuildSettings.scenes)
+            {
+                if (scene.enabled)
+                {
+                    scenesInBuild.Add(scene.path);
+                }
+            }
+
+            return scenesInBuild;
+        }
+
+        /**
          * Find recursively the models on which this scene depends.
          */
         static List<string> GetSceneModelDependencies(string scenePath)
@@ -100,7 +118,7 @@ namespace CrazyGames.WindowComponents.ModelOptimizations
         static List<string> GetUsedModelsInBuildScenes()
         {
             var usedModelPaths = new HashSet<string>();
-            var scenesInBuild = OptimizerUtils.GetScenesInBuildPath();
+            var scenesInBuild = GetScenesInBuildPath();
 
             foreach (var scenePath in scenesInBuild)
             {
@@ -148,7 +166,7 @@ namespace CrazyGames.WindowComponents.ModelOptimizations
         static bool IsModelAtPath(string assetDependency)
         {
             return AssetDatabase.GetMainAssetTypeAtPath(assetDependency) == typeof(GameObject) &&
-                   _modelFormats.Contains(System.IO.Path.GetExtension(assetDependency).ToLowerInvariant());
+                _modelFormats.Contains(System.IO.Path.GetExtension(assetDependency).ToLowerInvariant());
         }
 
         static void AnalyzeModels()
@@ -197,17 +215,12 @@ namespace CrazyGames.WindowComponents.ModelOptimizations
                 _multiColumnHeaderState = new MultiColumnHeaderState(new[]
                 {
                     // when adding a new column don't forget to check the sorting method, and the CellGUI method
-                    new MultiColumnHeaderState.Column() { headerContent = new GUIContent() { text = "Model" }, width = 150, minWidth = 150, canSort = true },
-                    new MultiColumnHeaderState.Column()
-                        { headerContent = new GUIContent() { text = "R/W enabled" }, width = 80, minWidth = 80, canSort = true },
-                    new MultiColumnHeaderState.Column()
-                        { headerContent = new GUIContent() { text = "Polygons optimized" }, width = 120, minWidth = 120, canSort = true },
-                    new MultiColumnHeaderState.Column()
-                        { headerContent = new GUIContent() { text = "Vertices optimized" }, width = 120, minWidth = 120, canSort = true },
-                    new MultiColumnHeaderState.Column()
-                        { headerContent = new GUIContent() { text = "Mesh compression" }, width = 120, minWidth = 120, canSort = true },
-                    new MultiColumnHeaderState.Column()
-                        { headerContent = new GUIContent() { text = "Animation compression" }, width = 140, minWidth = 140, canSort = true },
+                    new MultiColumnHeaderState.Column() {headerContent = new GUIContent() {text = "Model"}, width = 150, minWidth = 150, canSort = true},
+                    new MultiColumnHeaderState.Column() {headerContent = new GUIContent() {text = "R/W enabled"}, width = 80, minWidth = 80, canSort = true},
+                    new MultiColumnHeaderState.Column() {headerContent = new GUIContent() {text = "Polygons optimized"}, width = 120, minWidth = 120, canSort = true},
+                    new MultiColumnHeaderState.Column() {headerContent = new GUIContent() {text = "Vertices optimized"}, width = 120, minWidth = 120, canSort = true},
+                    new MultiColumnHeaderState.Column() {headerContent = new GUIContent() {text = "Mesh compression"}, width = 120, minWidth = 120, canSort = true},
+                    new MultiColumnHeaderState.Column() {headerContent = new GUIContent() {text = "Animation compression"}, width = 140, minWidth = 140, canSort = true},
                 });
 
             _modelTree = new ModelTree(treeViewState, new MultiColumnHeader(_multiColumnHeaderState), treeModel);
